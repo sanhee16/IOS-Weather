@@ -45,24 +45,9 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = SplashView.vc(self)
         self.present(vc, animated: true)
     }
-//    
-//    func presentMemoMainView() {
-//        let vc = MemoMainView.vc(self)
-//        self.present(vc, animated: true)
-//    }
-//    
-//    func presentEditMemoView(_ type: MemoType, memo: Memo? = nil) {
-//        let vc = EditMemoView.vc(self, type: type, memo: memo)
-//        self.present(vc, animated: true)
-//    }
-//    
-//    func presentSampleApiView() {
-//        let vc = SampleApiView.vc(self)
-//        self.present(vc, animated: true)
-//    }
-//    
-//    func presentGalleryView(onClickItem: ((GalleryItem)->())? = nil) {
-//        let vc = GalleryView.vc(self, onClickItem: onClickItem)
-//        self.present(vc, animated: true)
-//    }
+    
+    func presentMain() {
+        let vc = MainView.vc(self)
+        self.present(vc, animated: true)
+    }
 }

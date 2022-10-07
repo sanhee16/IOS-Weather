@@ -31,6 +31,8 @@
 		63705B2C28ED3F430079DB37 /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B2B28ED3F430079DB37 /* DataResponse.swift */; };
 		63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B2E28ED3F550079DB37 /* SwiftExtension.swift */; };
 		63705B3328ED3F6D0079DB37 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B3228ED3F6D0079DB37 /* Defaults.swift */; };
+		63D80CDA28EE695F0090A3ED /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D80CD928EE695F0090A3ED /* Topbar.swift */; };
+		63D80CDC28EE88140090A3ED /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D80CDB28EE88140090A3ED /* WeatherData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		63705B3228ED3F6D0079DB37 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		63705B3528ED73890079DB37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63705B3628ED7B0D0079DB37 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		63D80CD928EE695F0090A3ED /* Topbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topbar.swift; sourceTree = "<group>"; };
+		63D80CDB28EE88140090A3ED /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 		63705B1228ED1C130079DB37 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				63D80CD828EE694E0090A3ED /* CustomView */,
 				63705B2528ED3E870079DB37 /* Setting */,
 				63705B2028ED3E0F0079DB37 /* SelectLocation */,
 				63705B1B28ED3DFE0079DB37 /* Main */,
@@ -203,8 +208,17 @@
 			isa = PBXGroup;
 			children = (
 				63705B2B28ED3F430079DB37 /* DataResponse.swift */,
+				63D80CDB28EE88140090A3ED /* WeatherData.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		63D80CD828EE694E0090A3ED /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				63D80CD928EE695F0090A3ED /* Topbar.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,6 +307,8 @@
 				63705B0C28ED17BA0079DB37 /* AppCoordinator.swift in Sources */,
 				63705B2728ED3E940079DB37 /* SettingView.swift in Sources */,
 				63705B0728ED179C0079DB37 /* AppDelegate.swift in Sources */,
+				63D80CDA28EE695F0090A3ED /* Topbar.swift in Sources */,
+				63D80CDC28EE88140090A3ED /* WeatherData.swift in Sources */,
 				63705B2228ED3E1B0079DB37 /* SelectLocationView.swift in Sources */,
 				63705B2C28ED3F430079DB37 /* DataResponse.swift in Sources */,
 				63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */,
@@ -436,7 +452,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Weather/Preview Content\"";
-				DEVELOPMENT_TEAM = 95KGRF7MYF;
+				DEVELOPMENT_TEAM = 5F78R7RAY4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Weather/Info.plist;
@@ -468,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Weather/Preview Content\"";
-				DEVELOPMENT_TEAM = 95KGRF7MYF;
+				DEVELOPMENT_TEAM = 5F78R7RAY4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Weather/Info.plist;

@@ -7,6 +7,14 @@
 
 import Foundation
 import SwiftUI
+import CoreLocation
+
+enum PermissionStatus {
+    case allow
+    case notYet
+    case notAllow
+    case unknown
+}
 
 class Util {
     static func safeAreaInsets() -> UIEdgeInsets? {
@@ -23,5 +31,15 @@ class Util {
     
     static func safeTop() -> CGFloat {
         return safeAreaInsets()?.top ?? 0
+    }
+}
+
+
+func checkPermission() -> PermissionStatus {
+    switch CLLocationManager.authorizationStatus() {
+    case .authorizedAlways, .authorizedWhenInUse: return .allow
+    case .restricted, .notDetermined: return .notYet
+    case .denied: return .notAllow
+    default: return .unknown
     }
 }
