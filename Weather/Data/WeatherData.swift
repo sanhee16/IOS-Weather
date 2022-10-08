@@ -42,3 +42,47 @@ class MyLocation: Object {
         self.latitude = latitude
     }
 }
+
+enum WeatherType {
+    case clearSky
+    case fewClouds
+    case scatteredClouds
+    case brokenClouds
+    case showerRain
+    case rain
+    case thunderStorm
+    case snow
+    case mist
+    case unknown
+    
+    //TODO: 배경 색상 정하기!
+//    var color: UIColor {
+//        switch self {
+//        case .clearSky: return
+//        case .fewClouds: return
+//        case .scatteredClouds: return
+//        case .brokenClouds: return
+//        case .showerRain: return
+//        case .rain: return
+//        case .thunderStorm: return
+//        case .snow: return
+//        case .mist: return
+//        case .unknown: return
+//        }
+//    }
+    
+    var description: String {
+        switch self {
+        case .clearSky: return "맑고 화창한 날씨!"
+        case .fewClouds: return "약간의 구름이 있어요"
+        case .scatteredClouds: return "해가 안 보일 수 있어요"
+        case .brokenClouds: return "매우 흐린 날씨입니다"
+        case .showerRain: return "구름이 많고 비가 옵니다"
+        case .rain: return "해가 뜨지만 비도 와요!"
+        case .thunderStorm: return "천둥번개가 쳐요!"
+        case .snow: return "눈이 옵니다!"
+        case .mist: return "안개가 끼니 주의하세요"
+        case .unknown: return ""
+        }
+    }
+}

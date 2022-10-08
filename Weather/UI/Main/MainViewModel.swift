@@ -35,13 +35,12 @@ class MainViewModel: BaseViewModel {
     }
     
     func loadMyLocations() {
-        self.isLoading = true
         self.myLocations.removeAll()
         let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
         for item in data {
             self.myLocations.append(item)
         }
-        self.isLoading = false
+        getWeather()
     }
 
     func onAppear() {
@@ -63,6 +62,15 @@ class MainViewModel: BaseViewModel {
     }
     
     func getWeather() {
+        //TODO: erase!
+        if !dummy.isEmpty {
+            print("dummy exist")
+            self.weatherInfo = dummy
+            self.isLoading = false
+            return
+        }
+        print("dummy not exist")
+        self.isLoading = true
         guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
         print("api key: \(apiKey)")
         for data in myLocations {
@@ -70,9 +78,13 @@ class MainViewModel: BaseViewModel {
                 .run(in: &self.subscription) {[weak self] response in
                     guard let self = self else { return }
                     self.weatherInfo[data] = response
-                } err: { err in
+                    dummy[data] = response
+//                    print(self.weatherInfo)
+                } err: { [weak self] err in
                     print(err)
-                } complete: {
+                    self?.isLoading = false
+                } complete: { [weak self] in
+                    self?.isLoading = false
                     print("complete")
                 }
         }

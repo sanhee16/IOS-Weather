@@ -120,12 +120,14 @@ public struct Daily: Codable {
     var temp: Temp // 온도 정보
     var wind_speed: Double // 바람의 속도. 단위 – 기본값: 미터/초
     var weather: [Weather]
+    var pop: Double // 강수확률
     
     enum CodingKeys: String, CodingKey {
         case dt
         case temp
         case wind_speed
         case weather
+        case pop
     }
     
     public init(from decoder: Decoder) throws {
@@ -134,5 +136,6 @@ public struct Daily: Codable {
         temp = try values.decode(Temp.self, forKey: .temp)
         wind_speed = try values.decode(Double.self, forKey: .wind_speed)
         weather = try values.decode([Weather].self, forKey: .weather)
+        pop = try values.decode(Double.self, forKey: .pop)
     }
 }

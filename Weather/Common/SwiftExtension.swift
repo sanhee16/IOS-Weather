@@ -39,6 +39,31 @@ extension Double {
     func KelToCel() -> String {
         return String(format: "%0.1f °C", (self - 273.15))
     }
+    
+    func windSpeed() -> String {
+        return "\(self) m/s"
+    }
+    
+    func pop() -> String {
+        return String(format: "%0.1f %", self)
+    }
+}
+
+extension String {
+    func weatherType() -> WeatherType {
+        switch self {
+        case "01d","01n": return .clearSky
+        case "02d","02n": return .fewClouds
+        case "03d","03n": return .scatteredClouds
+        case "04d","04n": return .brokenClouds
+        case "09d","09n": return .showerRain
+        case "10d","10n": return .rain
+        case "11d","11n": return .thunderStorm
+        case "13d","13n": return .snow
+        case "50d","50n": return .mist
+        default: return .unknown
+        }
+    }
 }
 extension Publisher {
     func run(in set: inout Set<AnyCancellable>, next: ((Self.Output) -> Void)? = nil, err errorListener: ((Error) -> Void)? = nil, complete: (() -> Void)? = nil) {
@@ -252,6 +277,9 @@ extension Font {
     public static let kr30b: Font = .system(size: 30, weight: .bold, design: .default)
     public static let kr30r: Font = .system(size: 30, weight: .regular, design: .default)
     
+    public static let kr26b: Font = .system(size: 26, weight: .bold, design: .default)
+    public static let kr26r: Font = .system(size: 26, weight: .regular, design: .default)
+    
     public static let kr20b: Font = .system(size: 20, weight: .bold, design: .default)
     public static let kr20r: Font = .system(size: 20, weight: .regular, design: .default)
     
@@ -285,6 +313,9 @@ extension Font {
 extension UIFont {
     public static let kr30b: UIFont = .systemFont(ofSize: 30, weight: .bold)
     public static let kr30r: UIFont = .systemFont(ofSize: 30, weight: .regular)
+    
+    public static let kr26b: UIFont = .systemFont(ofSize: 26, weight: .bold)
+    public static let kr26r: UIFont = .systemFont(ofSize: 26, weight: .regular)
     
     public static let kr20b: UIFont = .systemFont(ofSize: 20, weight: .bold)
     public static let kr20r: UIFont = .systemFont(ofSize: 20, weight: .regular)
