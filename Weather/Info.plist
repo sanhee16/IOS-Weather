@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>location permission</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>location permission</string>
-	<key>WEATHER_API_KEY</key>
-	<string>$(WEATHER_API_KEY)</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -19,13 +13,15 @@
 				<dict>
 					<key>UISceneClassName</key>
 					<string></string>
-					<key>UISceneDelegateClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 					<key>UISceneConfigurationName</key>
 					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
 				</dict>
 			</array>
 		</dict>
 	</dict>
+	<key>WEATHER_API_KEY</key>
+	<string>$(WEATHER_API_KEY)</string>
 </dict>
 </plist>

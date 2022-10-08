@@ -30,6 +30,10 @@ class MainViewModel: BaseViewModel {
         getLocation()
     }
     
+    func onClickSelectLocation() {
+        self.coordinator?.presentSelectLocationView()
+    }
+    
     private func getCurrentLocation() {
         print("getCurrentLocation")
         

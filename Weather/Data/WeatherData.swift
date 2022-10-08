@@ -26,5 +26,19 @@ class CityLocationInfo: Object {
     }
 }
 
-
-realm.add(Memo(idx, title: title, content: content, date: Date().timeIntervalSince1970, image: image), update: .modified)
+class MyLocation: Object {
+    @Persisted(primaryKey: true) var idx: Int
+    @Persisted var cityName: String
+    @Persisted var indexOfDB: Int? // 제공된 것(index)인지, 사용자가 등록한 것(nil)인지 체크
+    @Persisted var longitude: Double
+    @Persisted var latitude: Double
+    
+    convenience init(_ idx: Int, cityName: String, indexOfDB: Int?, longitude: Double, latitude: Double) {
+        self.init()
+        self.idx = idx
+        self.cityName = cityName
+        self.indexOfDB = indexOfDB
+        self.longitude = longitude
+        self.latitude = latitude
+    }
+}

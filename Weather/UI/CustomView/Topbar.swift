@@ -30,6 +30,9 @@ struct Topbar: View {
             HStack(alignment: .center, spacing: 0) {
                 if type != .none {
                     Image(type.rawValue)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(both: 16)
                         .padding(.leading, 10)
                         .onTapGesture {
                             callback?()

@@ -25,7 +25,16 @@ struct MainView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Topbar("날씨 정보", type: .none)
+                ZStack(alignment: .leading) {
+                    Topbar("날씨 정보", type: .none)
+                    //TODO: more image 다운로드 후 적용 필요, 일단 임시로 글자로 함!
+                    Text("지역 설정하기")
+                        .font(.kr13r)
+                        .foregroundColor(.gray100)
+                        .onTapGesture {
+                            vm.onClickSelectLocation()
+                        }
+                }
             }
             .padding(EdgeInsets(top: safeTop, leading: 0, bottom: safeBottom, trailing: 0))
             .edgesIgnoringSafeArea(.all)

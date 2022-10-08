@@ -29,6 +29,11 @@ extension View {
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(RoundedRectangle(cornerRadius: cornerRadius).stroke(lineWidth: lineWidth).foregroundColor(color))
     }
+    
+    public func frame(both: CGFloat, aligment: Alignment = .center) -> some View {
+        return self
+            .frame(width: both, height: both, alignment: aligment)
+    }
 }
 
 extension Color {
@@ -181,6 +186,22 @@ extension UIColor {
     
     public static let mint100: UIColor = UIColor(hex: "#1ED8C5")
     public static let orange100: UIColor = UIColor(hex: "#FF752F")
+    
+    public static let lightblue100: UIColor = UIColor(hex: "#78D7FF")
+    public static let lightblue80: UIColor = UIColor(hex: "#78D7FF", opacity: 0.8)
+    public static let lightblue60: UIColor = UIColor(hex: "#78D7FF", opacity: 0.6)
+    public static let darkblue100: UIColor = UIColor(hex: "#1875FF")
+    public static let darkblue80: UIColor = UIColor(hex: "#1875FF", opacity: 0.8)
+    public static let darkblue60: UIColor = UIColor(hex: "#1875FF", opacity: 0.6)
+    public static let blue100: UIColor = UIColor(hex: "#15B9FF")
+    public static let blue80: UIColor = UIColor(hex: "#15B9FF", opacity: 0.8)
+    public static let blue60: UIColor = UIColor(hex: "#15B9FF", opacity: 0.6)
+    public static let red100: UIColor = UIColor(hex: "#FF4C24")
+    public static let red80: UIColor = UIColor(hex: "#FF4C24", opacity: 0.8)
+    public static let red60: UIColor = UIColor(hex: "#FF4C24", opacity: 0.6)
+    public static let yellow100: UIColor = UIColor(hex: "#FFD027")
+    public static let yellow80: UIColor = UIColor(hex: "#FFD027", opacity: 0.8)
+    public static let yellow60: UIColor = UIColor(hex: "#FFD027", opacity: 0.6)
     
     public static let gray100: UIColor = UIColor(hex: "#454545")
     public static let gray90: UIColor = UIColor(hex: "#454B52")

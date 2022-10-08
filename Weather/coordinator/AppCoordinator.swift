@@ -50,4 +50,9 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = MainView.vc(self)
         self.present(vc, animated: true)
     }
+    
+    func presentSelectLocationView() {
+        let vc = SelectLocationView.vc(self)
+        self.present(vc, animated: true)
+    }
 }
