@@ -37,6 +37,16 @@ struct MainView: View {
                                 vm.onClickSelectLocation()
                             }
                         Spacer()
+//                        if $vm.usingLocation.wrappedValue {
+//                            Text("GPS\n사용중")
+//                                .font(.kr9r)
+//                                .foregroundColor(.gray60)
+//                            Image("location")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(both: 20)
+//                                .padding(.trailing, 10)
+//                        }
                         Image("setting")
                             .resizable()
                             .scaledToFit()
@@ -47,7 +57,11 @@ struct MainView: View {
                     }
                     .padding([.leading, .trailing], 20)
                 }
-                card(geometry)
+                if $vm.isLoading.wrappedValue {
+                    ProgressView()
+                } else {
+                    card(geometry)
+                }
             }
             .padding(EdgeInsets(top: safeTop, leading: 0, bottom: safeBottom, trailing: 0))
             .edgesIgnoringSafeArea(.all)

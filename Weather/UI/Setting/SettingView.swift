@@ -101,6 +101,7 @@ struct SettingView: View {
             Divider()
                 .padding([.leading, .trailing], 12)
         }
+        .contentShape(Rectangle())
         .onTapGesture {
             if let onTap = onTap {
                 onTap()

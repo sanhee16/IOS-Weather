@@ -24,15 +24,64 @@ struct DevInfoView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .center, spacing: 0) {
-                Text("hello, world")
+            VStack(alignment: .leading, spacing: 0) {
+                Topbar("개발자 정보", type: .back) {
+                    vm.onClose()
+                }
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(alignment: .center, spacing: 0) {
+                        Text("Sandy")
+                            .font(.kr16b)
+                            .foregroundColor(.gray100)
+                        Spacer()
+                        Image("sandy")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(both: 50)
+                            .clipShape(Circle())
+                    }
+                    .padding(EdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24))
+                    Divider()
+                        .padding([.leading, .trailing, .bottom], 10)
+                    
+                    Group {
+                        title("이 프로젝트에 사용한 것")
+                        description("swiftui, mvvm, cooridnator pattern, realm swift, combine")
+                        
+                        title("개발자 스택")
+                        description("ios, aos")
+                        description("swift, kotlin, java, python, c, c++, js")
+                        
+                        title("github")
+                        description(vm.git)
+                            .onTapGesture {
+                                vm.onClickUrl()
+                            }
+                        title("resource")
+                        description("이미지: https://icons8.com/")
+                    }
+                    .frame(width: geometry.size.width, alignment: .leading)
+                }
+                .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
             }
             .padding(EdgeInsets(top: safeTop, leading: 0, bottom: safeBottom, trailing: 0))
             .edgesIgnoringSafeArea(.all)
-            .frame(width: geometry.size.width, alignment: .center)
+            .frame(width: geometry.size.width, alignment: .leading)
         }
         .onAppear {
             vm.onAppear()
         }
+    }
+    
+    private func title(_ title: String) -> some View {
+        return Text(title)
+            .font(.kr14b)
+            .foregroundColor(.gray100)
+            .padding(EdgeInsets(top: 16, leading: 8, bottom: 10, trailing: 8))
+    }
+    private func description(_ description: String) -> some View {
+        return Text(description)
+            .font(.kr13r)
+            .foregroundColor(.gray90)
     }
 }

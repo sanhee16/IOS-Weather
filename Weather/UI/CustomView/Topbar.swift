@@ -41,7 +41,7 @@ struct Topbar: View {
                 Spacer()
             }
             Text(title)
-                .font(.kr14b)
+                .font(.kr16b)
                 .foregroundColor(Color.gray90)
         }
         .frame(height: 50, alignment: .center)

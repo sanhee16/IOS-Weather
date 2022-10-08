@@ -19,6 +19,8 @@ class MainViewModel: BaseViewModel {
     var myLocation: CLLocation? = nil
     private let realm: Realm = try! Realm()
     @Published var myLocations: [MyLocation] = []
+    @Published var isLoading: Bool = true
+    @Published var usingLocation: Bool = false
     @Published var weatherInfo: [MyLocation: WeatherResponse] = [:]
     private var api: Api = Api.instance
 
@@ -33,11 +35,13 @@ class MainViewModel: BaseViewModel {
     }
     
     func loadMyLocations() {
+        self.isLoading = true
         self.myLocations.removeAll()
         let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
         for item in data {
             self.myLocations.append(item)
         }
+        self.isLoading = false
     }
 
     func onAppear() {
@@ -46,6 +50,7 @@ class MainViewModel: BaseViewModel {
     
     func loadAllData() {
         let status = checkPermission()
+        self.usingLocation = status == .allow
         if status == .allow {
             getCurrentLocationAndLoadData()
         } else {
@@ -81,6 +86,7 @@ class MainViewModel: BaseViewModel {
         print("getCurrentLocation")
         
         if let coor = locationManager.location?.coordinate {
+            self.isLoading = true
             let latitude = coor.latitude
             let longitude = coor.longitude
             print("위도 :\(latitude), 경도: \(longitude)")
@@ -93,6 +99,7 @@ class MainViewModel: BaseViewModel {
     
     private func getCity() {
         if let coor = locationManager.location?.coordinate {
+            self.isLoading = true
             let geocoder = CLGeocoder()
             let locale = Locale(identifier: "Ko-kr")
             let latitude = coor.latitude
