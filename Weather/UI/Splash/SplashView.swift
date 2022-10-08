@@ -36,14 +36,3 @@ struct SplashView: View {
         }
     }
 }
-
-#if DEBUG
-struct SplashView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            SplashView(vm: SplashViewModel())
-                .previewDevice(PreviewDevice(rawValue: "iPhone 13 Pro Max"))
-        }
-    }
-}
-#endif

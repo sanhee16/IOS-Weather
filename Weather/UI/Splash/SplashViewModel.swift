@@ -9,31 +9,71 @@
 import Foundation
 import Combine
 import RealmSwift
+import CoreLocation
 
 class SplashViewModel: BaseViewModel {
     private let realm: Realm = try! Realm()
-    override init() {
-        super.init()
-        
-    }
+    private var locationManager: CLLocationManager
+    private var timerRepeat: Timer?
     
     override init(_ coordinator: AppCoordinator) {
+        self.locationManager = CLLocationManager()
         super.init(coordinator)
         
     }
     
     func onAppear() {
         if !Defaults.launchBefore { //최초 실행시 지역 data를 local DB에 담는다.
+            locationManager.requestWhenInUseAuthorization()
+            print("onStart : \(checkPermission())")
             addLocations()
+            self.startRepeatTimer()
+        } else {
+            self.onStartTimer()
+        }
+    }
+    
+    // 반복 타이머 시작
+    func startRepeatTimer() {
+        print("set timer")
+        timerRepeat = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(timerFireRepeat(timer:)), userInfo: "check permission", repeats: true)
+    }
+    
+    // 반복 타이머 실행
+    @objc func timerFireRepeat(timer: Timer) {
+        print("timer is running")
+        if timer.userInfo != nil {
+            let status = checkPermission()
+            if status != .notYet {
+                stopRepeatTimer()
+            }
+        }
+    }
+    
+    // 반복 타이머 종료
+    func stopRepeatTimer() {
+        print("timer 종료")
+        if let timer = timerRepeat {
+            if timer.isValid {
+                timer.invalidate()
+            }
+            timerRepeat = nil
         }
         self.onStartTimer()
     }
     
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if (status == CLAuthorizationStatus.denied) {
+            // The user denied authorization
+        } else if (status == CLAuthorizationStatus.authorizedAlways) {
+            // The user accepted authorization
+        }
+    }
+    
     func onStartTimer() {
-        self.coordinator?.presentMain()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [weak self] in
-//            self?.coordinator?.presentMain()
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.coordinator?.presentMain()
+        }
     }
     
     func onClose() {

@@ -30,7 +30,6 @@ class MainViewModel: BaseViewModel {
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
         super.init(coordinator)
-        self.loadMyLocations()
     }
     
     func loadMyLocations() {
@@ -42,10 +41,20 @@ class MainViewModel: BaseViewModel {
     }
 
     func onAppear() {
-        locationManager.requestWhenInUseAuthorization()
-//        getCurrentLocation()
-//        getLocation()
-        getWeather()
+        loadAllData()
+    }
+    
+    func loadAllData() {
+        let status = checkPermission()
+        if status == .allow {
+            getCurrentLocationAndLoadData()
+        } else {
+            loadMyLocations()
+        }
+    }
+    
+    func onClickRefresh() {
+        loadAllData()
     }
     
     func getWeather() {
@@ -68,7 +77,7 @@ class MainViewModel: BaseViewModel {
         self.coordinator?.presentSelectLocationView()
     }
     
-    private func getCurrentLocation() {
+    private func getCurrentLocationAndLoadData() {
         print("getCurrentLocation")
         
         if let coor = locationManager.location?.coordinate {
@@ -76,6 +85,9 @@ class MainViewModel: BaseViewModel {
             let longitude = coor.longitude
             print("위도 :\(latitude), 경도: \(longitude)")
             self.myLocation = CLLocation(latitude: latitude, longitude: longitude)
+            
+            // getCityInfo
+            getCity()
         }
     }
     
@@ -83,16 +95,42 @@ class MainViewModel: BaseViewModel {
         if let coor = locationManager.location?.coordinate {
             let geocoder = CLGeocoder()
             let locale = Locale(identifier: "Ko-kr")
+            let latitude = coor.latitude
+            let longitude = coor.longitude
             if let myLocation = myLocation {
                 geocoder.reverseGeocodeLocation(myLocation, preferredLocale: locale) { [weak self] placemarks, _ in
                     guard let placemarks = placemarks,
                           let address = placemarks.last
                     else { return }
-                    print("placemarks: \(placemarks)")
-                    print("city: \(address.locality)") // 시,군
-                    print("subLocality: \(address.subLocality)") // 구
-                    DispatchQueue.main.async {
-                        //TODO:
+                    
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self, let address = address.locality else { return }
+                        // addToMyLoactions
+                        var idx: Int? = nil
+                        var isUpdate: Bool = false
+                        for i in self.realm.objects(MyLocation.self) {
+                            if i.indexOfDB == nil {
+                                idx = i.idx
+                                isUpdate = true
+                                break
+                            }
+                        }
+                        if idx == nil {
+                            if let lastLocation = self.realm.objects(MyLocation.self).last {
+                                idx = lastLocation.idx + 1
+                            } else {
+                                idx = 0
+                            }
+                        }
+                        try! self.realm.write {
+                            guard let idx = idx else { return }
+                            if isUpdate {
+                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
+                            } else {
+                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
+                            }
+                            self.loadMyLocations()
+                        }
                     }
                 }
             }
@@ -101,5 +139,9 @@ class MainViewModel: BaseViewModel {
     
     func onClose() {
         self.dismiss()
+    }
+    
+    func onClickSetting() {
+        self.coordinator?.presentSettingView()
     }
 }

@@ -55,4 +55,23 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = SelectLocationView.vc(self)
         self.present(vc, animated: true)
     }
+    
+    func presentSettingView() {
+        let vc = SettingView.vc(self)
+        self.present(vc, animated: true)
+    }
+    
+    // setting
+    func presentPolicyView() {
+        let vc = PolicyView.vc(self)
+        self.present(vc, animated: true)
+    }
+    func presentDevInfoView() {
+        let vc = DevInfoView.vc(self)
+        self.present(vc, animated: true)
+    }
+    func presentSendEmailView() {
+        let vc = SendEmailView.vc(self)
+        self.present(vc, animated: true)
+    }
 }

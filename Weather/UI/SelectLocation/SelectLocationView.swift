@@ -99,7 +99,7 @@ struct SelectLocationView: View {
                 Image("location")
                     .resizable()
                     .scaledToFit()
-                    .frame(both: 8)
+                    .frame(both: 12)
             }
             Text(item.cityName)
                 .font(.kr16r)

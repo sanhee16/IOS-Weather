@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2643FF0C28F1741100EF73E6 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF0B28F1741100EF73E6 /* EmailSender.swift */; };
+		2643FF0F28F174EB00EF73E6 /* PolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF0E28F174EB00EF73E6 /* PolicyView.swift */; };
+		2643FF1128F174F200EF73E6 /* PolicyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1028F174F200EF73E6 /* PolicyViewModel.swift */; };
+		2643FF1428F1750500EF73E6 /* DevInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1328F1750500EF73E6 /* DevInfoView.swift */; };
+		2643FF1628F1750A00EF73E6 /* DevInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1528F1750A00EF73E6 /* DevInfoViewModel.swift */; };
+		2643FF1828F1791A00EF73E6 /* policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 2643FF1728F1791A00EF73E6 /* policy.html */; };
+		2643FF1A28F17A3B00EF73E6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1928F17A3B00EF73E6 /* WebView.swift */; };
+		2643FF1F28F17D6E00EF73E6 /* SendEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */; };
+		2643FF2128F17D7600EF73E6 /* SendEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */; };
 		2656A86D28F122C400140B8B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2656A86C28F122C400140B8B /* Api.swift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
@@ -38,6 +47,15 @@
 
 /* Begin PBXFileReference section */
 		26231B3028F0645A001DE70F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		2643FF0B28F1741100EF73E6 /* EmailSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSender.swift; sourceTree = "<group>"; };
+		2643FF0E28F174EB00EF73E6 /* PolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyView.swift; sourceTree = "<group>"; };
+		2643FF1028F174F200EF73E6 /* PolicyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolicyViewModel.swift; sourceTree = "<group>"; };
+		2643FF1328F1750500EF73E6 /* DevInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevInfoView.swift; sourceTree = "<group>"; };
+		2643FF1528F1750A00EF73E6 /* DevInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevInfoViewModel.swift; sourceTree = "<group>"; };
+		2643FF1728F1791A00EF73E6 /* policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = policy.html; sourceTree = "<group>"; };
+		2643FF1928F17A3B00EF73E6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailView.swift; sourceTree = "<group>"; };
+		2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewModel.swift; sourceTree = "<group>"; };
 		2656A86C28F122C400140B8B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		63705AE728ED118A0079DB37 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63705AEE28ED118B0079DB37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +98,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2643FF0D28F174DC00EF73E6 /* PolicyView */ = {
+			isa = PBXGroup;
+			children = (
+				2643FF0E28F174EB00EF73E6 /* PolicyView.swift */,
+				2643FF1028F174F200EF73E6 /* PolicyViewModel.swift */,
+			);
+			path = PolicyView;
+			sourceTree = "<group>";
+		};
+		2643FF1228F174F500EF73E6 /* DevInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2643FF1328F1750500EF73E6 /* DevInfoView.swift */,
+				2643FF1528F1750A00EF73E6 /* DevInfoViewModel.swift */,
+			);
+			path = DevInfo;
+			sourceTree = "<group>";
+		};
+		2643FF1D28F17D6300EF73E6 /* SendEmail */ = {
+			isa = PBXGroup;
+			children = (
+				2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */,
+				2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */,
+			);
+			path = SendEmail;
+			sourceTree = "<group>";
+		};
 		63705ADE28ED118A0079DB37 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +152,7 @@
 				63705B0828ED179F0079DB37 /* coordinator */,
 				63705B0328ED17860079DB37 /* Delegate */,
 				63705AEE28ED118B0079DB37 /* Assets.xcassets */,
+				2643FF1728F1791A00EF73E6 /* policy.html */,
 				63705AF028ED118B0079DB37 /* Preview Content */,
 				26231B3028F0645A001DE70F /* Config.xcconfig */,
 			);
@@ -201,6 +247,9 @@
 		63705B2528ED3E870079DB37 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				2643FF1D28F17D6300EF73E6 /* SendEmail */,
+				2643FF1228F174F500EF73E6 /* DevInfo */,
+				2643FF0D28F174DC00EF73E6 /* PolicyView */,
 				63705B2628ED3E940079DB37 /* SettingView.swift */,
 				63705B2828ED3E9A0079DB37 /* SettingViewModel.swift */,
 			);
@@ -220,6 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				63D80CD928EE695F0090A3ED /* Topbar.swift */,
+				2643FF1928F17A3B00EF73E6 /* WebView.swift */,
+				2643FF0B28F1741100EF73E6 /* EmailSender.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -294,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */,
+				2643FF1828F1791A00EF73E6 /* policy.html in Resources */,
 				63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,25 +357,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2643FF1628F1750A00EF73E6 /* DevInfoViewModel.swift in Sources */,
 				63705B1A28ED1C6A0079DB37 /* Util.swift in Sources */,
 				63705B1D28ED3E060079DB37 /* MainView.swift in Sources */,
 				63705B0C28ED17BA0079DB37 /* AppCoordinator.swift in Sources */,
 				63705B2728ED3E940079DB37 /* SettingView.swift in Sources */,
 				63705B0728ED179C0079DB37 /* AppDelegate.swift in Sources */,
 				63D80CDA28EE695F0090A3ED /* Topbar.swift in Sources */,
+				2643FF0F28F174EB00EF73E6 /* PolicyView.swift in Sources */,
 				63D80CDC28EE88140090A3ED /* WeatherData.swift in Sources */,
 				63705B2228ED3E1B0079DB37 /* SelectLocationView.swift in Sources */,
 				63705B2C28ED3F430079DB37 /* DataResponse.swift in Sources */,
+				2643FF1F28F17D6E00EF73E6 /* SendEmailView.swift in Sources */,
 				63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */,
 				63705B1F28ED3E0D0079DB37 /* MainViewModel.swift in Sources */,
+				2643FF1128F174F200EF73E6 /* PolicyViewModel.swift in Sources */,
+				2643FF2128F17D7600EF73E6 /* SendEmailViewModel.swift in Sources */,
+				2643FF0C28F1741100EF73E6 /* EmailSender.swift in Sources */,
 				63705B3328ED3F6D0079DB37 /* Defaults.swift in Sources */,
 				2656A86D28F122C400140B8B /* Api.swift in Sources */,
 				63705B0F28ED199A0079DB37 /* BaseViewModel.swift in Sources */,
+				2643FF1428F1750500EF73E6 /* DevInfoView.swift in Sources */,
 				63705B0A28ED17AC0079DB37 /* Coordinator.swift in Sources */,
 				63705B2428ED3E280079DB37 /* SelectLocationViewModel.swift in Sources */,
 				63705B2928ED3E9A0079DB37 /* SettingViewModel.swift in Sources */,
 				63705B1728ED1C290079DB37 /* SplashViewModel.swift in Sources */,
 				63705B1128ED19A10079DB37 /* BaseViewController.swift in Sources */,
+				2643FF1A28F17A3B00EF73E6 /* WebView.swift in Sources */,
 				63705B0528ED17960079DB37 /* SceneDelegate.swift in Sources */,
 				63705B1528ED1C230079DB37 /* SplashView.swift in Sources */,
 			);
