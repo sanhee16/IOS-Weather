@@ -7,6 +7,39 @@
 import SwiftUI
 import Combine
 
+extension Int {
+    func getDate() -> String {
+        let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_kr")
+        date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
+        date.dateFormat = "MM월 dd일"
+        
+        let kr = date.string(from: timeToDate)
+        return kr
+    }
+
+    func getTime() -> String {
+        let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_kr")
+        date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
+        date.dateFormat = "HH시 mm분"
+        
+        let kr = date.string(from: timeToDate)
+        return kr
+    }
+    
+    func getDateAndTime() -> String {
+        return "\(self.getDate())  \(self.getTime())"
+    }
+}
+
+extension Double {
+    func KelToCel() -> String {
+        return String(format: "%0.1f °C", (self - 273.15))
+    }
+}
 extension Publisher {
     func run(in set: inout Set<AnyCancellable>, next: ((Self.Output) -> Void)? = nil, err errorListener: ((Error) -> Void)? = nil, complete: (() -> Void)? = nil) {
         self.subscribe(on: DispatchQueue.global(qos: .background))
@@ -216,6 +249,9 @@ extension UIColor {
 }
 
 extension Font {
+    public static let kr30b: Font = .system(size: 30, weight: .bold, design: .default)
+    public static let kr30r: Font = .system(size: 30, weight: .regular, design: .default)
+    
     public static let kr20b: Font = .system(size: 20, weight: .bold, design: .default)
     public static let kr20r: Font = .system(size: 20, weight: .regular, design: .default)
     
@@ -247,6 +283,9 @@ extension Font {
 }
 
 extension UIFont {
+    public static let kr30b: UIFont = .systemFont(ofSize: 30, weight: .bold)
+    public static let kr30r: UIFont = .systemFont(ofSize: 30, weight: .regular)
+    
     public static let kr20b: UIFont = .systemFont(ofSize: 20, weight: .bold)
     public static let kr20r: UIFont = .systemFont(ofSize: 20, weight: .regular)
     
@@ -277,3 +316,9 @@ extension UIFont {
     public static let kr9r: UIFont = .systemFont(ofSize: 9, weight: .regular)
 }
 
+extension Bundle {
+    // 생성한 .plist 파일 경로 불러오기
+    var WEATHER_API_KEY: String? {
+        return self.infoDictionary?["WEATHER_API_KEY"] as? String ?? nil
+    }
+}

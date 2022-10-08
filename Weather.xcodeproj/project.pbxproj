@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2656A86D28F122C400140B8B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2656A86C28F122C400140B8B /* Api.swift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
 		63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AF928ED168C0079DB37 /* SwiftUIPager */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		26231B3028F0645A001DE70F /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		2656A86C28F122C400140B8B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		63705AE728ED118A0079DB37 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63705AEE28ED118B0079DB37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63705AF128ED118B0079DB37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				63705B1928ED1C6A0079DB37 /* Util.swift */,
 				63705B2E28ED3F550079DB37 /* SwiftExtension.swift */,
 				63705B3228ED3F6D0079DB37 /* Defaults.swift */,
+				2656A86C28F122C400140B8B /* Api.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */,
 				63705B1F28ED3E0D0079DB37 /* MainViewModel.swift in Sources */,
 				63705B3328ED3F6D0079DB37 /* Defaults.swift in Sources */,
+				2656A86D28F122C400140B8B /* Api.swift in Sources */,
 				63705B0F28ED199A0079DB37 /* BaseViewModel.swift in Sources */,
 				63705B0A28ED17AC0079DB37 /* Coordinator.swift in Sources */,
 				63705B2428ED3E280079DB37 /* SelectLocationViewModel.swift in Sources */,
@@ -330,6 +334,7 @@
 /* Begin XCBuildConfiguration section */
 		63705AF328ED118B0079DB37 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26231B3028F0645A001DE70F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -390,6 +395,7 @@
 		};
 		63705AF428ED118B0079DB37 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 26231B3028F0645A001DE70F /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

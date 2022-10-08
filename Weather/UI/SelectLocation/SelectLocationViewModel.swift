@@ -86,6 +86,7 @@ class SelectLocationViewModel: BaseViewModel {
         loadAllLocations()
         self.isLoading = false
     }
+    
     func loadMyLocations() {
         self.myLocations.removeAll()
         let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
@@ -157,7 +158,7 @@ class SelectLocationViewModel: BaseViewModel {
             idx = lastLocation.idx + 1
         }
         try! realm.write {
-            realm.add(MyLocation(idx, cityName: "\(item.location.city1)\n\(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
+            realm.add(MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
             self.loadAllData()
         }
     }

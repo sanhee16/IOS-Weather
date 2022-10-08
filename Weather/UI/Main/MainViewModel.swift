@@ -8,11 +8,19 @@
 
 import Foundation
 import Combine
+import RealmSwift
+import SwiftUIPager
 import CoreLocation
 
+
 class MainViewModel: BaseViewModel {
+    @Published var page: Page = .withIndex(0)
     var locationManager: CLLocationManager
     var myLocation: CLLocation? = nil
+    private let realm: Realm = try! Realm()
+    @Published var myLocations: [MyLocation] = []
+    @Published var weatherInfo: [MyLocation: WeatherResponse] = [:]
+    private var api: Api = Api.instance
 
     override init() {
         self.locationManager = CLLocationManager()
@@ -22,12 +30,38 @@ class MainViewModel: BaseViewModel {
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
         super.init(coordinator)
+        self.loadMyLocations()
+    }
+    
+    func loadMyLocations() {
+        self.myLocations.removeAll()
+        let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
+        for item in data {
+            self.myLocations.append(item)
+        }
     }
 
     func onAppear() {
         locationManager.requestWhenInUseAuthorization()
-        getCurrentLocation()
-        getLocation()
+//        getCurrentLocation()
+//        getLocation()
+        getWeather()
+    }
+    
+    func getWeather() {
+        guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
+        print("api key: \(apiKey)")
+        for data in myLocations {
+            self.api.getWeather(apiKey, lat: data.latitude, lon: data.longitude)
+                .run(in: &self.subscription) {[weak self] response in
+                    guard let self = self else { return }
+                    self.weatherInfo[data] = response
+                } err: { err in
+                    print(err)
+                } complete: {
+                    print("complete")
+                }
+        }
     }
     
     func onClickSelectLocation() {
@@ -45,7 +79,7 @@ class MainViewModel: BaseViewModel {
         }
     }
     
-    private func getLocation() {
+    private func getCity() {
         if let coor = locationManager.location?.coordinate {
             let geocoder = CLGeocoder()
             let locale = Locale(identifier: "Ko-kr")
