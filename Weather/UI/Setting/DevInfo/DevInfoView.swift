@@ -45,20 +45,21 @@ struct DevInfoView: View {
                         .padding([.leading, .trailing, .bottom], 10)
                     
                     Group {
-                        title("이 프로젝트에 사용한 것")
+                        title("💡 이 프로젝트에 사용한 것")
                         description("swiftui, mvvm, cooridnator pattern, realm swift, combine")
                         
-                        title("개발자 스택")
+                        title("⌨ 개발자 스택")
                         description("ios, aos")
                         description("swift, kotlin, java, python, c, c++, js")
                         
-                        title("github")
+                        title("🖥 github")
                         description(vm.git)
                             .onTapGesture {
                                 vm.onClickUrl()
                             }
-                        title("resource")
+                        title("ℹ 출처")
                         description("이미지: https://icons8.com/")
+                        description("날씨 api: https://openweathermap.org/")
                     }
                     .frame(width: geometry.size.width, alignment: .leading)
                 }
