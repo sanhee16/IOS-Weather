@@ -29,7 +29,7 @@ enum SeletedStatus {
     var backgroundColor: Color {
         switch self {
         case .existed: return .gray60
-        case .selected: return .blue80
+        case .selected: return .darkblue80
         case .none: return .white
         }
     }

@@ -148,9 +148,9 @@ struct SelectLocationView: View {
                 .lineSpacing(1.4)
         }
         .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-        .border(.lightblue80, lineWidth: item.editing ? 0 : 2, cornerRadius: 8)
+        .border(.lightblue80, lineWidth: item.editing ? 0 : 2, cornerRadius: 12)
         .background(
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(item.editing ? .lightblue100 : .clear)
         )
     }
