@@ -75,7 +75,8 @@ struct SelectLocationView: View {
                             }
                         }
                     }
-                    .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+                    .frame(width: geometry.size.width - 40, height: 50, alignment: .center)
+                    
                     if !$vm.myLocations.wrappedValue.isEmpty {
                         myLocationView(geometry)
                     }
@@ -98,7 +99,7 @@ struct SelectLocationView: View {
                                 }
                         }
                     }
-                    .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
+                    .frame(width: geometry.size.width - 40, height: 50, alignment: .center)
                     selectCity(geometry)
                     if $vm.selectedCityIdx.wrappedValue != nil, $vm.specificLocations.wrappedValue.count > 0 {
                         Divider()
