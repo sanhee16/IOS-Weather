@@ -10,6 +10,7 @@ import Foundation
 import Combine
 import RealmSwift
 import CoreLocation
+import Lottie
 
 class SplashViewModel: BaseViewModel {
     private let realm: Realm = try! Realm()
@@ -71,6 +72,7 @@ class SplashViewModel: BaseViewModel {
     }
     
     func onStartTimer() {
+        //TODO: 3초로 변경하기!!
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.coordinator?.presentMain()
         }
