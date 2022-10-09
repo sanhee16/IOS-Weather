@@ -17,7 +17,7 @@ import Network
 
 
 class MainViewModel: BaseViewModel {
-    //TODO: 이거 설정 지우기
+    //TODO: 이거 설정 지우기, false로 해야 api 호출함
     private var IS_FOR_DEBUG_DUMMY: Bool = false
     
     @Published var page: Page = .withIndex(0)
@@ -31,14 +31,11 @@ class MainViewModel: BaseViewModel {
     @Published var backgroundColor: Color = .unknown60
     private var api: Api = Api.instance
 
-    override init() {
-        self.locationManager = CLLocationManager()
-        super.init()
-    }
-    
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
+        self.locationManager.allowsBackgroundLocationUpdates = true
         super.init(coordinator)
+        print("allowGPS : \(Defaults.allowGPS)")
     }
     
     func loadMyLocations() {
@@ -73,11 +70,33 @@ class MainViewModel: BaseViewModel {
     func loadAllData() {
         let allow = Defaults.allowGPS
         if allow {
-            getCurrentLocationAndLoadData()
+            let status = checkPermission()
+            if status != .allow {
+                Defaults.allowGPS = false
+                removeCurrentLocationOnDB()
+                loadMyLocations()
+            } else {
+                getCurrentLocationAndLoadData()
+            }
         } else {
+            //TODO: realm에서 현재정보 있으면 지워야 함
+            removeCurrentLocationOnDB()
             loadMyLocations()
         }
     }
+    
+    func removeCurrentLocationOnDB() {
+        let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
+        for item in data {
+            if item.indexOfDB == nil {
+                try! realm.write {
+                    realm.delete(item)
+                }
+                return
+            }
+        }
+    }
+    
     
     func onClickRefresh() {
         loadAllData()
@@ -220,20 +239,27 @@ class MainViewModel: BaseViewModel {
     }
     
     func onClickGPS() {
+        print("onClickGPS")
         let status = checkPermission()
-        if status != .allow {
-            self.locationManager.requestWhenInUseAuthorization()
-            return
-        }
-        
-        self.coordinator?.presentAlertView(.yesOrNo, title: "현재 위치 사용", description: "현재 위치의 정보를 불러오겠습니까?\n데이터는 저장되지 않습니다.") { [weak self] res in
-            print(res)
-            if res {
-                Defaults.allowGPS = true
-                self?.loadAllData()
-            } else {
-                return
+        print("status: \(status)")
+        if status == .allow {
+            self.coordinator?.presentAlertView(.yesOrNo, title: "현재 위치 사용", description: "현재 위치의 정보를 불러오겠습니까?\n데이터는 저장되지 않습니다.") { [weak self] res in
+                print(res)
+                if res {
+                    Defaults.allowGPS = true
+                    self?.loadAllData()
+                } else {
+                    return
+                }
             }
+        } else {
+            self.coordinator?.presentAlertView(.yesOrNo, title: "권한 설정 필요", description: "위치정보를 위해서는 권한설정이 필요합니다.\n앱 설정에서 위치정보를 항상 허용으로 바꾸어 주세요.", callback: {[weak self] res in
+                if res {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            })
         }
     }
 }
