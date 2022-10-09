@@ -68,4 +68,14 @@ class Defaults {
             UserDefaults.standard.setValue(value, forKey: CURRENT_LONGITUDE)
         }
     }
+    
+    private static let CURRENT_CITY = "CURRENT_CITY"
+    public static var currentCity: String {
+        get {
+            UserDefaults.standard.string(forKey: CURRENT_CITY) ?? ""
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: CURRENT_CITY)
+        }
+    }
 }

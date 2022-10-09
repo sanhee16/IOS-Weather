@@ -210,6 +210,7 @@ class SelectLocationViewModel: BaseViewModel {
                 Defaults.useNoti = false
                 Defaults.currentLatitude = 0.0
                 Defaults.currentLongitude = 0.0
+                Defaults.currentCity = ""
             }
             realm.delete(item)
         }
