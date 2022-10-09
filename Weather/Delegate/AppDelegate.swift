@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let setting = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
                     application.registerUserNotificationSettings(setting) // 생성된 정보 애플리케이션에 등록
                 }
-        
+
         return true
     }
 

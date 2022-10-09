@@ -7,10 +7,14 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     var appCoordinator: AppCoordinator?
+    var subscription = Set<AnyCancellable>()
+    let userNotificationCenter = UNUserNotificationCenter.current()
+    private var api: Api = Api.instance
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -48,32 +52,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         print("sceneWillResignActive")
         if #available(iOS 10.0, *) { // iOS 버전 10 이상에서 작동
             
-            UNUserNotificationCenter.current().getNotificationSettings { settings in
+            UNUserNotificationCenter.current().getNotificationSettings {settings in
                 
                 if settings.authorizationStatus == UNAuthorizationStatus.authorized {
                     /*
                      로컬 알림을 발송할 수 있는 상태이면
                      - 유저의 동의를 구한다.
                      */
-                    let nContent = UNMutableNotificationContent() // 로컬알림에 대한 속성 설정 가능
-                    nContent.title = "오늘의 날씨 알림"
-                    nContent.subtitle = "오늘의 날씨는?\n두구두구\n두구두구"
-                    nContent.body = "오늘의 날씨는?\n두구두구\n두구두구"
-                    nContent.sound = UNNotificationSound.default
-//                    nContent.userInfo = ["name":"userName"]
                     
-                    // 알림시간 정하기
-                    var date = DateComponents()
-                    date.hour = 20
-                    date.minute = 11
+                    guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
                     
-                    
-                    // 알림 발송 조건 객체
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
-                    // 알림 요청 객체
-                    let request = UNNotificationRequest(identifier: "weatherNoti", content: nContent, trigger: trigger)
-                    // NotificationCenter에 추가
-                    UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    self.api.getWeather(apiKey, lat: 37.5, lon: 126.9)
+                        .run(in: &self.subscription) {[weak self] response in
+                            guard let self = self else { return }
+                            print("run")
+
+                            let nContent = UNMutableNotificationContent() // 로컬알림에 대한 속성 설정 가능
+                            nContent.title = "오늘의 날씨 알림"
+                            nContent.subtitle = response.current.temp.KelToCel()
+                            nContent.body = "오늘의 날씨는?\n두구두구\n두구두구"
+                            nContent.sound = UNNotificationSound.default
+        //                    nContent.userInfo = ["name":"userName"]
+
+                            // 알림시간 정하기
+                            var date = DateComponents()
+                            date.hour = 22
+                            date.minute = 00
+
+
+                            // 알림 발송 조건 객체
+                            let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+                            // 알림 요청 객체
+                            let request = UNNotificationRequest(identifier: "weatherNoti", content: nContent, trigger: trigger)
+                            // NotificationCenter에 추가
+                            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
+                        } err: { err in
+                            print(err)
+                        } complete: {
+                            print("complete")
+                        }
                 } else {
                     NSLog("User not agree")
                 }
