@@ -55,8 +55,10 @@ extension LocationItem: Equatable {
         lhs.location.latitude == rhs.location.latitude
     }
 }
+
+typealias Location = (loc: MyLocation, editing: Bool)
 class SelectLocationViewModel: BaseViewModel {
-    @Published var myLocations: [MyLocation] = []
+    @Published var myLocations: [Location] = []
     @Published var allLocations: [String: [LocationItem]] = [:]
     @Published var specificLocations: [LocationItem] = []
     @Published var selectedLocation: LocationItem? = nil
@@ -65,6 +67,12 @@ class SelectLocationViewModel: BaseViewModel {
     @Published var cityList: [String] = ["강원도", "경기도", "경상도", "광주시", "대구시", "대전시", "부산시", "서울", "울산시", "인천시", "전라도", "제주도", "충청도"]
     @Published var selectedCityIdx: Int? = nil
     @Published var isLoading: Bool = true
+    
+    //Erase 부분
+    @Published var isEditing: Bool = false
+    @Published var deleteCnt: Int = 0
+    
+    
     private let realm: Realm = try! Realm()
     
     override init(_ coordinator: AppCoordinator) {
@@ -91,7 +99,7 @@ class SelectLocationViewModel: BaseViewModel {
         self.myLocations.removeAll()
         let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
         for item in data {
-            self.myLocations.append(item)
+            self.myLocations.append((loc: item, editing: false))
         }
     }
     
@@ -104,7 +112,7 @@ class SelectLocationViewModel: BaseViewModel {
         for item in data {
             var selectedStatus: SeletedStatus = .none
             for mine in myLocations {
-                if let myIdx = mine.indexOfDB, myIdx == item.idx {
+                if let myIdx = mine.loc.indexOfDB, myIdx == item.idx {
                     selectedStatus = .existed
                     break
                 }
@@ -165,5 +173,44 @@ class SelectLocationViewModel: BaseViewModel {
     
     func deleteMyLocation() {
         
+    }
+    
+    func onClickEdit() {
+        self.deleteCnt = 0
+        self.isEditing = true
+    }
+    
+    func onClickCancelEdit() {
+        self.deleteCnt = 0
+        self.isEditing = false
+    }
+    
+    func delete(item: MyLocation) {
+        try! realm.write {
+            realm.delete(item)
+        }
+    }
+    
+    func onClickAdmitEdit() {
+        for i in self.myLocations {
+            if i.editing {
+                delete(item: i.loc)
+            }
+        }
+        self.isEditing = false
+        self.loadAllData()
+    }
+    
+    func addToDeleteList(_ item: Location) {
+        if !self.isEditing { return }
+        for idx in self.myLocations.indices {
+            if self.myLocations[idx].loc.latitude == item.loc.latitude &&
+                self.myLocations[idx].loc.longitude == item.loc.longitude &&
+                self.myLocations[idx].loc.cityName == item.loc.cityName {
+                self.myLocations[idx].editing = !self.myLocations[idx].editing
+                self.deleteCnt += self.myLocations[idx].editing ? 1 : -1
+                break
+            }
+        }
     }
 }

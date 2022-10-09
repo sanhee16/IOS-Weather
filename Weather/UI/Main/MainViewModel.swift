@@ -45,7 +45,9 @@ class MainViewModel: BaseViewModel {
             self.myLocations.append(item)
         }
         self.myLocations.append(MyLocation(-1, cityName: "", indexOfDB: nil, longitude: 0.0, latitude: 0.0))
-        getWeather()
+        //TODO: getWeather() 살리고 isloading 지우기, api 호출 너무 많이 해서 한거임
+        self.isLoading = false
+//        getWeather()
     }
 
     func onAppear() {
