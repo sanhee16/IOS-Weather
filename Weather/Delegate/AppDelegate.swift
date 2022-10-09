@@ -7,7 +7,9 @@
 
 
 import UIKit
+import FirebaseCore
 
+//@UIApplicationDelegateAdaptor(AppDelegate.self) var delegate ??
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     /*
@@ -29,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // application의 setup을 여기에서 진행한다.
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         print("application : didFinishLaunchingWithOptions")
+        FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self // notification
         return true
     }
