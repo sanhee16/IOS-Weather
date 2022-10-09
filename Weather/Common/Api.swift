@@ -135,7 +135,7 @@ class Api {
                             queue: DispatchQueue.global(qos: .background),
                             completionHandler: {[weak self](response: DataResponse<T, AFError>) in
                                 guard self != nil else { return }
-                                print("response: \(response)")
+//                                print("response: \(response)")
                                 switch response.result {
                                 case .success(let value):
                                     promise(.success(value))

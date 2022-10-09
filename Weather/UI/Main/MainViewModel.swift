@@ -13,6 +13,7 @@ import SwiftUIPager
 import CoreLocation
 import UIKit
 import SwiftUI
+import Network
 
 
 class MainViewModel: BaseViewModel {
@@ -24,7 +25,6 @@ class MainViewModel: BaseViewModel {
     var myLocation: CLLocation? = nil
     private let realm: Realm = try! Realm()
     @Published var isLoading: Bool = true
-    @Published var usingLocation: Bool = false
     
     @Published var myLocations: [MyLocation] = []
     @Published var weatherInfo: [MyLocation: WeatherResponse] = [:]
@@ -66,14 +66,13 @@ class MainViewModel: BaseViewModel {
 
     func onAppear() {
         self.isLoading = true
+        self.page = .first()
         loadAllData()
     }
     
     func loadAllData() {
-        let status = checkPermission()
-        print("sandy stauts: \(status)")
-        self.usingLocation = status == .allow
-        if status == .allow {
+        let allow = Defaults.allowGPS
+        if allow {
             getCurrentLocationAndLoadData()
         } else {
             loadMyLocations()
@@ -86,6 +85,7 @@ class MainViewModel: BaseViewModel {
     
     func getWeather() {
         //TODO: erase!
+        self.weatherInfo.removeAll()
         if IS_FOR_DEBUG_DUMMY {
             if !dummy.isEmpty {
                 print("dummy exist")
@@ -110,7 +110,10 @@ class MainViewModel: BaseViewModel {
                 .run(in: &self.subscription) {[weak self] response in
                     guard let self = self else { return }
                     self.weatherInfo[data] = response
-                    dummy[data] = response
+                    //TODO: erase dummy
+                    if self.IS_FOR_DEBUG_DUMMY {
+                        dummy[data] = response
+                    }
 //                    print(self.weatherInfo)
                 } err: { [weak self] err in
                     print(err)
@@ -131,8 +134,6 @@ class MainViewModel: BaseViewModel {
     }
     
     private func getCurrentLocationAndLoadData() {
-        print("getCurrentLocation")
-        
         if let coor = locationManager.location?.coordinate {
             self.isLoading = true
             let latitude = coor.latitude
@@ -140,12 +141,12 @@ class MainViewModel: BaseViewModel {
             print("위도 :\(latitude), 경도: \(longitude)")
             self.myLocation = CLLocation(latitude: latitude, longitude: longitude)
             
-            // getCityInfo
-            getCity()
+            // 현재 위치 정보 db에 추가 혹은 업데이트
+            saveCurrentLocationOnDB()
         }
     }
     
-    private func getCity() {
+    private func saveCurrentLocationOnDB() {
         if let coor = locationManager.location?.coordinate {
             self.isLoading = true
             let geocoder = CLGeocoder()
@@ -177,12 +178,20 @@ class MainViewModel: BaseViewModel {
                                 idx = 0
                             }
                         }
+                        
                         try! self.realm.write {
                             guard let idx = idx else { return }
                             if isUpdate {
-                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
+                                print("isUpdate")
+                                let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
+                                self.realm.add(copy, update: .all)
+                                
+//                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
                             } else {
-                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
+                                print("not update")
+                                let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
+                                self.realm.add(copy)
+//                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
                             }
                             self.loadMyLocations()
                         }
@@ -206,6 +215,24 @@ class MainViewModel: BaseViewModel {
                 self.backgroundColor = color
             } else {
                 self.backgroundColor = .unknown60
+            }
+        }
+    }
+    
+    func onClickGPS() {
+        let status = checkPermission()
+        if status != .allow {
+            self.locationManager.requestWhenInUseAuthorization()
+            return
+        }
+        
+        self.coordinator?.presentAlertView(.yesOrNo, title: "현재 위치 사용", description: "현재 위치의 정보를 불러오겠습니까?\n데이터는 저장되지 않습니다.") { [weak self] res in
+            print(res)
+            if res {
+                Defaults.allowGPS = true
+                self?.loadAllData()
+            } else {
+                return
             }
         }
     }

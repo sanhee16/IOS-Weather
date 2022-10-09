@@ -175,7 +175,10 @@ class SelectLocationViewModel: BaseViewModel {
             idx = lastLocation.idx + 1
         }
         try! realm.write {
-            realm.add(MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
+            let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
+            self.realm.add(copy)
+            
+//            realm.add(MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
             self.loadAllData()
         }
     }
@@ -202,6 +205,9 @@ class SelectLocationViewModel: BaseViewModel {
     
     func delete(item: MyLocation) {
         try! realm.write {
+            if item.indexOfDB == nil {
+                Defaults.allowGPS = false
+            }
             realm.delete(item)
         }
     }
@@ -213,6 +219,7 @@ class SelectLocationViewModel: BaseViewModel {
             }
         }
         self.isEditing = false
+        
         self.loadAllData()
     }
     

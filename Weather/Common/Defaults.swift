@@ -18,4 +18,14 @@ class Defaults {
             UserDefaults.standard.setValue(value, forKey: LAUNCH_BEFORE)
         }
     }
+    
+    private static let ALLOW_GPS = "ALLOW_GPS"
+    public static var allowGPS: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: ALLOW_GPS)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: ALLOW_GPS)
+        }
+    }
 }
