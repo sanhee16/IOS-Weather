@@ -103,9 +103,17 @@ class MainViewModel: BaseViewModel {
             }
             timerRepeat = nil
             // timer 종료되고 작업 시작
-            self.isLoading = true
-            self.page = .first()
-            loadAllData()
+            //TODO: 첫번째 실행 시 test 필요, 현재 허용 안하면 선택목록으로 넘기기
+            let status = checkPermission()
+            if status == .allow {
+                self.isLoading = true
+                self.page = .first()
+                loadAllData()
+            } else {
+                self.isLoading = false
+                self.page = .first()
+                self.coordinator?.presentSelectLocationView()
+            }
         }
     }
     
