@@ -99,6 +99,13 @@ class SelectLocationViewModel: BaseViewModel {
         self.myLocations.removeAll()
         let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
         for item in data {
+            if item.indexOfDB == nil {
+                self.myLocations.append((loc: item, editing: false))
+                break
+            }
+        }
+        for item in data {
+            if item.indexOfDB == nil { continue }
             self.myLocations.append((loc: item, editing: false))
         }
     }
