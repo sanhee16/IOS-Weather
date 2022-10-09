@@ -24,6 +24,8 @@
 		26498BDE28F28E6B00E89FB2 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BDD28F28E6B00E89FB2 /* ProgressView.swift */; };
 		26498BE128F296DA00E89FB2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BE028F296DA00E89FB2 /* AlertView.swift */; };
 		26498BE328F296E600E89FB2 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BE228F296E600E89FB2 /* AlertViewModel.swift */; };
+		26517B1E28F2FF1500F2C280 /* NotiSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26517B1D28F2FF1500F2C280 /* NotiSettingView.swift */; };
+		26517B2028F2FF1C00F2C280 /* NotiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26517B1F28F2FF1C00F2C280 /* NotiSettingViewModel.swift */; };
 		2656A86D28F122C400140B8B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2656A86C28F122C400140B8B /* Api.swift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
@@ -71,6 +73,8 @@
 		26498BDD28F28E6B00E89FB2 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26498BE028F296DA00E89FB2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		26498BE228F296E600E89FB2 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
+		26517B1D28F2FF1500F2C280 /* NotiSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingView.swift; sourceTree = "<group>"; };
+		26517B1F28F2FF1C00F2C280 /* NotiSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewModel.swift; sourceTree = "<group>"; };
 		2656A86C28F122C400140B8B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		63705AE728ED118A0079DB37 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63705AEE28ED118B0079DB37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,6 +161,15 @@
 				26498BE228F296E600E89FB2 /* AlertViewModel.swift */,
 			);
 			path = Alert;
+			sourceTree = "<group>";
+		};
+		26517B1C28F2FF0100F2C280 /* NotiSetting */ = {
+			isa = PBXGroup;
+			children = (
+				26517B1D28F2FF1500F2C280 /* NotiSettingView.swift */,
+				26517B1F28F2FF1C00F2C280 /* NotiSettingViewModel.swift */,
+			);
+			path = NotiSetting;
 			sourceTree = "<group>";
 		};
 		63705ADE28ED118A0079DB37 = {
@@ -283,6 +296,7 @@
 		63705B2528ED3E870079DB37 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				26517B1C28F2FF0100F2C280 /* NotiSetting */,
 				2643FF1D28F17D6300EF73E6 /* SendEmail */,
 				2643FF1228F174F500EF73E6 /* DevInfo */,
 				2643FF0D28F174DC00EF73E6 /* PolicyView */,
@@ -403,6 +417,7 @@
 				2643FF1628F1750A00EF73E6 /* DevInfoViewModel.swift in Sources */,
 				63705B1A28ED1C6A0079DB37 /* Util.swift in Sources */,
 				63705B1D28ED3E060079DB37 /* MainView.swift in Sources */,
+				26517B1E28F2FF1500F2C280 /* NotiSettingView.swift in Sources */,
 				63705B0C28ED17BA0079DB37 /* AppCoordinator.swift in Sources */,
 				63705B2728ED3E940079DB37 /* SettingView.swift in Sources */,
 				63705B0728ED179C0079DB37 /* AppDelegate.swift in Sources */,
@@ -432,6 +447,7 @@
 				63705B1128ED19A10079DB37 /* BaseViewController.swift in Sources */,
 				2643FF1A28F17A3B00EF73E6 /* WebView.swift in Sources */,
 				26498BDE28F28E6B00E89FB2 /* ProgressView.swift in Sources */,
+				26517B2028F2FF1C00F2C280 /* NotiSettingViewModel.swift in Sources */,
 				63705B0528ED17960079DB37 /* SceneDelegate.swift in Sources */,
 				63705B1528ED1C230079DB37 /* SplashView.swift in Sources */,
 			);

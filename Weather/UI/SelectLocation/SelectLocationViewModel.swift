@@ -207,6 +207,9 @@ class SelectLocationViewModel: BaseViewModel {
         try! realm.write {
             if item.indexOfDB == nil {
                 Defaults.allowGPS = false
+                Defaults.useNoti = false
+                Defaults.currentLatitude = 0.0
+                Defaults.currentLongitude = 0.0
             }
             realm.delete(item)
         }

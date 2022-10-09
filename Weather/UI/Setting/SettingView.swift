@@ -33,6 +33,14 @@ struct SettingView: View {
                 } else {
                     toggleItem("현재 위치정보 사용", description: "현재 위치정보를 사용하면 현재 위치의 날씨를 알 수 있습니다.", isOn: $vm.isUseGps, disableTap: vm.onClickGPSToggle)
                 }
+                
+                if $vm.isAvailableGPSToggle.wrappedValue && $vm.isUseGps.wrappedValue {
+                    toggleItem("날씨 알림", description: "현재 위치정보를 사용하면 매일 날씨 알람을 받을 수 있습니다.\n단, 알림 허용이 되어있어야 하고, 현재 위치정보를 사용하고 있어야 합니다.", isOn: $vm.isUseNoti)
+                    if $vm.isUseNoti.wrappedValue {
+                        subItem("알림 시간 설정하기", description: $vm.displayTime.wrappedValue, onTap: vm.onClickNotiTimeSetting)
+                    }
+                }
+                
                 title("정보")
                 basicItem("문의하기", onTap: vm.onClickContact)
                 basicItem("개발자 정보", onTap: vm.onclickDevInfo)
@@ -84,6 +92,37 @@ struct SettingView: View {
             .padding(EdgeInsets(top: 15, leading: 14, bottom: 15, trailing: 14))
             Divider()
                 .padding([.leading, .trailing], 12)
+        }
+    }
+    
+    private func subItem(_ title: String, description: String? = nil, onTap: (() -> ())? = nil) -> some View {
+        return VStack(alignment: .center, spacing: 0) {
+            HStack(alignment: .center, spacing: 0) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(title)
+                        .font(.kr13r)
+                        .foregroundColor(.gray100)
+                    if let description = description {
+                        Text(description)
+                            .font(.kr11r)
+                            .foregroundColor(.gray60)
+                    }
+                }
+                Spacer()
+                Image("arrow")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(both: 14)
+            }
+            .padding(EdgeInsets(top: 9, leading: 25, bottom: 9, trailing: 25))
+            Divider()
+                .padding([.leading, .trailing], 12)
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            if let onTap = onTap {
+                onTap()
+            }
         }
     }
     

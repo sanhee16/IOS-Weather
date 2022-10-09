@@ -28,4 +28,44 @@ class Defaults {
             UserDefaults.standard.setValue(value, forKey: ALLOW_GPS)
         }
     }
+    
+    private static let USE_NOTI = "USE_NOTI"
+    public static var useNoti: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: USE_NOTI)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: USE_NOTI)
+        }
+    }
+    
+    private static let NOTI_TIME = "NOTI_TIME"
+    public static var notiTime: Int {
+        get {
+            UserDefaults.standard.integer(forKey: NOTI_TIME)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: NOTI_TIME)
+        }
+    }
+    
+    private static let CURRENT_LATITUDE = "CURRENT_LATITUDE"
+    public static var currentLatitude: Double {
+        get {
+            UserDefaults.standard.double(forKey: CURRENT_LATITUDE)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: CURRENT_LATITUDE)
+        }
+    }
+    
+    private static let CURRENT_LONGITUDE = "CURRENT_LONGITUDE"
+    public static var currentLongitude: Double {
+        get {
+            UserDefaults.standard.double(forKey: CURRENT_LONGITUDE)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: CURRENT_LONGITUDE)
+        }
+    }
 }
