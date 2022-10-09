@@ -30,6 +30,7 @@ class MainViewModel: BaseViewModel {
     @Published var weatherInfo: [MyLocation: WeatherResponse] = [:]
     @Published var backgroundColor: Color = .unknown60
     private var api: Api = Api.instance
+    private var timerRepeat: Timer?
 
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
@@ -62,9 +63,62 @@ class MainViewModel: BaseViewModel {
     }
 
     func onAppear() {
-        self.isLoading = true
-        self.page = .first()
-        loadAllData()
+        if !Defaults.launchBefore {
+            firstLaunchLogic()
+        } else {
+            self.isLoading = true
+            self.page = .first()
+            loadAllData()
+        }
+    }
+    
+    func firstLaunchLogic() {
+        if !Defaults.launchBefore { //최초 실행시 지역 data를 local DB에 담는다.
+            Defaults.launchBefore = true
+            locationManager.requestWhenInUseAuthorization()
+            print("onStart : \(checkPermission())")
+            self.startRepeatTimer()
+        }
+    }
+    // 반복 타이머 시작
+    func startRepeatTimer() {
+        print("set timer")
+        timerRepeat = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(timerFireRepeat(timer:)), userInfo: "check permission", repeats: true)
+    }
+    
+    // 반복 타이머 실행
+    @objc func timerFireRepeat(timer: Timer) {
+        print("timer is running")
+        if timer.userInfo != nil {
+            let status = checkPermission()
+            if status != .notYet {
+                stopRepeatTimer()
+            }
+        }
+    }
+    
+    
+    // 반복 타이머 종료
+    func stopRepeatTimer() {
+        print("timer 종료")
+        if let timer = timerRepeat {
+            if timer.isValid {
+                timer.invalidate()
+            }
+            timerRepeat = nil
+            // timer 종료되고 작업 시작
+            self.isLoading = true
+            self.page = .first()
+            loadAllData()
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if (status == CLAuthorizationStatus.denied) {
+            // The user denied authorization
+        } else if (status == CLAuthorizationStatus.authorizedAlways) {
+            // The user accepted authorization
+        }
     }
     
     func loadAllData() {
