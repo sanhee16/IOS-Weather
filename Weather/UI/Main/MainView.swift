@@ -119,7 +119,7 @@ struct MainView: View {
         .frame(width: 120, height: 140, alignment: .center)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.white.opacity(0.8))
+                .foregroundColor(.white.opacity(0.9))
         )
     }
     
@@ -188,10 +188,16 @@ struct MainView: View {
                             VStack(alignment: .leading, spacing: 0) {
                                 //TODAY
                                 HStack(alignment: .center, spacing: 0) {
-                                    Text(info.current.weather[0].description)
-                                        .font(.kr20b)
-                                        .foregroundColor(.gray100)
-                                        .padding(8)
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text(info.current.weather[0].description)
+                                            .font(.kr20b)
+                                            .foregroundColor(.gray100)
+                                        Text(info.current.weather[0].icon.weatherType().description)
+                                            .multilineTextAlignment(.leading)
+                                            .font(.kr15r)
+                                            .foregroundColor(.gray90)
+                                    }
+                                    .padding(8)
                                     Spacer()
                                     Image(info.current.weather[0].icon)
                                         .resizable()
@@ -199,17 +205,17 @@ struct MainView: View {
                                         .frame(both: 80)
                                 }
                                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 15, trailing: 15))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .foregroundColor(.white)
+                                )
+                                .shadow(color: .gray30, radius: 7, x: 7, y: 7)
+                                .padding(EdgeInsets(top: 4, leading: 0, bottom: 20, trailing: 0))
                                 
                                 VStack(alignment: .leading, spacing: 6) {
-                                    todayWeather("temp", description: info.current.temp.KelToCel())
-                                    todayWeather("기압", description: "\(info.current.pressure)")
-                                    todayWeather("습도", description: "\(info.current.humidity) %")
-                                    todayWeather("체감온도", description: info.current.feels_like.KelToCel())
-                                    todayWeather("자외선 지수", description: "\(info.current.uvi)")
-                                    todayWeather("흐림", description: "\(info.current.clouds) %")
-                                    todayWeather("풍속", description: info.current.wind_speed.windSpeed())
-                                    todayWeather("최저 기온", description: info.daily[0].temp.min.KelToCel())
-                                    todayWeather("최고 기온", description: info.daily[0].temp.max.KelToCel())
+                                    currentTempView(geometry, info: info)
+                                    currentExtraView(geometry, info: info)
+//                                    todayWeather("temp", description: info.current.temp.KelToCel())
                                 }
                                 
                                 Divider()
@@ -228,7 +234,9 @@ struct MainView: View {
                                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 25, trailing: 12))
                             }
                             .shadow(color: .gray30, radius: 10, x: 10, y: 10)
+                            .padding(.bottom, 20)
                         }
+                        .clipShape(RoundedRectangle(cornerRadius: 30))
                         .contentShape(Rectangle())
                     }
                     .frame(width: geometry.size.width - 66, height: geometry.size.height - 150, alignment: .center)
@@ -249,6 +257,81 @@ struct MainView: View {
         .contentShape(Rectangle())
     }
     
+    private func currentExtraView(_ geometry: GeometryProxy, info: WeatherResponse) -> some View {
+        return VStack(alignment: .center, spacing: 4) {
+            HStack(alignment: .center, spacing: 0) {
+                extraItem(geometry, title: "기압", description: "\(info.current.pressure)")
+                Spacer()
+                extraItem(geometry, title: "습도", description: "\(info.current.humidity)%")
+                Spacer()
+                extraItem(geometry, title: "풍속", description: info.current.wind_speed.windSpeed())
+            }
+            HStack(alignment: .center, spacing: 0) {
+                extraItem(geometry, title: "체감온도", description: info.current.feels_like.KelToCel())
+                Spacer()
+                extraItem(geometry, title: "자외선", description: "\(info.current.uvi)")
+                Spacer()
+                extraItem(geometry, title: "흐림 정도", description: "\(info.current.clouds)%")
+            }
+        }
+        .padding(EdgeInsets(top: 10, leading: 15, bottom: 15, trailing: 15))
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundColor(.white.opacity(0.4))
+        )
+        .padding([.top, .bottom], 6)
+    }
+    
+    private func extraItem(_ geometry: GeometryProxy, title: String, description: String) -> some View {
+        let width = (geometry.size.width - 140) / 3
+        return VStack(alignment: .center, spacing: 4) {
+            Text(title)
+                .font(.kr14b)
+                .foregroundColor(.gray100)
+            Text(description)
+                .font(.kr16r)
+                .foregroundColor(.gray100)
+        }
+        .padding(8)
+        .frame(width: width)
+    }
+    
+    private func currentTempView(_ geometry: GeometryProxy, info: WeatherResponse) -> some View {
+        return HStack(alignment: .center, spacing: 0) {
+            Spacer()
+            tempItem(geometry, title: "최저 기온", description: info.daily[0].temp.min.KelToCel(), image: "min")
+            Spacer()
+            Divider()
+                .padding([.top, .bottom], 6)
+            Spacer()
+            tempItem(geometry, title: "최고 기온", description: info.daily[0].temp.max.KelToCel(), image: "max")
+            Spacer()
+        }
+        .padding(EdgeInsets(top: 10, leading: 15, bottom: 15, trailing: 15))
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundColor(.white.opacity(0.4))
+        )
+        .padding([.top, .bottom], 6)
+    }
+    
+    private func tempItem(_ geometry: GeometryProxy, title: String, description: String, image: String) -> some View {
+        return VStack(alignment: .center, spacing: 4) {
+            Text(title)
+                .font(.kr14b)
+                .foregroundColor(.gray100)
+            HStack(alignment: .center, spacing: 5) {
+                Image(image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(both: 40)
+                Text(description)
+                    .font(.kr16r)
+                    .foregroundColor(.gray100)
+            }
+        }
+        .padding(8)
+    }
     private func todayWeather(_ title: String, description: String) -> some View {
         return HStack(alignment: .center, spacing: 0) {
             Text(title)

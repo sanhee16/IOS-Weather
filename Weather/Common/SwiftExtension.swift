@@ -37,15 +37,15 @@ extension Int {
 
 extension Double {
     func KelToCel() -> String {
-        return String(format: "%0.1f °C", (self - 273.15))
+        return String(format: "%0.1f°", (self - 273.15))
     }
     
     func windSpeed() -> String {
-        return "\(self) m/s"
+        return "\(self)"
     }
     
     func pop() -> String {
-        return String(format: "%0.1f %", self)
+        return String(format: "%0.1f%", self)
     }
 }
 
