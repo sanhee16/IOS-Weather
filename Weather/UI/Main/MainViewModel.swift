@@ -16,6 +16,9 @@ import SwiftUI
 
 
 class MainViewModel: BaseViewModel {
+    //TODO: 이거 설정 지우기
+    private var IS_FOR_DEBUG_DUMMY: Bool = false
+    
     @Published var page: Page = .withIndex(0)
     var locationManager: CLLocationManager
     var myLocation: CLLocation? = nil
@@ -42,12 +45,23 @@ class MainViewModel: BaseViewModel {
         self.myLocations.removeAll()
         let data = realm.objects(MyLocation.self).sorted(byKeyPath: "idx", ascending: true)
         for item in data {
+            if item.indexOfDB == nil {
+                self.myLocations.append(item)
+                break
+            }
+        }
+        for item in data {
+            if item.indexOfDB == nil { continue }
             self.myLocations.append(item)
         }
+        
         self.myLocations.append(MyLocation(-1, cityName: "", indexOfDB: nil, longitude: 0.0, latitude: 0.0))
         //TODO: getWeather() 살리고 isloading 지우기, api 호출 너무 많이 해서 한거임
-        self.isLoading = false
-//        getWeather()
+        if IS_FOR_DEBUG_DUMMY {
+            self.isLoading = false
+        } else {
+            getWeather()
+        }
     }
 
     func onAppear() {
@@ -72,11 +86,13 @@ class MainViewModel: BaseViewModel {
     
     func getWeather() {
         //TODO: erase!
-        if !dummy.isEmpty {
-            print("dummy exist")
-            self.weatherInfo = dummy
-            self.isLoading = false
-            return
+        if IS_FOR_DEBUG_DUMMY {
+            if !dummy.isEmpty {
+                print("dummy exist")
+                self.weatherInfo = dummy
+                self.isLoading = false
+                return
+            }
         }
         print("sandy dummy not exist")
         
