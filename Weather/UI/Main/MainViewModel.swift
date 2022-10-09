@@ -18,7 +18,7 @@ import Network
 
 class MainViewModel: BaseViewModel {
     //TODO: 이거 설정 지우기, false로 해야 api 호출함
-    private var IS_FOR_DEBUG_DUMMY: Bool = true
+    private var IS_FOR_DEBUG_DUMMY: Bool = false
     
     @Published var page: Page = .withIndex(0)
     var locationManager: CLLocationManager
@@ -180,6 +180,7 @@ class MainViewModel: BaseViewModel {
         self.isLoading = true
         guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
         print("api key: \(apiKey)")
+        var isFirst = true
         for data in myLocations {
             if data.idx == -1 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -191,6 +192,10 @@ class MainViewModel: BaseViewModel {
                 .run(in: &self.subscription) {[weak self] response in
                     guard let self = self else { return }
                     self.weatherInfo[data] = response
+                    if isFirst {
+                        self.backgroundColor = response.current.weather[0].icon.weatherType().color
+                        isFirst = false
+                    }
                     //TODO: erase dummy
                     dummy[data] = response
 //                    print(self.weatherInfo)
