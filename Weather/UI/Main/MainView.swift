@@ -37,6 +37,14 @@ struct MainView: View {
                                 vm.onClickSelectLocation()
                             }
                         Spacer()
+                        Image("location")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(both: 20)
+                            .onTapGesture {
+                                vm.onClickGPS()
+                            }
+                            .padding(.trailing, 7)
                         Image("setting")
                             .resizable()
                             .scaledToFit()
