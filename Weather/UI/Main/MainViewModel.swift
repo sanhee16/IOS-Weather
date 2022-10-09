@@ -49,6 +49,7 @@ class MainViewModel: BaseViewModel {
     }
 
     func onAppear() {
+        self.isLoading = true
         loadAllData()
     }
     
@@ -76,11 +77,17 @@ class MainViewModel: BaseViewModel {
             return
         }
         print("sandy dummy not exist")
+        
         self.isLoading = true
         guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
         print("api key: \(apiKey)")
         for data in myLocations {
-            if data.idx == -1 { continue }
+            if data.idx == -1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isLoading = false
+                }
+                break
+            }
             self.api.getWeather(apiKey, lat: data.latitude, lon: data.longitude)
                 .run(in: &self.subscription) {[weak self] response in
                     guard let self = self else { return }
@@ -89,13 +96,16 @@ class MainViewModel: BaseViewModel {
 //                    print(self.weatherInfo)
                 } err: { [weak self] err in
                     print(err)
-                    self?.isLoading = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self?.isLoading = false
+                    }
                 } complete: { [weak self] in
-                    self?.isLoading = false
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self?.isLoading = false
+                    }
                     print("complete")
                 }
         }
-        self.isLoading = false
     }
     
     func onClickSelectLocation() {

@@ -135,37 +135,60 @@ struct MainView: View {
             } else {
                 if let info = $vm.weatherInfo.wrappedValue[location] {
                     VStack(alignment: .leading, spacing: 0) {
-                        ScrollView(showsIndicators: false) {
-                            VStack(alignment: .leading, spacing: 0) {
-                                HStack(alignment: .center, spacing: 0) {
+                        VStack(alignment: .center, spacing: 0) {
+                            HStack(alignment: .center, spacing: 0) {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    if location.indexOfDB == nil {
+                                        Text("현재 위치")
+                                            .font(.kr11r)
+                                            .foregroundColor(.white)
+                                            .padding(EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6))
+                                            .background(
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .foregroundColor(.gray90)
+                                            )
+                                    }
                                     Text(location.cityName)
                                         .font(.kr26b)
                                         .foregroundColor(.gray100)
-                                    Spacer()
-                                    VStack(alignment: .center, spacing: 2) {
-                                        Text("업데이트 시간")
-                                            .font(.kr9r)
-                                            .foregroundColor(.gray60)
-                                        Text(info.current.dt.getDateAndTime())
-                                            .font(.kr9r)
-                                            .foregroundColor(.gray60)
+                                }
+                                Spacer()
+                                VStack(alignment: .center, spacing: 2) {
+                                    Text("업데이트 시간")
+                                        .font(.kr9r)
+                                        .foregroundColor(.gray60)
+                                    Text(info.current.dt.getDateAndTime())
+                                        .font(.kr9r)
+                                        .foregroundColor(.gray60)
+                                }
+                                .padding(.trailing, 6)
+                                Image("refresh")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(both: 20)
+                                    .onTapGesture {
+                                        vm.onClickRefresh()
                                     }
-                                    .padding(.trailing, 6)
-                                    Image("refresh")
+                            }
+                            Divider()
+                                .padding(.top, 12)
+                        }
+                        .padding(EdgeInsets(top: 20, leading: 22, bottom: 0, trailing: 22))
+                        ScrollView(showsIndicators: false) {
+                            VStack(alignment: .leading, spacing: 0) {
+                                //TODAY
+                                HStack(alignment: .center, spacing: 0) {
+                                    Text(info.current.weather[0].description)
+                                        .font(.kr20b)
+                                        .foregroundColor(.gray100)
+                                        .padding(8)
+                                    Spacer()
+                                    Image(info.current.weather[0].icon)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(both: 20)
-                                        .onTapGesture {
-                                            vm.onClickRefresh()
-                                        }
+                                        .frame(both: 80)
                                 }
-                                .padding([.leading, .trailing], 10)
-                                
-                                Divider()
-                                    .padding(12)
-                                
-                                //TODAY
-                                title("현재 날씨")
+                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 15, trailing: 15))
                                 
                                 VStack(alignment: .leading, spacing: 6) {
                                     todayWeather("temp", description: info.current.temp.KelToCel())
@@ -182,7 +205,7 @@ struct MainView: View {
                                 Divider()
                                     .padding(12)
                             }
-                            .padding(EdgeInsets(top: 20, leading: 12, bottom: 25, trailing: 12))
+                            .padding(EdgeInsets(top: 20, leading: 12, bottom: 4, trailing: 12))
                             //Week
                             title("일주일 날씨")
                             ScrollView(.horizontal, showsIndicators: false) {
@@ -192,7 +215,7 @@ struct MainView: View {
                                             weeklyItem(geometry, item: daily)
                                     }
                                 }
-                                .padding(EdgeInsets(top: 20, leading: 12, bottom: 25, trailing: 12))
+                                .padding(EdgeInsets(top: 12, leading: 12, bottom: 25, trailing: 12))
                             }
                             .shadow(color: .gray30, radius: 10, x: 10, y: 10)
                         }
