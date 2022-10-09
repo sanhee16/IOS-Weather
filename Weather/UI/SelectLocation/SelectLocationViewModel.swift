@@ -126,6 +126,7 @@ class SelectLocationViewModel: BaseViewModel {
     }
     
     func selectCity(_ idx: Int?) {
+        resetEditing()
         self.selectedCityIdx = idx
         
         self.specificLocations.removeAll()
@@ -136,6 +137,7 @@ class SelectLocationViewModel: BaseViewModel {
     }
     
     func selectLocation(_ item: LocationItem) {
+        resetEditing()
         if item.selectedStatus == .existed { return }
         if let before = self.selectedLocation {
             for idx in self.specificLocations.indices {
@@ -171,18 +173,24 @@ class SelectLocationViewModel: BaseViewModel {
         }
     }
     
-    func deleteMyLocation() {
-        
+    func resetEditing() {
+        self.deleteCnt = 0
+        self.isEditing = false
+        for idx in self.myLocations.indices {
+            self.myLocations[idx].editing = false
+        }
     }
     
     func onClickEdit() {
         self.deleteCnt = 0
         self.isEditing = true
+        self.selectedLocation = nil
+        self.selectedCityIdx = nil
+        self.specificLocations.removeAll()
     }
     
     func onClickCancelEdit() {
-        self.deleteCnt = 0
-        self.isEditing = false
+        resetEditing()
     }
     
     func delete(item: MyLocation) {
