@@ -63,6 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                     guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
                     let lat = Defaults.currentLatitude
                     let lot = Defaults.currentLongitude
+                    let name = Defaults.currentCity
                     
                     self.api.getWeather(apiKey, lat: lat, lon: lot)
                         .run(in: &self.subscription) {[weak self] response in
@@ -71,8 +72,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                             
                             let nContent = UNMutableNotificationContent() // 로컬알림에 대한 속성 설정 가능
                             nContent.title = "오늘의 날씨 알림"
-                            nContent.subtitle = response.current.temp.KelToCel()
-                            nContent.body = "오늘의 날씨는?\n두구두구\n두구두구"
+                            nContent.subtitle = "\(name) 의 오늘 날씨는 \(response.current.weather[0].description)이고, 풍속은 \(response.current.wind_speed.windSpeed()) 입니다."
+                            nContent.body = "현재 기온: \(response.current.temp.KelToCel())\n최저 기온: \(response.daily[0].temp.min.KelToCel())\n최고 기온: \(response.daily[0].temp.max.KelToCel())" // response.current.temp.KelToCel()
                             nContent.sound = UNNotificationSound.default
                             //                    nContent.userInfo = ["name":"userName"]
                             

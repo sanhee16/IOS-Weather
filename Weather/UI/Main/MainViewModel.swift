@@ -152,6 +152,7 @@ class MainViewModel: BaseViewModel {
                     Defaults.useNoti = false
                     Defaults.currentLatitude = 0.0
                     Defaults.currentLongitude = 0.0
+                    Defaults.currentCity = ""
                 }
                 return
             }
@@ -265,6 +266,7 @@ class MainViewModel: BaseViewModel {
                                 self.realm.add(copy, update: .all)
                                 Defaults.currentLatitude = latitude
                                 Defaults.currentLongitude = longitude
+                                Defaults.currentCity = address
                                 
 //                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
                             } else {
@@ -273,6 +275,7 @@ class MainViewModel: BaseViewModel {
                                 self.realm.add(copy)
                                 Defaults.currentLatitude = latitude
                                 Defaults.currentLongitude = longitude
+                                Defaults.currentCity = address
 //                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
                             }
                             self.loadMyLocations()
