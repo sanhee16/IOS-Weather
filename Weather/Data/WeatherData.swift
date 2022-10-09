@@ -57,6 +57,21 @@ enum WeatherType {
     case unknown
     
     //TODO: 배경 색상 정하기!
+    var textcolor: Color {
+        switch self {
+        case .clearSky: return .clearSky90
+        case .fewClouds: return .fewClouds90
+        case .scatteredClouds: return .scatteredClouds90
+        case .brokenClouds: return .brokenClouds90
+        case .showerRain: return .showerRain90
+        case .rain: return .rain90
+        case .thunderStorm: return .thunderStorm90
+        case .snow: return .snow90
+        case .mist: return .mist90
+        case .unknown: return .unknown90
+        }
+    }
+    
     var color: Color {
         switch self {
         case .clearSky: return .clearSky60

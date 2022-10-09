@@ -152,33 +152,37 @@ struct MainView: View {
                                         Text("현재 위치")
                                             .font(.kr11r)
                                             .foregroundColor(.white)
-                                            .padding(EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6))
+                                            .padding(EdgeInsets(top: 5, leading: 7, bottom: 5, trailing: 7))
                                             .background(
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .foregroundColor(.gray90)
+                                                    .foregroundColor(.gray100)
                                             )
                                     }
+                                    Text(info.current.temp.KelToCel())
+                                        .font(.kr45b)
+                                        .foregroundColor(info.current.weather[0].icon.weatherType().textcolor)
+                                        .padding(.bottom, 4)
                                     Text(location.cityName)
                                         .font(.kr26b)
                                         .foregroundColor(.gray100)
                                 }
                                 Spacer()
-                                VStack(alignment: .center, spacing: 2) {
-                                    Text("업데이트 시간")
+                                VStack(alignment: .trailing, spacing: 3) {
+                                    Image("refresh")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(both: 24)
+                                        .onTapGesture {
+                                            vm.onClickRefresh()
+                                        }
+                                        .padding(.bottom, 6)
+                                    Text("마지막 업데이트 시간")
                                         .font(.kr9r)
-                                        .foregroundColor(.gray60)
+                                        .foregroundColor(.gray90)
                                     Text(info.current.dt.getDateAndTime())
                                         .font(.kr9r)
                                         .foregroundColor(.gray60)
                                 }
-                                .padding(.trailing, 6)
-                                Image("refresh")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(both: 20)
-                                    .onTapGesture {
-                                        vm.onClickRefresh()
-                                    }
                             }
                             Divider()
                                 .padding(.top, 12)

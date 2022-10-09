@@ -230,6 +230,17 @@ extension Color {
     var uiColor: UIColor {
         get { UIColor(cgColor: cgColor!) }
     }
+    public static let clearSky90: Color = Color(hex: "#78D7FF", opacity: 0.9)
+    public static let fewClouds90: Color = Color(hex: "#76A5FF", opacity: 0.9)
+    public static let scatteredClouds90: Color = Color(hex: "#4971FF", opacity: 0.9)
+    public static let brokenClouds90: Color = Color(hex: "#42339B", opacity: 0.9)
+    public static let showerRain90: Color = Color(hex: "#53FFC1", opacity: 0.9)
+    public static let rain90: Color = Color(hex: "#FFB629", opacity: 0.9)
+    public static let thunderStorm90: Color = Color(hex: "#907DFF", opacity: 0.9)
+    public static let snow90: Color = Color(hex: "#FFFFFF", opacity: 0.9)
+    public static let mist90: Color = Color(hex: "#B9B9B9", opacity: 0.9)
+    public static let unknown90: Color = Color(hex: "#76A5FF", opacity: 0.9)
+    
     public static let clearSky60: Color = Color(hex: "#78D7FF", opacity: 0.4)
     public static let fewClouds60: Color = Color(hex: "#76A5FF", opacity: 0.4)
     public static let scatteredClouds60: Color = Color(hex: "#4971FF", opacity: 0.4)
@@ -341,6 +352,12 @@ extension UIColor {
 }
 
 extension Font {
+    public static let kr45b: Font = .system(size: 45, weight: .bold, design: .default)
+    public static let kr45r: Font = .system(size: 45, weight: .regular, design: .default)
+    
+    public static let kr40b: Font = .system(size: 40, weight: .bold, design: .default)
+    public static let kr40r: Font = .system(size: 40, weight: .regular, design: .default)
+    
     public static let kr30b: Font = .system(size: 30, weight: .bold, design: .default)
     public static let kr30r: Font = .system(size: 30, weight: .regular, design: .default)
     
