@@ -18,7 +18,7 @@ import Network
 
 class MainViewModel: BaseViewModel {
     //TODO: 이거 설정 지우기, false로 해야 api 호출함
-    private var IS_FOR_DEBUG_DUMMY: Bool = false
+    private var IS_FOR_DEBUG_DUMMY: Bool = true
     
     @Published var page: Page = .withIndex(0)
     var locationManager: CLLocationManager
@@ -54,12 +54,8 @@ class MainViewModel: BaseViewModel {
         }
         
         self.myLocations.append(MyLocation(-1, cityName: "", indexOfDB: nil, longitude: 0.0, latitude: 0.0))
-        //TODO: getWeather() 살리고 isloading 지우기, api 호출 너무 많이 해서 한거임
-        if IS_FOR_DEBUG_DUMMY {
-            self.isLoading = false
-        } else {
-            getWeather()
-        }
+
+        getWeather()
     }
 
     func onAppear() {
@@ -184,9 +180,7 @@ class MainViewModel: BaseViewModel {
                     guard let self = self else { return }
                     self.weatherInfo[data] = response
                     //TODO: erase dummy
-                    if self.IS_FOR_DEBUG_DUMMY {
-                        dummy[data] = response
-                    }
+                    dummy[data] = response
 //                    print(self.weatherInfo)
                 } err: { [weak self] err in
                     print(err)
