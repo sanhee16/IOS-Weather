@@ -267,14 +267,3 @@ struct MainView: View {
     }
     
 }
-
-#if DEBUG
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            MainView(vm: MainViewModel())
-                .previewDevice(PreviewDevice(rawValue: "iPhone 13 Pro Max"))
-        }
-    }
-}
-#endif

@@ -15,18 +15,25 @@ import CoreLocation
 class SettingViewModel: BaseViewModel {
 //    - [필수] 현재 위치정보 사용(사용 중 / 사용 안 함), 문의하기, 개인 정보 처리 방침, 개발자 정보
 //    - [선택] 자동 새로고침 시간 간격, 알림, 온도 단위(섭씨 기본값) 강수 단위, 풍속 단위, 시간 형식, 날짜 형식
-    @Published var isUseGps: Bool = false
     var locationManager: CLLocationManager
     
+    @Published var isAvailableGPSToggle: Bool = false
+    @Published var isUseGps: Bool {
+        didSet {
+            Defaults.allowGPS = isUseGps
+        }
+    }
     
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
+        self.locationManager.allowsBackgroundLocationUpdates = true
+        self.isUseGps = Defaults.allowGPS
+        self.isAvailableGPSToggle = checkPermission() == .allow
         super.init(coordinator)
     }
     
     func onAppear() {
         print("onAppear")
-        self.resetGpsStatus()
     }
     
     func onClose() {
@@ -47,20 +54,16 @@ class SettingViewModel: BaseViewModel {
         self.coordinator?.presentDevInfoView()
     }
     
-    func toggleGPS() {
-        print("toggleGPS")
+    func onClickGPSToggle() {
         let status = checkPermission()
-        if status == .allow {
-            isUseGps = false
-        } else {
-            locationManager.requestWhenInUseAuthorization()
+        if status != .allow {
+            self.coordinator?.presentAlertView(.yesOrNo, title: "권한 설정 필요", description: "위치정보를 위해서는 권한설정이 필요합니다.\n앱 설정에서 위치정보를 항상 허용으로 바꾸어 주세요.", callback: {[weak self] res in
+                if res {
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            })
         }
-        print("isUseGps: \(isUseGps)")
     }
-    
-    func resetGpsStatus() {
-        isUseGps = checkPermission() == .allow
-    }
-    // email
-    
 }

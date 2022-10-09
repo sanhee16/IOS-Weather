@@ -28,7 +28,11 @@ struct SettingView: View {
                     vm.onClose()
                 }
                 title("앱 설정")
-                toggleItem("현재 위치정보 사용", description: "현재 위치정보를 사용하면 현재 위치의 날씨를 알 수 있습니다.", isOn: $vm.isUseGps, onTap: vm.toggleGPS)
+                if $vm.isAvailableGPSToggle.wrappedValue {
+                    toggleItem("현재 위치정보 사용", description: "현재 위치정보를 사용하면 현재 위치의 날씨를 알 수 있습니다.", isOn: $vm.isUseGps)
+                } else {
+                    toggleItem("현재 위치정보 사용", description: "현재 위치정보를 사용하면 현재 위치의 날씨를 알 수 있습니다.", isOn: $vm.isUseGps, disableTap: vm.onClickGPSToggle)
+                }
                 title("정보")
                 basicItem("문의하기", onTap: vm.onClickContact)
                 basicItem("개발자 정보", onTap: vm.onclickDevInfo)
@@ -50,7 +54,7 @@ struct SettingView: View {
             .padding(EdgeInsets(top: 16, leading: 20, bottom: 4, trailing: 7))
     }
     
-    private func toggleItem(_ title: String, description: String? = nil, isOn: Binding<Bool>, onTap: (() -> ())? = nil) -> some View {
+    private func toggleItem(_ title: String, description: String? = nil, isOn: Binding<Bool>, disableTap: (()->())? = nil) -> some View {
         return VStack(alignment: .center, spacing: 0) {
             HStack(alignment: .center, spacing: 0) {
                 VStack(alignment: .leading, spacing: 4) {
@@ -64,13 +68,18 @@ struct SettingView: View {
                     }
                 }
                 Spacer()
-                //TODO: toggle in mvvm pattern
                 Toggle("", isOn: isOn)
                     .labelsHidden()
                     .contentShape(Rectangle())
                     .toggleStyle(
                         SettingToggle()
                     )
+                    .disabled(disableTap == nil ? false : true)
+                    .onTapGesture {
+                        if let disableTap = disableTap {
+                            disableTap()
+                        }
+                    }
             }
             .padding(EdgeInsets(top: 15, leading: 14, bottom: 15, trailing: 14))
             Divider()
