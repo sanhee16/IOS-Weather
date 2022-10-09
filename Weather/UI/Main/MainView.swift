@@ -57,7 +57,7 @@ struct MainView: View {
             .edgesIgnoringSafeArea(.all)
             .frame(width: geometry.size.width, alignment: .center)
         }
-        .background(Color.lightblue60)
+        .background($vm.backgroundColor.wrappedValue)
         .ignoresSafeArea(.all)
         .onAppear {
             vm.onAppear()
@@ -116,82 +116,103 @@ struct MainView: View {
     private func card(_ geometry: GeometryProxy) -> some View {
         return Pager(page: $vm.page.wrappedValue, data: $vm.myLocations.wrappedValue.indices, id: \.self) { index in
             let location = $vm.myLocations.wrappedValue[index]
-            if let info = $vm.weatherInfo.wrappedValue[location] {
-                VStack(alignment: .leading, spacing: 0) {
-                    ScrollView(showsIndicators: false) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            HStack(alignment: .center, spacing: 0) {
-                                Text(location.cityName)
-                                    .font(.kr26b)
-                                    .foregroundColor(.gray100)
-                                Spacer()
-                                VStack(alignment: .center, spacing: 2) {
-                                    Text("업데이트 시간")
-                                        .font(.kr9r)
-                                        .foregroundColor(.gray60)
-                                    Text(info.current.dt.getDateAndTime())
-                                        .font(.kr9r)
-                                        .foregroundColor(.gray60)
-                                }
-                                .padding(.trailing, 6)
-                                Image("refresh")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(both: 20)
-                                    .onTapGesture {
-                                        vm.onClickRefresh()
-                                    }
-                            }
-                            .padding([.leading, .trailing], 10)
-                            
-                            Divider()
-                                .padding(12)
-                            
-                            //TODAY
-                            title("현재 날씨")
-                            
-                            VStack(alignment: .leading, spacing: 6) {
-                                todayWeather("temp", description: info.current.temp.KelToCel())
-                                todayWeather("기압", description: "\(info.current.pressure)")
-                                todayWeather("습도", description: "\(info.current.humidity) %")
-                                todayWeather("체감온도", description: info.current.feels_like.KelToCel())
-                                todayWeather("자외선 지수", description: "\(info.current.uvi)")
-                                todayWeather("흐림", description: "\(info.current.clouds) %")
-                                todayWeather("풍속", description: info.current.wind_speed.windSpeed())
-                                todayWeather("최저 기온", description: info.daily[0].temp.min.KelToCel())
-                                todayWeather("최고 기온", description: info.daily[0].temp.max.KelToCel())
-                            }
-                            
-                            Divider()
-                                .padding(12)
+            if location.idx == -1 {
+                VStack(alignment: .center, spacing: 0) {
+                    Spacer()
+                    Text("+")
+                        .font(.kr30b)
+                        .foregroundColor(.gray90)
+                        .onTapGesture {
+                            vm.onClickSelectLocation()
                         }
-                        .padding(EdgeInsets(top: 20, leading: 12, bottom: 25, trailing: 12))
-                        //Week
-                        title("일주일 날씨")
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(alignment: .center, spacing: 14) {
-                                ForEach(info.daily.indices, id: \.self) { index in
-                                    let daily = info.daily[index]
-                                        weeklyItem(geometry, item: daily)
-                                }
-                            }
-                            .padding(EdgeInsets(top: 20, leading: 12, bottom: 25, trailing: 12))
-                        }
-                        .shadow(color: .gray30, radius: 10, x: 10, y: 10)
-                    }
-                    .contentShape(Rectangle())
+                    Spacer()
                 }
                 .frame(width: geometry.size.width - 66, height: geometry.size.height - 150, alignment: .center)
                 .background(
                     RoundedRectangle(cornerRadius: 30)
                         .foregroundColor(.dim.opacity(0.4))
                 )
+            } else {
+                if let info = $vm.weatherInfo.wrappedValue[location] {
+                    VStack(alignment: .leading, spacing: 0) {
+                        ScrollView(showsIndicators: false) {
+                            VStack(alignment: .leading, spacing: 0) {
+                                HStack(alignment: .center, spacing: 0) {
+                                    Text(location.cityName)
+                                        .font(.kr26b)
+                                        .foregroundColor(.gray100)
+                                    Spacer()
+                                    VStack(alignment: .center, spacing: 2) {
+                                        Text("업데이트 시간")
+                                            .font(.kr9r)
+                                            .foregroundColor(.gray60)
+                                        Text(info.current.dt.getDateAndTime())
+                                            .font(.kr9r)
+                                            .foregroundColor(.gray60)
+                                    }
+                                    .padding(.trailing, 6)
+                                    Image("refresh")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(both: 20)
+                                        .onTapGesture {
+                                            vm.onClickRefresh()
+                                        }
+                                }
+                                .padding([.leading, .trailing], 10)
+                                
+                                Divider()
+                                    .padding(12)
+                                
+                                //TODAY
+                                title("현재 날씨")
+                                
+                                VStack(alignment: .leading, spacing: 6) {
+                                    todayWeather("temp", description: info.current.temp.KelToCel())
+                                    todayWeather("기압", description: "\(info.current.pressure)")
+                                    todayWeather("습도", description: "\(info.current.humidity) %")
+                                    todayWeather("체감온도", description: info.current.feels_like.KelToCel())
+                                    todayWeather("자외선 지수", description: "\(info.current.uvi)")
+                                    todayWeather("흐림", description: "\(info.current.clouds) %")
+                                    todayWeather("풍속", description: info.current.wind_speed.windSpeed())
+                                    todayWeather("최저 기온", description: info.daily[0].temp.min.KelToCel())
+                                    todayWeather("최고 기온", description: info.daily[0].temp.max.KelToCel())
+                                }
+                                
+                                Divider()
+                                    .padding(12)
+                            }
+                            .padding(EdgeInsets(top: 20, leading: 12, bottom: 25, trailing: 12))
+                            //Week
+                            title("일주일 날씨")
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(alignment: .center, spacing: 14) {
+                                    ForEach(info.daily.indices, id: \.self) { index in
+                                        let daily = info.daily[index]
+                                            weeklyItem(geometry, item: daily)
+                                    }
+                                }
+                                .padding(EdgeInsets(top: 20, leading: 12, bottom: 25, trailing: 12))
+                            }
+                            .shadow(color: .gray30, radius: 10, x: 10, y: 10)
+                        }
+                        .contentShape(Rectangle())
+                    }
+                    .frame(width: geometry.size.width - 66, height: geometry.size.height - 150, alignment: .center)
+                    .background(
+                        RoundedRectangle(cornerRadius: 30)
+                            .foregroundColor(.dim.opacity(0.4))
+                    )
+                }
             }
         }
         .interactive(scale: 0.96)
         .interactive(opacity: 0.2)
         .sensitivity(.high)
         .preferredItemSize(CGSize(width: geometry.size.width - 52, height: 400))
+        .onPageChanged({ index in
+            vm.onPageChanged(index)
+        })
         .contentShape(Rectangle())
     }
     

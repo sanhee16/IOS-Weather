@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 import UIKit
+import SwiftUI
 
 class CityLocationInfo: Object {
     @Persisted(primaryKey: true) var idx: Int
@@ -56,20 +57,35 @@ enum WeatherType {
     case unknown
     
     //TODO: 배경 색상 정하기!
-//    var color: UIColor {
-//        switch self {
-//        case .clearSky: return
-//        case .fewClouds: return
-//        case .scatteredClouds: return
-//        case .brokenClouds: return
-//        case .showerRain: return
-//        case .rain: return
-//        case .thunderStorm: return
-//        case .snow: return
-//        case .mist: return
-//        case .unknown: return
-//        }
-//    }
+    var color: Color {
+        switch self {
+        case .clearSky: return .clearSky60
+        case .fewClouds: return .fewClouds60
+        case .scatteredClouds: return .scatteredClouds60
+        case .brokenClouds: return .brokenClouds60
+        case .showerRain: return .showerRain60
+        case .rain: return .rain60
+        case .thunderStorm: return .thunderStorm60
+        case .snow: return .snow60
+        case .mist: return .mist60
+        case .unknown: return .unknown60
+        }
+    }
+    
+    var uiColor: UIColor {
+        switch self {
+        case .clearSky: return .clearSky60
+        case .fewClouds: return .fewClouds60
+        case .scatteredClouds: return .scatteredClouds60
+        case .brokenClouds: return .brokenClouds60
+        case .showerRain: return .showerRain60
+        case .rain: return .rain60
+        case .thunderStorm: return .thunderStorm60
+        case .snow: return .snow60
+        case .mist: return .mist60
+        case .unknown: return .unknown60
+        }
+    }
     
     var description: String {
         switch self {

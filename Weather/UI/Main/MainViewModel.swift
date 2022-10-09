@@ -11,6 +11,8 @@ import Combine
 import RealmSwift
 import SwiftUIPager
 import CoreLocation
+import UIKit
+import SwiftUI
 
 
 class MainViewModel: BaseViewModel {
@@ -18,10 +20,12 @@ class MainViewModel: BaseViewModel {
     var locationManager: CLLocationManager
     var myLocation: CLLocation? = nil
     private let realm: Realm = try! Realm()
-    @Published var myLocations: [MyLocation] = []
     @Published var isLoading: Bool = true
     @Published var usingLocation: Bool = false
+    
+    @Published var myLocations: [MyLocation] = []
     @Published var weatherInfo: [MyLocation: WeatherResponse] = [:]
+    @Published var backgroundColor: Color = .unknown60
     private var api: Api = Api.instance
 
     override init() {
@@ -40,6 +44,7 @@ class MainViewModel: BaseViewModel {
         for item in data {
             self.myLocations.append(item)
         }
+        self.myLocations.append(MyLocation(-1, cityName: "", indexOfDB: nil, longitude: 0.0, latitude: 0.0))
         getWeather()
     }
 
@@ -49,6 +54,7 @@ class MainViewModel: BaseViewModel {
     
     func loadAllData() {
         let status = checkPermission()
+        print("sandy stauts: \(status)")
         self.usingLocation = status == .allow
         if status == .allow {
             getCurrentLocationAndLoadData()
@@ -69,11 +75,12 @@ class MainViewModel: BaseViewModel {
             self.isLoading = false
             return
         }
-        print("dummy not exist")
+        print("sandy dummy not exist")
         self.isLoading = true
         guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
         print("api key: \(apiKey)")
         for data in myLocations {
+            if data.idx == -1 { continue }
             self.api.getWeather(apiKey, lat: data.latitude, lon: data.longitude)
                 .run(in: &self.subscription) {[weak self] response in
                     guard let self = self else { return }
@@ -88,6 +95,7 @@ class MainViewModel: BaseViewModel {
                     print("complete")
                 }
         }
+        self.isLoading = false
     }
     
     func onClickSelectLocation() {
@@ -162,5 +170,15 @@ class MainViewModel: BaseViewModel {
     
     func onClickSetting() {
         self.coordinator?.presentSettingView()
+    }
+    
+    func onPageChanged(_ index: Int) {
+        withAnimation {
+            if let color = weatherInfo[myLocations[index]]?.current.weather[0].icon.weatherType().color {
+                self.backgroundColor = color
+            } else {
+                self.backgroundColor = .unknown60
+            }
+        }
     }
 }

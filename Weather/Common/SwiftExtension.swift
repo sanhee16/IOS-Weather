@@ -184,6 +184,16 @@ extension Color {
     var uiColor: UIColor {
         get { UIColor(cgColor: cgColor!) }
     }
+    public static let clearSky60: Color = Color(hex: "#78D7FF", opacity: 0.4)
+    public static let fewClouds60: Color = Color(hex: "#76A5FF", opacity: 0.4)
+    public static let scatteredClouds60: Color = Color(hex: "#4971FF", opacity: 0.4)
+    public static let brokenClouds60: Color = Color(hex: "#42339B", opacity: 0.4)
+    public static let showerRain60: Color = Color(hex: "#53FFC1", opacity: 0.4)
+    public static let rain60: Color = Color(hex: "#FFB629", opacity: 0.4)
+    public static let thunderStorm60: Color = Color(hex: "#907DFF", opacity: 0.4)
+    public static let snow60: Color = Color(hex: "#FFFFFF", opacity: 0.4)
+    public static let mist60: Color = Color(hex: "#B9B9B9", opacity: 0.4)
+    public static let unknown60: Color = Color(hex: "#76A5FF", opacity: 0.4)
     
     public static let mint100: Color = Color(hex: "#1ED8C5")
     public static let orange100: Color = Color(hex: "#FF752F")
@@ -241,6 +251,17 @@ extension UIColor {
             self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
         }
     }
+    
+    public static let clearSky60: UIColor = UIColor(hex: "#78D7FF", opacity: 0.4)
+    public static let fewClouds60: UIColor = UIColor(hex: "#76A5FF", opacity: 0.4)
+    public static let scatteredClouds60: UIColor = UIColor(hex: "#4971FF", opacity: 0.4)
+    public static let brokenClouds60: UIColor = UIColor(hex: "#42339B", opacity: 0.4)
+    public static let showerRain60: UIColor = UIColor(hex: "#53FFC1", opacity: 0.4)
+    public static let rain60: UIColor = UIColor(hex: "#FFB629", opacity: 0.4)
+    public static let thunderStorm60: UIColor = UIColor(hex: "#907DFF", opacity: 0.4)
+    public static let snow60: UIColor = UIColor(hex: "#FFFFFF", opacity: 0.4)
+    public static let mist60: UIColor = UIColor(hex: "#B9B9B9", opacity: 0.4)
+    public static let unknown60: UIColor = UIColor(hex: "#76A5FF", opacity: 0.4)
     
     public static let mint100: UIColor = UIColor(hex: "#1ED8C5")
     public static let orange100: UIColor = UIColor(hex: "#FF752F")
