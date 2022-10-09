@@ -7,6 +7,12 @@
 import SwiftUI
 import Combine
 
+struct TimeUnit {
+    var hour: Int
+    var minute: Int
+    var diff: String
+}
+
 extension Int {
     func getDate() -> String {
         let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
@@ -29,6 +35,46 @@ extension Int {
         let kr = date.string(from: timeToDate)
         return kr
     }
+    
+    func getTimeUnit() -> TimeUnit? {
+        let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_kr")
+        date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
+        date.dateFormat = "hh"
+        let hour = Int(date.string(from: timeToDate))
+        date.dateFormat = "mm"
+        let min = Int(date.string(from: timeToDate))
+        date.dateFormat = "aa"
+        let diff = date.string(from: timeToDate)
+        
+        if let hour = hour, let min = min {
+            return TimeUnit(hour: hour, minute: min, diff: diff)
+        } else {
+            return nil
+        }
+    }
+    
+    func getHour() -> Int? {
+        let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_kr")
+        date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
+        date.dateFormat = "HH"
+        let hour = Int(date.string(from: timeToDate))
+        return hour
+    }
+    
+    func getMin() -> Int? {
+        let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_kr")
+        date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
+        date.dateFormat = "mm"
+        let min = Int(date.string(from: timeToDate))
+        return min
+    }
+    
     
     func getDateAndTime() -> String {
         return "\(self.getDate())  \(self.getTime())"
