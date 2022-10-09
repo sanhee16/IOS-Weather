@@ -37,7 +37,43 @@ struct SelectLocationView: View {
                         Text("내가 추가한 지역")
                             .font(.kr15b)
                             .foregroundColor(.gray100)
-                        Spacer()
+                        if $vm.isEditing.wrappedValue {
+                            Text("삭제중")
+                                .font(.kr11r)
+                                .foregroundColor(.white)
+                                .padding(EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6))
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .foregroundColor(.gray60)
+                                )
+                                .padding(.leading, 6)
+                            Spacer()
+                            if $vm.deleteCnt.wrappedValue > 0 {
+                                Text("삭제하기")
+                                    .font(.kr14r)
+                                    .foregroundColor(.gray100)
+                                    .onTapGesture {
+                                        vm.onClickAdmitEdit()
+                                    }
+                            }
+                            Text("취소")
+                                .font(.kr14r)
+                                .foregroundColor(.gray60)
+                                .padding(.leading, 12)
+                                .onTapGesture {
+                                    vm.onClickCancelEdit()
+                                }
+                        } else {
+                            Spacer()
+                            if !$vm.myLocations.wrappedValue.isEmpty {
+                                Text("편집하기")
+                                    .font(.kr14r)
+                                    .foregroundColor(.gray100)
+                                    .onTapGesture {
+                                        vm.onClickEdit()
+                                    }
+                            }
+                        }
                     }
                     .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
                     if !$vm.myLocations.wrappedValue.isEmpty {
@@ -87,28 +123,35 @@ struct SelectLocationView: View {
                 ForEach($vm.myLocations.wrappedValue.indices, id: \.self) { idx in
                     let item = $vm.myLocations.wrappedValue[idx]
                     myLocationItem(geometry, item: item)
+                        .onTapGesture {
+                            vm.addToDeleteList(item)
+                        }
                 }
             }
             .padding(EdgeInsets(top: 14, leading: 20, bottom: 6, trailing: 20))
         }
     }
     
-    private func myLocationItem(_ geometry: GeometryProxy, item: MyLocation) -> some View {
+    private func myLocationItem(_ geometry: GeometryProxy, item: Location) -> some View {
         return HStack(alignment: .center, spacing: 4) {
-            if item.indexOfDB == nil {
+            if item.loc.indexOfDB == nil {
                 Image("location")
                     .resizable()
                     .scaledToFit()
                     .frame(both: 12)
             }
-            Text(item.cityName)
+            Text(item.loc.cityName)
                 .font(.kr16r)
                 .foregroundColor(.gray100)
                 .multilineTextAlignment(.center)
                 .lineSpacing(1.4)
         }
         .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-        .border(.lightblue80, lineWidth: 2, cornerRadius: 8)
+        .border(.lightblue80, lineWidth: item.editing ? 0 : 2, cornerRadius: 8)
+        .background(
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(item.editing ? .lightblue100 : .clear)
+        )
     }
     
     
