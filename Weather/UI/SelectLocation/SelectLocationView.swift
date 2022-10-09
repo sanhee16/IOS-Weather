@@ -30,7 +30,7 @@ struct SelectLocationView: View {
                     vm.onClose()
                 }
                 if $vm.isLoading.wrappedValue {
-                    ProgressView()
+                    SandyProgressView()
                 } else {
                     //TODO: myLocation = pager로 구현할꺼!
                     HStack(alignment: .center, spacing: 0) {

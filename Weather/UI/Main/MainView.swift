@@ -48,7 +48,7 @@ struct MainView: View {
                     .padding([.leading, .trailing], 20)
                 }
                 if $vm.isLoading.wrappedValue {
-                    ProgressView()
+                    SandyProgressView()
                 } else {
                     card(geometry)
                 }

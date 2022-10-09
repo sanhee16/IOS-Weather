@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import Lottie
 
 struct SplashView: View {
     typealias VM = SplashViewModel
@@ -25,7 +26,10 @@ struct SplashView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Text("hello, world")
+                Spacer()
+                LottieView(filename: "splash")
+                    .frame(both: 140)
+                Spacer()
             }
             .padding(EdgeInsets(top: safeTop, leading: 0, bottom: safeBottom, trailing: 0))
             .edgesIgnoringSafeArea(.all)
