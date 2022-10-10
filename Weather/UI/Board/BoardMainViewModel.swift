@@ -37,8 +37,8 @@ class BoardMainViewModel: BaseViewModel {
     }
     
     func onAppear() {
-        self.isLoading = false
-//        loadAllData()
+//        self.isLoading = false
+        loadAllData()
     }
     
     func onClose() {
@@ -75,22 +75,9 @@ class BoardMainViewModel: BaseViewModel {
     }
     
     func onClickAddButton() {
-        self.coordinator?.presentWriteBoardView()
-    }
-    
-    func addData() {
-        var ref: DocumentReference? = nil
-        idx += 1
-        ref = db.collection("list").addDocument(data: [
-            "createdAt": Int(Date().timeIntervalSince1970),
-            "text": "i am sandy\(idx)!!!",
-            "type": 0
-        ]) { err in
-            if let err = err {
-                print("Error adding document: \(err)")
-            } else {
-                print("Document added with ID: \(ref!.documentID)")
-            }
+        self.coordinator?.presentSelectWeatherView() {[weak self] type in
+            self?.coordinator?.presentWriteBoardView(type: type)
         }
     }
+    
 }

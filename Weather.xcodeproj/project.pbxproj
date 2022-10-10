@@ -42,6 +42,8 @@
 		2666149B28F3EB2400ABA5D8 /* WriteBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149A28F3EB2400ABA5D8 /* WriteBoardView.swift */; };
 		2666149D28F3EB2A00ABA5D8 /* WriteBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149C28F3EB2A00ABA5D8 /* WriteBoardViewModel.swift */; };
 		2666149F28F3EE5300ABA5D8 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149E28F3EE5300ABA5D8 /* MultilineTextView.swift */; };
+		266EC64728F404CE00099902 /* SelectWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EC64628F404CE00099902 /* SelectWeatherView.swift */; };
+		266EC64928F404D500099902 /* SelectWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EC64828F404D500099902 /* SelectWeatherViewModel.swift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
 		63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AF928ED168C0079DB37 /* SwiftUIPager */; };
@@ -103,6 +105,8 @@
 		2666149A28F3EB2400ABA5D8 /* WriteBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBoardView.swift; sourceTree = "<group>"; };
 		2666149C28F3EB2A00ABA5D8 /* WriteBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBoardViewModel.swift; sourceTree = "<group>"; };
 		2666149E28F3EE5300ABA5D8 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
+		266EC64628F404CE00099902 /* SelectWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWeatherView.swift; sourceTree = "<group>"; };
+		266EC64828F404D500099902 /* SelectWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectWeatherViewModel.swift; sourceTree = "<group>"; };
 		63705AE728ED118A0079DB37 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63705AEE28ED118B0079DB37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63705AF128ED118B0079DB37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 		2666149228F3CF6400ABA5D8 /* Board */ = {
 			isa = PBXGroup;
 			children = (
+				266EC64528F404BC00099902 /* SelectWeather */,
 				2666149928F3EB0600ABA5D8 /* WriteBoard */,
 				2666149328F3CF6D00ABA5D8 /* BoardMainView.swift */,
 				2666149528F3CF7500ABA5D8 /* BoardMainViewModel.swift */,
@@ -246,6 +251,15 @@
 				2666149C28F3EB2A00ABA5D8 /* WriteBoardViewModel.swift */,
 			);
 			path = WriteBoard;
+			sourceTree = "<group>";
+		};
+		266EC64528F404BC00099902 /* SelectWeather */ = {
+			isa = PBXGroup;
+			children = (
+				266EC64628F404CE00099902 /* SelectWeatherView.swift */,
+				266EC64828F404D500099902 /* SelectWeatherViewModel.swift */,
+			);
+			path = SelectWeather;
 			sourceTree = "<group>";
 		};
 		63705ADE28ED118A0079DB37 = {
@@ -509,6 +523,7 @@
 				63705B1D28ED3E060079DB37 /* MainView.swift in Sources */,
 				26517B1E28F2FF1500F2C280 /* NotiSettingView.swift in Sources */,
 				63705B0C28ED17BA0079DB37 /* AppCoordinator.swift in Sources */,
+				266EC64928F404D500099902 /* SelectWeatherViewModel.swift in Sources */,
 				63705B2728ED3E940079DB37 /* SettingView.swift in Sources */,
 				63705B0728ED179C0079DB37 /* AppDelegate.swift in Sources */,
 				63D80CDA28EE695F0090A3ED /* Topbar.swift in Sources */,
@@ -546,6 +561,7 @@
 				26517B2028F2FF1C00F2C280 /* NotiSettingViewModel.swift in Sources */,
 				2666148328F3A02C00ABA5D8 /* BluePrintView.swift in Sources */,
 				63705B0528ED17960079DB37 /* SceneDelegate.swift in Sources */,
+				266EC64728F404CE00099902 /* SelectWeatherView.swift in Sources */,
 				63705B1528ED1C230079DB37 /* SplashView.swift in Sources */,
 				2666148828F3B9AD00ABA5D8 /* CheckPermissionView.swift in Sources */,
 			);

@@ -100,8 +100,13 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
-    func presentWriteBoardView() {
-        let vc = WriteBoardView.vc(self)
+    func presentWriteBoardView(type: WeatherType = .clearSky) {
+        let vc = WriteBoardView.vc(self, type: type)
+        self.present(vc, animated: true)
+    }
+    
+    func presentSelectWeatherView(callback: @escaping (WeatherType) -> ()) {
+        let vc = SelectWeatherView.vc(self, callback: callback)
         self.present(vc, animated: true)
     }
     

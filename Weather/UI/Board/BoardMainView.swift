@@ -117,7 +117,7 @@ struct BoardMainView: View {
         .frame(width: geometry.size.width - 40)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.lightGray04)
+                .foregroundColor(.lightblue03)
                 .shadow(color: .gray30.opacity(0.6), radius: 4, x: 2, y: 6)
         )
     }
