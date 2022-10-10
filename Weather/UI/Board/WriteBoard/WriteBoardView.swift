@@ -60,7 +60,7 @@ struct WriteBoardView: View {
                                 .foregroundColor(.blue100)
                                 .padding(12)
                             Spacer()
-                            Text("날짜 다시 선택하기")
+                            Text("날씨 다시 선택하기")
                                 .font(.kr14r)
                                 .foregroundColor(.gray60)
                                 .padding(EdgeInsets(top: 7, leading: 9, bottom: 7, trailing: 9))
