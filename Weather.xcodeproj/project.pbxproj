@@ -24,11 +24,15 @@
 		26498BDE28F28E6B00E89FB2 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BDD28F28E6B00E89FB2 /* ProgressView.swift */; };
 		26498BE128F296DA00E89FB2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BE028F296DA00E89FB2 /* AlertView.swift */; };
 		26498BE328F296E600E89FB2 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BE228F296E600E89FB2 /* AlertViewModel.swift */; };
-		26498BE528F2E8BE00E89FB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26498BE428F2E8BE00E89FB2 /* GoogleService-Info.plist */; };
-		26498BE828F2E98A00E89FB2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26498BE728F2E98A00E89FB2 /* FirebaseAnalytics */; };
-		26498BEA28F2E98A00E89FB2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 26498BE928F2E98A00E89FB2 /* FirebaseDatabase */; };
-		26498BEC28F2E98A00E89FB2 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26498BEB28F2E98A00E89FB2 /* FirebaseDatabaseSwift */; };
+		26517B1E28F2FF1500F2C280 /* NotiSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26517B1D28F2FF1500F2C280 /* NotiSettingView.swift */; };
+		26517B2028F2FF1C00F2C280 /* NotiSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26517B1F28F2FF1C00F2C280 /* NotiSettingViewModel.swift */; };
 		2656A86D28F122C400140B8B /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2656A86C28F122C400140B8B /* Api.swift */; };
+		2666147E28F3A00B00ABA5D8 /* DetailSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666147D28F3A00B00ABA5D8 /* DetailSettingView.swift */; };
+		2666148028F3A01000ABA5D8 /* DetailSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666147F28F3A01000ABA5D8 /* DetailSettingViewModel.swift */; };
+		2666148328F3A02C00ABA5D8 /* BluePrintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148228F3A02C00ABA5D8 /* BluePrintView.swift */; };
+		2666148528F3A05800ABA5D8 /* BluePrintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148428F3A05800ABA5D8 /* BluePrintViewModel.swift */; };
+		2666148828F3B9AD00ABA5D8 /* CheckPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148728F3B9AD00ABA5D8 /* CheckPermissionView.swift */; };
+		2666148A28F3B9B600ABA5D8 /* CheckPermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148928F3B9B600ABA5D8 /* CheckPermissionViewModel.swift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
 		63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AF928ED168C0079DB37 /* SwiftUIPager */; };
@@ -75,8 +79,15 @@
 		26498BDD28F28E6B00E89FB2 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26498BE028F296DA00E89FB2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		26498BE228F296E600E89FB2 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
-		26498BE428F2E8BE00E89FB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		26517B1D28F2FF1500F2C280 /* NotiSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingView.swift; sourceTree = "<group>"; };
+		26517B1F28F2FF1C00F2C280 /* NotiSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewModel.swift; sourceTree = "<group>"; };
 		2656A86C28F122C400140B8B /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		2666147D28F3A00B00ABA5D8 /* DetailSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSettingView.swift; sourceTree = "<group>"; };
+		2666147F28F3A01000ABA5D8 /* DetailSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSettingViewModel.swift; sourceTree = "<group>"; };
+		2666148228F3A02C00ABA5D8 /* BluePrintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePrintView.swift; sourceTree = "<group>"; };
+		2666148428F3A05800ABA5D8 /* BluePrintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePrintViewModel.swift; sourceTree = "<group>"; };
+		2666148728F3B9AD00ABA5D8 /* CheckPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPermissionView.swift; sourceTree = "<group>"; };
+		2666148928F3B9B600ABA5D8 /* CheckPermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPermissionViewModel.swift; sourceTree = "<group>"; };
 		63705AE728ED118A0079DB37 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63705AEE28ED118B0079DB37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63705AF128ED118B0079DB37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -108,13 +119,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26498BEC28F2E98A00E89FB2 /* FirebaseDatabaseSwift in Frameworks */,
 				26379B5F28F27B560028E76F /* Lottie in Frameworks */,
 				63705AFF28ED16F40079DB37 /* RealmSwift in Frameworks */,
-				26498BE828F2E98A00E89FB2 /* FirebaseAnalytics in Frameworks */,
 				63705B0228ED17180079DB37 /* Alamofire in Frameworks */,
 				63705AFD28ED16F40079DB37 /* Realm in Frameworks */,
-				26498BEA28F2E98A00E89FB2 /* FirebaseDatabase in Frameworks */,
 				63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +175,42 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		26517B1C28F2FF0100F2C280 /* NotiSetting */ = {
+			isa = PBXGroup;
+			children = (
+				26517B1D28F2FF1500F2C280 /* NotiSettingView.swift */,
+				26517B1F28F2FF1C00F2C280 /* NotiSettingViewModel.swift */,
+			);
+			path = NotiSetting;
+			sourceTree = "<group>";
+		};
+		2666147C28F39FF200ABA5D8 /* DetailSetting */ = {
+			isa = PBXGroup;
+			children = (
+				2666147D28F3A00B00ABA5D8 /* DetailSettingView.swift */,
+				2666147F28F3A01000ABA5D8 /* DetailSettingViewModel.swift */,
+			);
+			path = DetailSetting;
+			sourceTree = "<group>";
+		};
+		2666148128F3A02100ABA5D8 /* BluePrint */ = {
+			isa = PBXGroup;
+			children = (
+				2666148228F3A02C00ABA5D8 /* BluePrintView.swift */,
+				2666148428F3A05800ABA5D8 /* BluePrintViewModel.swift */,
+			);
+			path = BluePrint;
+			sourceTree = "<group>";
+		};
+		2666148628F3B99700ABA5D8 /* CheckPermission */ = {
+			isa = PBXGroup;
+			children = (
+				2666148728F3B9AD00ABA5D8 /* CheckPermissionView.swift */,
+				2666148928F3B9B600ABA5D8 /* CheckPermissionViewModel.swift */,
+			);
+			path = CheckPermission;
+			sourceTree = "<group>";
+		};
 		63705ADE28ED118A0079DB37 = {
 			isa = PBXGroup;
 			children = (
@@ -195,7 +239,6 @@
 				63705B0828ED179F0079DB37 /* coordinator */,
 				63705B0328ED17860079DB37 /* Delegate */,
 				63705AEE28ED118B0079DB37 /* Assets.xcassets */,
-				26498BE428F2E8BE00E89FB2 /* GoogleService-Info.plist */,
 				2643FF1728F1791A00EF73E6 /* policy.html */,
 				63705AF028ED118B0079DB37 /* Preview Content */,
 				26231B3028F0645A001DE70F /* Config.xcconfig */,
@@ -241,6 +284,7 @@
 		63705B1228ED1C130079DB37 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				2666148128F3A02100ABA5D8 /* BluePrint */,
 				63D80CD828EE694E0090A3ED /* CustomView */,
 				63705B2528ED3E870079DB37 /* Setting */,
 				63705B2028ED3E0F0079DB37 /* SelectLocation */,
@@ -292,6 +336,9 @@
 		63705B2528ED3E870079DB37 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				2666148628F3B99700ABA5D8 /* CheckPermission */,
+				2666147C28F39FF200ABA5D8 /* DetailSetting */,
+				26517B1C28F2FF0100F2C280 /* NotiSetting */,
 				2643FF1D28F17D6300EF73E6 /* SendEmail */,
 				2643FF1228F174F500EF73E6 /* DevInfo */,
 				2643FF0D28F174DC00EF73E6 /* PolicyView */,
@@ -345,9 +392,6 @@
 				63705AFE28ED16F40079DB37 /* RealmSwift */,
 				63705B0128ED17180079DB37 /* Alamofire */,
 				26379B5E28F27B560028E76F /* Lottie */,
-				26498BE728F2E98A00E89FB2 /* FirebaseAnalytics */,
-				26498BE928F2E98A00E89FB2 /* FirebaseDatabase */,
-				26498BEB28F2E98A00E89FB2 /* FirebaseDatabaseSwift */,
 			);
 			productName = Weather;
 			productReference = 63705AE728ED118A0079DB37 /* Weather.app */;
@@ -382,7 +426,6 @@
 				63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				63705B0028ED17180079DB37 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				26379B5D28F27B560028E76F /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				26498BE628F2E98A00E89FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 63705AE828ED118A0079DB37 /* Products */;
 			projectDirPath = "";
@@ -403,7 +446,6 @@
 				26379B6228F27B790028E76F /* splash.json in Resources */,
 				63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */,
 				26379B6328F27B790028E76F /* loading.json in Resources */,
-				26498BE528F2E8BE00E89FB2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +459,7 @@
 				2643FF1628F1750A00EF73E6 /* DevInfoViewModel.swift in Sources */,
 				63705B1A28ED1C6A0079DB37 /* Util.swift in Sources */,
 				63705B1D28ED3E060079DB37 /* MainView.swift in Sources */,
+				26517B1E28F2FF1500F2C280 /* NotiSettingView.swift in Sources */,
 				63705B0C28ED17BA0079DB37 /* AppCoordinator.swift in Sources */,
 				63705B2728ED3E940079DB37 /* SettingView.swift in Sources */,
 				63705B0728ED179C0079DB37 /* AppDelegate.swift in Sources */,
@@ -429,25 +472,32 @@
 				2643FF1F28F17D6E00EF73E6 /* SendEmailView.swift in Sources */,
 				63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */,
 				63705B1F28ED3E0D0079DB37 /* MainViewModel.swift in Sources */,
+				2666148A28F3B9B600ABA5D8 /* CheckPermissionViewModel.swift in Sources */,
 				26498BE128F296DA00E89FB2 /* AlertView.swift in Sources */,
 				2643FF1128F174F200EF73E6 /* PolicyViewModel.swift in Sources */,
 				2643FF2128F17D7600EF73E6 /* SendEmailViewModel.swift in Sources */,
 				2643FF0C28F1741100EF73E6 /* EmailSender.swift in Sources */,
 				26498BDC28F28D7E00E89FB2 /* LottieView.swift in Sources */,
 				63705B3328ED3F6D0079DB37 /* Defaults.swift in Sources */,
+				2666147E28F3A00B00ABA5D8 /* DetailSettingView.swift in Sources */,
 				2643FF2528F1B4C800EF73E6 /* DummyData.swift in Sources */,
 				2656A86D28F122C400140B8B /* Api.swift in Sources */,
 				63705B0F28ED199A0079DB37 /* BaseViewModel.swift in Sources */,
 				2643FF1428F1750500EF73E6 /* DevInfoView.swift in Sources */,
 				63705B0A28ED17AC0079DB37 /* Coordinator.swift in Sources */,
+				2666148528F3A05800ABA5D8 /* BluePrintViewModel.swift in Sources */,
 				63705B2428ED3E280079DB37 /* SelectLocationViewModel.swift in Sources */,
 				63705B2928ED3E9A0079DB37 /* SettingViewModel.swift in Sources */,
 				63705B1728ED1C290079DB37 /* SplashViewModel.swift in Sources */,
 				63705B1128ED19A10079DB37 /* BaseViewController.swift in Sources */,
 				2643FF1A28F17A3B00EF73E6 /* WebView.swift in Sources */,
 				26498BDE28F28E6B00E89FB2 /* ProgressView.swift in Sources */,
+				2666148028F3A01000ABA5D8 /* DetailSettingViewModel.swift in Sources */,
+				26517B2028F2FF1C00F2C280 /* NotiSettingViewModel.swift in Sources */,
+				2666148328F3A02C00ABA5D8 /* BluePrintView.swift in Sources */,
 				63705B0528ED17960079DB37 /* SceneDelegate.swift in Sources */,
 				63705B1528ED1C230079DB37 /* SplashView.swift in Sources */,
+				2666148828F3B9AD00ABA5D8 /* CheckPermissionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,14 +722,6 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		26498BE628F2E98A00E89FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
 		63705AF828ED168C0079DB37 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
@@ -711,21 +753,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26379B5D28F27B560028E76F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
-		};
-		26498BE728F2E98A00E89FB2 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26498BE628F2E98A00E89FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		26498BE928F2E98A00E89FB2 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26498BE628F2E98A00E89FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		26498BEB28F2E98A00E89FB2 /* FirebaseDatabaseSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26498BE628F2E98A00E89FB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabaseSwift;
 		};
 		63705AF928ED168C0079DB37 /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;

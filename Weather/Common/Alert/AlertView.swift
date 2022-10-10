@@ -5,8 +5,6 @@
 //  Created by sandy on 2022/10/09.
 //
 
-
-
 import SwiftUI
 
 struct AlertView: View {
@@ -17,7 +15,7 @@ struct AlertView: View {
         let vc = BaseViewController.init(view, completion: completion)
         vc.modalPresentationStyle = .overCurrentContext
         vc.view.backgroundColor = UIColor.clear
-        vc.controller.view.backgroundColor = UIColor.clear
+        vc.controller.view.backgroundColor = UIColor.dim
         return vc
     }
     @ObservedObject var vm: VM

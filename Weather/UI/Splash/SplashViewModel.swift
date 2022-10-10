@@ -11,10 +11,13 @@ import Combine
 import RealmSwift
 import CoreLocation
 import Lottie
+import UserNotifications
+
 
 class SplashViewModel: BaseViewModel {
     private let realm: Realm = try! Realm()
     private var locationManager: CLLocationManager
+    private var timerRepeat: Timer?
     
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
@@ -27,15 +30,64 @@ class SplashViewModel: BaseViewModel {
         if !Defaults.launchBefore { //최초 실행시 지역 data를 local DB에 담는다.
 //            locationManager.requestWhenInUseAuthorization()
 //            print("onStart : \(checkPermission())")
+            //MARK: 최초실행 Setting
+            Defaults.isUseDetailFeelLike = true
+            Defaults.isUseDetailCloud = true
+            Defaults.isUseDetailHumidity = true
+            Defaults.isUseDetailUV = true
+            Defaults.isUseDetailPressure = true
+            Defaults.isUseDetailWindSpeed = true
+            
             addLocations()
+            
+            //MARK: wait for noti permission
+            startRepeatTimer()
+        } else {
+            self.onStartSplashTimer()
         }
-        self.onStartTimer()
     }
     
-    func onStartTimer() {
+    func onStartSplashTimer() {
         //TODO: 3초로 변경하기!!
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.coordinator?.presentMain()
+        }
+    }
+    
+    // 반복 타이머 시작
+    func startRepeatTimer() {
+        timerRepeat = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(timerFireRepeat(timer:)), userInfo: "check permission", repeats: true)
+    }
+    
+    // 반복 타이머 실행
+    @objc func timerFireRepeat(timer: Timer) {
+        if timer.userInfo != nil {
+            
+            let center = UNUserNotificationCenter.current()
+
+            center.getNotificationSettings {[weak self] status in
+                print(status.alertSetting)
+                print(status.authorizationStatus)
+                
+                switch status.authorizationStatus {
+                case .notDetermined: break
+                default:
+                    self?.stopRepeatTimer()
+                }
+            }
+        }
+    }
+    
+    
+    // 반복 타이머 종료
+    func stopRepeatTimer() {
+        if let timer = timerRepeat {
+            if timer.isValid {
+                timer.invalidate()
+            }
+            timerRepeat = nil
+            // timer 종료되고 작업 시작
+            onStartSplashTimer()
         }
     }
     
