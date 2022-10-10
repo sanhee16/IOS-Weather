@@ -33,9 +33,6 @@
 		2666148528F3A05800ABA5D8 /* BluePrintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148428F3A05800ABA5D8 /* BluePrintViewModel.swift */; };
 		2666148828F3B9AD00ABA5D8 /* CheckPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148728F3B9AD00ABA5D8 /* CheckPermissionView.swift */; };
 		2666148A28F3B9B600ABA5D8 /* CheckPermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148928F3B9B600ABA5D8 /* CheckPermissionViewModel.swift */; };
-		2666148D28F3CB4100ABA5D8 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2666148C28F3CB4100ABA5D8 /* FirebaseAnalytics */; };
-		2666148F28F3CB4100ABA5D8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2666148E28F3CB4100ABA5D8 /* FirebaseFirestore */; };
-		2666149128F3CB4100ABA5D8 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2666149028F3CB4100ABA5D8 /* FirebaseFirestoreSwift */; };
 		2666149428F3CF6D00ABA5D8 /* BoardMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149328F3CF6D00ABA5D8 /* BoardMainView.swift */; };
 		2666149628F3CF7500ABA5D8 /* BoardMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149528F3CF7500ABA5D8 /* BoardMainViewModel.swift */; };
 		2666149828F3D24D00ABA5D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2666149728F3D24D00ABA5D8 /* GoogleService-Info.plist */; };
@@ -44,6 +41,12 @@
 		2666149F28F3EE5300ABA5D8 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149E28F3EE5300ABA5D8 /* MultilineTextView.swift */; };
 		266EC64728F404CE00099902 /* SelectWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EC64628F404CE00099902 /* SelectWeatherView.swift */; };
 		266EC64928F404D500099902 /* SelectWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EC64828F404D500099902 /* SelectWeatherViewModel.swift */; };
+		268994D328F4186700523095 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 268994D228F4186700523095 /* Alamofire */; };
+		26E99A3E28F4192C009002C6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A3D28F4192C009002C6 /* Realm */; };
+		26E99A4028F4192C009002C6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A3F28F4192C009002C6 /* RealmSwift */; };
+		26E99A4A28F41BA3009002C6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A4928F41BA3009002C6 /* FirebaseAnalytics */; };
+		26E99A4C28F41BA3009002C6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A4B28F41BA3009002C6 /* FirebaseFirestore */; };
+		26E99A4E28F41BA3009002C6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A4D28F41BA3009002C6 /* FirebaseFirestoreSwift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
 		63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AF928ED168C0079DB37 /* SwiftUIPager */; };
@@ -140,12 +143,15 @@
 			files = (
 				26379B5F28F27B560028E76F /* Lottie in Frameworks */,
 				63705AFF28ED16F40079DB37 /* RealmSwift in Frameworks */,
-				2666148D28F3CB4100ABA5D8 /* FirebaseAnalytics in Frameworks */,
+				26E99A4028F4192C009002C6 /* RealmSwift in Frameworks */,
+				26E99A4C28F41BA3009002C6 /* FirebaseFirestore in Frameworks */,
 				63705B0228ED17180079DB37 /* Alamofire in Frameworks */,
+				26E99A4E28F41BA3009002C6 /* FirebaseFirestoreSwift in Frameworks */,
 				63705AFD28ED16F40079DB37 /* Realm in Frameworks */,
+				268994D328F4186700523095 /* Alamofire in Frameworks */,
+				26E99A3E28F4192C009002C6 /* Realm in Frameworks */,
 				63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */,
-				2666148F28F3CB4100ABA5D8 /* FirebaseFirestore in Frameworks */,
-				2666149128F3CB4100ABA5D8 /* FirebaseFirestoreSwift in Frameworks */,
+				26E99A4A28F41BA3009002C6 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,9 +452,12 @@
 				63705AFE28ED16F40079DB37 /* RealmSwift */,
 				63705B0128ED17180079DB37 /* Alamofire */,
 				26379B5E28F27B560028E76F /* Lottie */,
-				2666148C28F3CB4100ABA5D8 /* FirebaseAnalytics */,
-				2666148E28F3CB4100ABA5D8 /* FirebaseFirestore */,
-				2666149028F3CB4100ABA5D8 /* FirebaseFirestoreSwift */,
+				268994D228F4186700523095 /* Alamofire */,
+				26E99A3D28F4192C009002C6 /* Realm */,
+				26E99A3F28F4192C009002C6 /* RealmSwift */,
+				26E99A4928F41BA3009002C6 /* FirebaseAnalytics */,
+				26E99A4B28F41BA3009002C6 /* FirebaseFirestore */,
+				26E99A4D28F41BA3009002C6 /* FirebaseFirestoreSwift */,
 			);
 			productName = Weather;
 			productReference = 63705AE728ED118A0079DB37 /* Weather.app */;
@@ -483,7 +492,7 @@
 				63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				63705B0028ED17180079DB37 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				26379B5D28F27B560028E76F /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				2666148B28F3CB4100ABA5D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 63705AE828ED118A0079DB37 /* Products */;
 			projectDirPath = "";
@@ -788,7 +797,7 @@
 				minimumVersion = 3.0.0;
 			};
 		};
-		2666148B28F3CB4100ABA5D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -828,19 +837,34 @@
 			package = 26379B5D28F27B560028E76F /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
-		2666148C28F3CB4100ABA5D8 /* FirebaseAnalytics */ = {
+		268994D228F4186700523095 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2666148B28F3CB4100ABA5D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 63705B0028ED17180079DB37 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		26E99A3D28F4192C009002C6 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		26E99A3F28F4192C009002C6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		26E99A4928F41BA3009002C6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalytics;
 		};
-		2666148E28F3CB4100ABA5D8 /* FirebaseFirestore */ = {
+		26E99A4B28F41BA3009002C6 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2666148B28F3CB4100ABA5D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		2666149028F3CB4100ABA5D8 /* FirebaseFirestoreSwift */ = {
+		26E99A4D28F41BA3009002C6 /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 2666148B28F3CB4100ABA5D8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestoreSwift;
 		};
 		63705AF928ED168C0079DB37 /* SwiftUIPager */ = {
