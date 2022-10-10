@@ -14,6 +14,21 @@ struct TimeUnit {
 }
 
 extension Int {
+    func getWeatherType() -> WeatherType {
+        switch self {
+        case 0: return .clearSky
+        case 1: return .fewClouds
+        case 2: return .scatteredClouds
+        case 3: return .brokenClouds
+        case 4: return .showerRain
+        case 5: return .rain
+        case 6: return .thunderStorm
+        case 7: return .snow
+        case 8: return .mist
+        default: return .unknown
+        }
+    }
+    
     func getDate() -> String {
         let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
         let date = DateFormatter()
@@ -137,6 +152,16 @@ extension View {
     public func frame(both: CGFloat, aligment: Alignment = .center) -> some View {
         return self
             .frame(width: both, height: both, alignment: aligment)
+    }
+    
+    func rectReader(_ binding: Binding<CGRect>, in space: CoordinateSpace) -> some View {
+        self.background(GeometryReader { (geometry) -> AnyView in
+            let rect = geometry.frame(in: space)
+            DispatchQueue.main.async {
+                binding.wrappedValue = rect
+            }
+            return AnyView(Rectangle().fill(Color.clear))
+        })
     }
 }
 

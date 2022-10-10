@@ -44,17 +44,17 @@ class MyLocation: Object {
     }
 }
 
-enum WeatherType {
-    case clearSky
-    case fewClouds
-    case scatteredClouds
-    case brokenClouds
-    case showerRain
-    case rain
-    case thunderStorm
-    case snow
-    case mist
-    case unknown
+enum WeatherType: Int {
+    case clearSky = 0
+    case fewClouds = 1
+    case scatteredClouds = 2
+    case brokenClouds = 3
+    case showerRain = 4
+    case rain = 5
+    case thunderStorm = 6
+    case snow = 7
+    case mist = 8
+    case unknown = 9
     
     //TODO: 배경 색상 정하기!
     var textcolor: Color {
@@ -106,13 +106,28 @@ enum WeatherType {
         switch self {
         case .clearSky: return "맑고 화창한 날씨!"
         case .fewClouds: return "약간의 구름이 있어요"
-        case .scatteredClouds: return "해가 안 보일 수 있어요"
+        case .scatteredClouds: return "잔 구름이 많아요"
         case .brokenClouds: return "매우 흐린 날씨입니다"
         case .showerRain: return "구름이 많고 비가 와요"
         case .rain: return "우산을 챙기세요!"
         case .thunderStorm: return "천둥번개가 쳐요!"
         case .snow: return "눈이 옵니다!"
         case .mist: return "안개가 끼니 주의하세요"
+        case .unknown: return ""
+        }
+    }
+    
+    var name: String {
+        switch self {
+        case .clearSky: return "맑음"
+        case .fewClouds: return "약간 흐림"
+        case .scatteredClouds: return "잔 구름"
+        case .brokenClouds: return "매우 흐림"
+        case .showerRain: return "흐리고 비"
+        case .rain: return "비"
+        case .thunderStorm: return "천둥번개"
+        case .snow: return "눈"
+        case .mist: return "안개"
         case .unknown: return ""
         }
     }

@@ -7,12 +7,7 @@
 
 import Foundation
 
-//TODO: icon 바꾸기 https://openweathermap.org/weather-conditions#How-to-get-icon-URL
-
-//"lat": 37.5,
-//"lon": 126.9,
-//"timezone": "Asia/Seoul",
-//"timezone_offset": 32400,
+//MARK: Weather
 public struct WeatherResponse: Codable {
     var current: Current // Current
     var daily: [Daily] // Weekly
@@ -139,3 +134,45 @@ public struct Daily: Codable {
         pop = try values.decode(Double.self, forKey: .pop)
     }
 }
+
+//MARK: firebase 는 json 필요 없음
+public struct Board {
+    var type: Int
+    var text: String
+    var createdAt: Int
+}
+
+extension Board {
+    func getDate() -> String {
+        let timeToDate = Date(timeIntervalSince1970: Double(self.createdAt)) // 2021-10-13 17:16:15 +0000
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_kr")
+        date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
+        date.dateFormat = "MM월 dd일 HH:mm"
+        return date.string(from: timeToDate)
+    }
+    
+    func getWeatherType() -> WeatherType {
+        return self.type.getWeatherType()
+    }
+}
+
+
+//public struct Board: Codable {
+//    var type: Int
+//    var text: String // 내용
+//    var createdAt: Int // 생성날짜, timeStamp
+//
+//    enum CodingKeys: String, CodingKey {
+//        case type
+//        case text
+//        case createdAt
+//    }
+//
+//    public init(from decoder: Decoder) throws {
+//        let values = try decoder.container(keyedBy: CodingKeys.self)
+//        type = try values.decode(Int.self, forKey: .type)
+//        text = try values.decode(String.self, forKey: .text)
+//        createdAt = try values.decode(Int.self, forKey: .createdAt)
+//    }
+//}
