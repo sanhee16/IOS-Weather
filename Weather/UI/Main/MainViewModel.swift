@@ -18,7 +18,7 @@ import Network
 
 class MainViewModel: BaseViewModel {
     //TODO: 이거 설정 지우기, false로 해야 api 호출함
-    private var IS_FOR_DEBUG_DUMMY: Bool = false
+    private var IS_FOR_DEBUG_DUMMY: Bool = true
     
     @Published var page: Page = .withIndex(0)
     var locationManager: CLLocationManager
@@ -31,7 +31,16 @@ class MainViewModel: BaseViewModel {
     @Published var backgroundColor: Color = .unknown60
     private var api: Api = Api.instance
     private var timerRepeat: Timer?
-
+    
+    @Published var isOnFeelLike: DetailItem = (type: .feelLike, isOn: true)
+    @Published var isOnWindSpeed: DetailItem = (type: .windSpeed, isOn: true)
+    @Published var isOnPressure: DetailItem = (type: .pressure, isOn: true)
+    @Published var isOnHumidity: DetailItem = (type: .humidity, isOn: true)
+    @Published var isOnUV: DetailItem = (type: .uv, isOn: true)
+    @Published var isOnCloud: DetailItem = (type: .cloud, isOn: true)
+    
+    @Published var isDetailViewCount: Int = 6
+    
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
         self.locationManager.allowsBackgroundLocationUpdates = true
@@ -54,12 +63,27 @@ class MainViewModel: BaseViewModel {
         }
         
         self.myLocations.append(MyLocation(-1, cityName: "", indexOfDB: nil, longitude: 0.0, latitude: 0.0))
-
+        
         getWeather()
     }
-
+    
     func onAppear() {
-        if !Defaults.launchBefore {
+        self.isOnFeelLike = (type: .feelLike, isOn: Defaults.isUseDetailFeelLike)
+        self.isOnWindSpeed = (type: .windSpeed, isOn: Defaults.isUseDetailWindSpeed)
+        self.isOnPressure = (type: .pressure, isOn: Defaults.isUseDetailPressure)
+        self.isOnHumidity = (type: .humidity, isOn: Defaults.isUseDetailHumidity)
+        self.isOnUV = (type: .uv, isOn: Defaults.isUseDetailUV)
+        self.isOnCloud = (type: .cloud, isOn: Defaults.isUseDetailCloud)
+        
+        self.isDetailViewCount = 0
+        self.isDetailViewCount += Defaults.isUseDetailFeelLike ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailWindSpeed ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailPressure ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailHumidity ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailUV ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailCloud ? 1 : 0
+        
+        if !Defaults.launchBefore { // 첫 실행
             firstLaunchLogic()
         } else {
             self.isLoading = true
@@ -198,7 +222,7 @@ class MainViewModel: BaseViewModel {
                     }
                     //TODO: erase dummy
                     dummy[data] = response
-//                    print(self.weatherInfo)
+                    //                    print(self.weatherInfo)
                 } err: { [weak self] err in
                     print(err)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -273,7 +297,7 @@ class MainViewModel: BaseViewModel {
                                 Defaults.currentLongitude = longitude
                                 Defaults.currentCity = address
                                 
-//                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
+                                //                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
                             } else {
                                 print("not update")
                                 let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
@@ -281,7 +305,7 @@ class MainViewModel: BaseViewModel {
                                 Defaults.currentLatitude = latitude
                                 Defaults.currentLongitude = longitude
                                 Defaults.currentCity = address
-//                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
+                                //                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
                             }
                             self.loadMyLocations()
                         }

@@ -78,4 +78,64 @@ class Defaults {
             UserDefaults.standard.setValue(value, forKey: CURRENT_CITY)
         }
     }
+    
+    private static let IS_USE_DETAIL_FEEL_LIKE = "IS_USE_DETAIL_FEEL_LIKE"
+    public static var isUseDetailFeelLike: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: IS_USE_DETAIL_FEEL_LIKE)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: IS_USE_DETAIL_FEEL_LIKE)
+        }
+    }
+    
+    private static let IS_USE_DETAIL_WINDSPEED = "IS_USE_DETAIL_WINDSPEED"
+    public static var isUseDetailWindSpeed: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: IS_USE_DETAIL_WINDSPEED)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: IS_USE_DETAIL_WINDSPEED)
+        }
+    }
+    
+    private static let IS_USE_DETAIL_PRESSURE = "IS_USE_DETAIL_PRESSURE"
+    public static var isUseDetailPressure: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: IS_USE_DETAIL_PRESSURE)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: IS_USE_DETAIL_PRESSURE)
+        }
+    }
+    
+    private static let IS_USE_DETAIL_HUMIDTY = "IS_USE_DETAIL_HUMIDTY"
+    public static var isUseDetailHumidity: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: IS_USE_DETAIL_HUMIDTY)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: IS_USE_DETAIL_HUMIDTY)
+        }
+    }
+    
+    private static let IS_USE_DETAIL_UV = "IS_USE_DETAIL_UV"
+    public static var isUseDetailUV: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: IS_USE_DETAIL_UV)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: IS_USE_DETAIL_UV)
+        }
+    }
+    
+    private static let IS_USE_DETAIL_CLOUD = "IS_USE_DETAIL_CLOUD"
+    public static var isUseDetailCloud: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: IS_USE_DETAIL_CLOUD)
+        }
+        set(value) {
+            UserDefaults.standard.setValue(value, forKey: IS_USE_DETAIL_CLOUD)
+        }
+    }
 }

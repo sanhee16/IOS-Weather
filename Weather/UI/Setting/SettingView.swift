@@ -40,6 +40,7 @@ struct SettingView: View {
                         subItem("알림 시간 설정하기", description: $vm.displayTime.wrappedValue, onTap: vm.onClickNotiTimeSetting)
                     }
                 }
+                basicItem("날씨 세부 설정", description: "어떤 정보를 표시할지 정할 수 있습니다.", onTap: vm.onClickDetailSetting)
                 
                 title("정보")
                 basicItem("문의하기", onTap: vm.onClickContact)
