@@ -31,6 +31,8 @@
 		2666148028F3A01000ABA5D8 /* DetailSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666147F28F3A01000ABA5D8 /* DetailSettingViewModel.swift */; };
 		2666148328F3A02C00ABA5D8 /* BluePrintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148228F3A02C00ABA5D8 /* BluePrintView.swift */; };
 		2666148528F3A05800ABA5D8 /* BluePrintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148428F3A05800ABA5D8 /* BluePrintViewModel.swift */; };
+		2666148828F3B9AD00ABA5D8 /* CheckPermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148728F3B9AD00ABA5D8 /* CheckPermissionView.swift */; };
+		2666148A28F3B9B600ABA5D8 /* CheckPermissionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666148928F3B9B600ABA5D8 /* CheckPermissionViewModel.swift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
 		63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AF928ED168C0079DB37 /* SwiftUIPager */; };
@@ -84,6 +86,8 @@
 		2666147F28F3A01000ABA5D8 /* DetailSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSettingViewModel.swift; sourceTree = "<group>"; };
 		2666148228F3A02C00ABA5D8 /* BluePrintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePrintView.swift; sourceTree = "<group>"; };
 		2666148428F3A05800ABA5D8 /* BluePrintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePrintViewModel.swift; sourceTree = "<group>"; };
+		2666148728F3B9AD00ABA5D8 /* CheckPermissionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPermissionView.swift; sourceTree = "<group>"; };
+		2666148928F3B9B600ABA5D8 /* CheckPermissionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckPermissionViewModel.swift; sourceTree = "<group>"; };
 		63705AE728ED118A0079DB37 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63705AEE28ED118B0079DB37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63705AF128ED118B0079DB37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -196,6 +200,15 @@
 				2666148428F3A05800ABA5D8 /* BluePrintViewModel.swift */,
 			);
 			path = BluePrint;
+			sourceTree = "<group>";
+		};
+		2666148628F3B99700ABA5D8 /* CheckPermission */ = {
+			isa = PBXGroup;
+			children = (
+				2666148728F3B9AD00ABA5D8 /* CheckPermissionView.swift */,
+				2666148928F3B9B600ABA5D8 /* CheckPermissionViewModel.swift */,
+			);
+			path = CheckPermission;
 			sourceTree = "<group>";
 		};
 		63705ADE28ED118A0079DB37 = {
@@ -323,6 +336,7 @@
 		63705B2528ED3E870079DB37 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				2666148628F3B99700ABA5D8 /* CheckPermission */,
 				2666147C28F39FF200ABA5D8 /* DetailSetting */,
 				26517B1C28F2FF0100F2C280 /* NotiSetting */,
 				2643FF1D28F17D6300EF73E6 /* SendEmail */,
@@ -458,6 +472,7 @@
 				2643FF1F28F17D6E00EF73E6 /* SendEmailView.swift in Sources */,
 				63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */,
 				63705B1F28ED3E0D0079DB37 /* MainViewModel.swift in Sources */,
+				2666148A28F3B9B600ABA5D8 /* CheckPermissionViewModel.swift in Sources */,
 				26498BE128F296DA00E89FB2 /* AlertView.swift in Sources */,
 				2643FF1128F174F200EF73E6 /* PolicyViewModel.swift in Sources */,
 				2643FF2128F17D7600EF73E6 /* SendEmailViewModel.swift in Sources */,
@@ -482,6 +497,7 @@
 				2666148328F3A02C00ABA5D8 /* BluePrintView.swift in Sources */,
 				63705B0528ED17960079DB37 /* SceneDelegate.swift in Sources */,
 				63705B1528ED1C230079DB37 /* SplashView.swift in Sources */,
+				2666148828F3B9AD00ABA5D8 /* CheckPermissionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

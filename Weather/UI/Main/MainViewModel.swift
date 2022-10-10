@@ -96,7 +96,7 @@ class MainViewModel: BaseViewModel {
         if !Defaults.launchBefore { //최초 실행시 지역 data를 local DB에 담는다.
             Defaults.launchBefore = true
             locationManager.requestWhenInUseAuthorization()
-            print("onStart : \(checkPermission())")
+            print("onStart : \(checkLocationPermission())")
             self.startRepeatTimer()
         }
     }
@@ -111,7 +111,7 @@ class MainViewModel: BaseViewModel {
     @objc func timerFireRepeat(timer: Timer) {
         print("timer is running")
         if timer.userInfo != nil {
-            let status = checkPermission()
+            let status = checkLocationPermission()
             if status != .notYet {
                 stopRepeatTimer()
             }
@@ -129,7 +129,7 @@ class MainViewModel: BaseViewModel {
             timerRepeat = nil
             // timer 종료되고 작업 시작
             //TODO: 첫번째 실행 시 test 필요, 현재 허용 안하면 선택목록으로 넘기기
-            let status = checkPermission()
+            let status = checkLocationPermission()
             if status == .allow {
                 self.isLoading = true
                 self.page = .first()
@@ -153,7 +153,7 @@ class MainViewModel: BaseViewModel {
     func loadAllData() {
         let allow = Defaults.allowGPS
         if allow {
-            let status = checkPermission()
+            let status = checkLocationPermission()
             if status != .allow {
                 Defaults.allowGPS = false
                 removeCurrentLocationOnDB()
@@ -336,7 +336,7 @@ class MainViewModel: BaseViewModel {
     
     func onClickGPS() {
         print("onClickGPS")
-        let status = checkPermission()
+        let status = checkLocationPermission()
         print("status: \(status)")
         if status == .allow {
             self.coordinator?.presentAlertView(.yesOrNo, title: "현재 위치 사용", description: "현재 위치의 정보를 불러오겠습니까?\n데이터는 저장되지 않습니다.") { [weak self] res in
@@ -349,13 +349,9 @@ class MainViewModel: BaseViewModel {
                 }
             }
         } else {
-            self.coordinator?.presentAlertView(.yesOrNo, title: "권한 설정 필요", description: "위치정보를 위해서는 권한설정이 필요합니다.\n앱 설정에서 위치정보를 항상 허용으로 바꾸어 주세요.", callback: {[weak self] res in
-                if res {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    }
-                }
-            })
+            self.coordinator?.presentCheckPermissionView() { [weak self] in
+                self?.onAppear()
+            }
         }
     }
 }

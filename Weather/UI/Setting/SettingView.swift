@@ -41,6 +41,7 @@ struct SettingView: View {
                     }
                 }
                 basicItem("날씨 세부 설정", description: "어떤 정보를 표시할지 정할 수 있습니다.", onTap: vm.onClickDetailSetting)
+                basicItem("현재 권한 사용여부 확인하기", description: "허용하고 있는 권한 상태르르 확인할 수 있습니다.", onTap: vm.onClickCheckPermission)
                 
                 title("정보")
                 basicItem("문의하기", onTap: vm.onClickContact)

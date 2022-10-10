@@ -21,9 +21,9 @@ class Coordinator {
         }
     }
     
-    func present(_ viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func present(_ viewController: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
         if let baseViewController = viewController as? Dismissible {
-            baseViewController.attachDismissCallback(completion: completion)
+            baseViewController.attachDismissCallback(completion: onDismiss)
         }
         
         self.presentViewController.present(viewController, animated: animated)
@@ -35,9 +35,9 @@ class Coordinator {
         lastVc?.pushViewController(vc, animated: true)
     }
     
-    func change(_ viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+    func change(_ viewController: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
         dismiss(animated) { [weak self] in
-            self?.present(viewController, animated: animated, completion: completion)
+            self?.present(viewController, animated: animated, onDismiss: onDismiss)
         }
     }
     

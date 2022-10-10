@@ -35,7 +35,7 @@ class Util {
 }
 
 
-func checkPermission() -> PermissionStatus {
+func checkLocationPermission() -> PermissionStatus {
     switch CLLocationManager.authorizationStatus() {
     case .authorizedAlways, .authorizedWhenInUse: return .allow
     case .restricted, .notDetermined: return .notYet

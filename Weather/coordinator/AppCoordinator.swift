@@ -89,4 +89,9 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = DetailSettingView.vc(self)
         self.present(vc, animated: true)
     }
+    
+    func presentCheckPermissionView(onDismiss: @escaping ()->()) {
+        let vc = CheckPermissionView.vc(self)
+        self.present(vc, animated: true, onDismiss: onDismiss)
+    }
 }
