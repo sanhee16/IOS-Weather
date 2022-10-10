@@ -283,15 +283,22 @@ extension Color {
     public static let lightblue100: Color = Color(hex: "#78D7FF")
     public static let lightblue80: Color = Color(hex: "#78D7FF", opacity: 0.8)
     public static let lightblue60: Color = Color(hex: "#78D7FF", opacity: 0.6)
+    public static let lightblue01: Color = Color(hex: "#C7EEFF")
+    public static let lightblue02: Color = Color(hex: "#B9EAFF")
+    public static let lightblue03: Color = Color(hex: "#E4F7FF")
+    
     public static let darkblue100: Color = Color(hex: "#1875FF")
     public static let darkblue80: Color = Color(hex: "#1875FF", opacity: 0.8)
     public static let darkblue60: Color = Color(hex: "#1875FF", opacity: 0.6)
+    
     public static let blue100: Color = Color(hex: "#15B9FF")
     public static let blue80: Color = Color(hex: "#15B9FF", opacity: 0.8)
     public static let blue60: Color = Color(hex: "#15B9FF", opacity: 0.6)
+    
     public static let red100: Color = Color(hex: "#FF4C24")
     public static let red80: Color = Color(hex: "#FF4C24", opacity: 0.8)
     public static let red60: Color = Color(hex: "#FF4C24", opacity: 0.6)
+    
     public static let yellow100: Color = Color(hex: "#FFD027")
     public static let yellow80: Color = Color(hex: "#FFD027", opacity: 0.8)
     public static let yellow60: Color = Color(hex: "#FFD027", opacity: 0.6)
@@ -334,6 +341,7 @@ extension UIColor {
             self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
         }
     }
+    public static let lightblue03: UIColor = UIColor(hex: "#E4F7FF")
     
     public static let clearSky60: UIColor = UIColor(hex: "#78D7FF", opacity: 0.4)
     public static let fewClouds60: UIColor = UIColor(hex: "#76A5FF", opacity: 0.4)
