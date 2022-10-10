@@ -70,6 +70,16 @@ extension Int {
         }
     }
     
+    func get3Hour() -> String {
+        let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
+        let date = DateFormatter()
+        date.locale = Locale(identifier: "ko_kr")
+        date.timeZone = TimeZone(abbreviation: "KST") // "2018-03-21 18:07:27"
+        date.dateFormat = "dd일 HH시"
+        return date.string(from: timeToDate)
+    }
+    
+    
     func getHour() -> Int? {
         let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
         let date = DateFormatter()

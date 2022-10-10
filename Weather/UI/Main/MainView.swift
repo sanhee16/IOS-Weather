@@ -82,6 +82,23 @@ struct MainView: View {
         }
     }
     
+    private func hourlyItem(_ geometry: GeometryProxy, item: ThreeHourly) -> some View {
+        return VStack(alignment: .center, spacing: 4) {
+            Text(item.dt.get3Hour())
+                .font(.kr13r)
+                .foregroundColor(.gray90)
+            Image(item.weather[0].icon)
+                .resizable()
+                .scaledToFit()
+                .frame(both: 28)
+                .padding([.top, .bottom], 3)
+            Text(item.main.temp.temp())
+                .font(.kr18b)
+                .foregroundColor(.gray100)
+        }
+        .frame(width: 72, height: 100, alignment: .center)
+    }
+    
     private func weeklyItem(_ geometry: GeometryProxy, item: Daily) -> some View {
         return VStack(alignment: .center, spacing: 4) {
             Text(item.dt.getDate())
@@ -101,7 +118,7 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(both: 13)
-                    Text(item.wind_speed.windSpeed())
+                    Text(item.windSpeed.windSpeed())
                         .font(.kr12r)
                         .foregroundColor(.gray90)
                 }
@@ -232,9 +249,30 @@ struct MainView: View {
                                 }
                                 
                                 Divider()
-                                    .padding(12)
+                                    .padding(.top, 12)
                             }
                             .padding(EdgeInsets(top: 20, leading: 12, bottom: 4, trailing: 12))
+                            //hourly
+                            if let hourlyInfo = $vm.weather3HourlyInfo.wrappedValue[location] {
+                                title("3시간별 날씨")
+                                
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(alignment: .center, spacing: 14) {
+                                        ForEach(hourlyInfo.indices, id: \.self) { index in
+                                            hourlyItem(geometry, item: hourlyInfo[index])
+                                        }
+                                    }
+                                    .padding([.leading, .trailing], 12)
+                                }
+                                .padding([.top, .bottom], 12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .foregroundColor(.white.opacity(0.9))
+                                        .shadow(color: .gray30, radius: 10, x: 10, y: 10)
+                                )
+                                .padding(EdgeInsets(top: 6, leading: 12, bottom: 10, trailing: 12))
+                            }
+                            
                             //Week
                             title("일주일 날씨")
                             ScrollView(.horizontal, showsIndicators: false) {
@@ -247,7 +285,7 @@ struct MainView: View {
                                 .padding(EdgeInsets(top: 12, leading: 12, bottom: 25, trailing: 12))
                             }
                             .shadow(color: .gray30, radius: 10, x: 10, y: 10)
-                            .padding(.bottom, 20)
+                            .padding(.bottom, 40)
                         }
                         .clipShape(RoundedRectangle(cornerRadius: 30))
                         .contentShape(Rectangle())
@@ -280,7 +318,7 @@ struct MainView: View {
                     extraItem(geometry, title: $vm.isOnHumidity.wrappedValue.type.name, description: "\(info.current.humidity)%")
                 }
                 if $vm.isOnWindSpeed.wrappedValue.isOn {
-                    extraItem(geometry, title: $vm.isOnWindSpeed.wrappedValue.type.name, description: info.current.wind_speed.windSpeed())
+                    extraItem(geometry, title: $vm.isOnWindSpeed.wrappedValue.type.name, description: info.current.windSpeed.windSpeed())
                 }
             }
             HStack(alignment: .center, spacing: 0) {

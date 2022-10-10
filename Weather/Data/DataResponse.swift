@@ -57,7 +57,7 @@ public struct Current: Codable {
     var humidity: Int // 습도 %
     var uvi: Double // 현재 자외선 지수
     var clouds: Int // 흐림 %
-    var wind_speed: Double // 바람의 속도. 단위 – 기본값: 미터/초
+    var windSpeed: Double // 바람의 속도. 단위 – 기본값: 미터/초
     var weather: [Weather]
 
     
@@ -71,7 +71,7 @@ public struct Current: Codable {
         case humidity
         case uvi
         case clouds
-        case wind_speed
+        case windSpeed = "wind_speed"
         case weather
     }
     
@@ -86,7 +86,7 @@ public struct Current: Codable {
         humidity = try values.decode(Int.self, forKey: .humidity)
         uvi = try values.decode(Double.self, forKey: .uvi)
         clouds = try values.decode(Int.self, forKey: .clouds)
-        wind_speed = try values.decode(Double.self, forKey: .wind_speed)
+        windSpeed = try values.decode(Double.self, forKey: .windSpeed)
         weather = try values.decode([Weather].self, forKey: .weather)
     }
 }
@@ -113,14 +113,14 @@ public struct Temp: Codable {
 public struct Daily: Codable {
     var dt: Int // 시간
     var temp: Temp // 온도 정보
-    var wind_speed: Double // 바람의 속도. 단위 – 기본값: 미터/초
+    var windSpeed: Double // 바람의 속도. 단위 – 기본값: 미터/초
     var weather: [Weather]
     var pop: Double // 강수확률
     
     enum CodingKeys: String, CodingKey {
         case dt
         case temp
-        case wind_speed
+        case windSpeed = "wind_speed"
         case weather
         case pop
     }
@@ -129,11 +129,120 @@ public struct Daily: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         dt = try values.decode(Int.self, forKey: .dt)
         temp = try values.decode(Temp.self, forKey: .temp)
-        wind_speed = try values.decode(Double.self, forKey: .wind_speed)
+        windSpeed = try values.decode(Double.self, forKey: .windSpeed)
         weather = try values.decode([Weather].self, forKey: .weather)
         pop = try values.decode(Double.self, forKey: .pop)
     }
 }
+
+//MARK: 3 hours in 5 days
+
+public struct ThreeHourlyResponse: Codable {
+    var list: [ThreeHourly]
+    
+    enum CodingKeys: String, CodingKey {
+        case list
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        list = try values.decode([ThreeHourly].self, forKey: .list)
+    }
+}
+
+public struct ThreeHourly: Codable {
+    var dt: Int // 시간
+    var main: ThreeHourlyTemp // 온도 정보
+    var wind: ThreeHourlyWind
+    var weather: [Weather]
+    
+    enum CodingKeys: String, CodingKey {
+        case dt
+        case main
+        case wind
+        case weather
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        dt = try values.decode(Int.self, forKey: .dt)
+        main = try values.decode(ThreeHourlyTemp.self, forKey: .main)
+        wind = try values.decode(ThreeHourlyWind.self, forKey: .wind)
+        weather = try values.decode([Weather].self, forKey: .weather)
+    }
+}
+
+public struct ThreeHourlyWind: Codable {
+    var windSpeed: Double // 풍소
+    
+    enum CodingKeys: String, CodingKey {
+        case windSpeed = "speed"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        windSpeed = try values.decode(Double.self, forKey: .windSpeed)
+    }
+}
+
+public struct ThreeHourlyTemp: Codable {
+    var temp: Double // 기온
+    var min: Double // 최저 기온
+    var max: Double // 최고 기온
+    
+    enum CodingKeys: String, CodingKey {
+        case temp
+        case min = "temp_min"
+        case max = "temp_max"
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        temp = try values.decode(Double.self, forKey: .temp)
+        min = try values.decode(Double.self, forKey: .min)
+        max = try values.decode(Double.self, forKey: .max)
+    }
+}
+
+
+
+/*
+ "dt": 1665414000,
+ "main": {
+     "temp": 8.96,
+     "feels_like": 6.04,
+     "temp_min": 8.83,
+     "temp_max": 8.96,
+     "pressure": 1015,
+     "sea_level": 1015,
+     "grnd_level": 1013,
+     "humidity": 71,
+     "temp_kf": 0.13
+ },
+ "weather": [
+     {
+         "id": 803,
+         "main": "Clouds",
+         "description": "튼구름",
+         "icon": "04n"
+     }
+ ],
+ "clouds": {
+     "all": 60
+ },
+ "wind": {
+     "speed": 5.65,
+     "deg": 297,
+     "gust": 11.36
+ },
+ "visibility": 10000,
+ "pop": 0,
+ "sys": {
+     "pod": "n"
+ },
+ "dt_txt": "2022-10-10 15:00:00"
+ */
+
 
 //MARK: firebase 는 json 필요 없음
 public struct Board {
@@ -156,23 +265,3 @@ extension Board {
         return self.type.getWeatherType()
     }
 }
-
-
-//public struct Board: Codable {
-//    var type: Int
-//    var text: String // 내용
-//    var createdAt: Int // 생성날짜, timeStamp
-//
-//    enum CodingKeys: String, CodingKey {
-//        case type
-//        case text
-//        case createdAt
-//    }
-//
-//    public init(from decoder: Decoder) throws {
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        type = try values.decode(Int.self, forKey: .type)
-//        text = try values.decode(String.self, forKey: .text)
-//        createdAt = try values.decode(Int.self, forKey: .createdAt)
-//    }
-//}
