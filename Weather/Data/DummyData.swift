@@ -6,5 +6,5 @@
 //
 
 import Foundation
-
-var dummy: [MyLocation: WeatherResponse] = [:]
+//TODO: erase this file
+//var dummy: [MyLocation: WeatherResponse] = [:]

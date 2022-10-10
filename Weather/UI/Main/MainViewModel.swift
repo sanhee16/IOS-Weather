@@ -17,9 +17,6 @@ import Network
 
 
 class MainViewModel: BaseViewModel {
-    //TODO: 이거 설정 지우기, false로 해야 api 호출함
-    private var IS_FOR_DEBUG_DUMMY: Bool = false
-    
     @Published var page: Page = .withIndex(0)
     var locationManager: CLLocationManager
     var myLocation: CLLocation? = nil
@@ -28,6 +25,7 @@ class MainViewModel: BaseViewModel {
     
     @Published var myLocations: [MyLocation] = []
     @Published var weatherInfo: [MyLocation: WeatherResponse] = [:]
+    @Published var weather3HourlyInfo: [MyLocation: [ThreeHourly]] = [:]
     @Published var backgroundColor: Color = .unknown60
     private var api: Api = Api.instance
     private var timerRepeat: Timer?
@@ -190,17 +188,8 @@ class MainViewModel: BaseViewModel {
     }
     
     func getWeather() {
-        //TODO: erase!
         self.weatherInfo.removeAll()
-        if IS_FOR_DEBUG_DUMMY {
-            if !dummy.isEmpty {
-                print("dummy exist")
-                self.weatherInfo = dummy
-                self.isLoading = false
-                return
-            }
-        }
-        print("sandy dummy not exist")
+        self.weather3HourlyInfo.removeAll()
         
         self.isLoading = true
         guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
@@ -213,19 +202,25 @@ class MainViewModel: BaseViewModel {
                 }
                 break
             }
-            self.api.getWeather(apiKey, lat: data.latitude, lon: data.longitude)
-                .run(in: &self.subscription) {[weak self] response in
+            // get3hourlyWeather
+            
+            Publishers
+                .Zip(
+                    self.api.getWeather(apiKey, lat: data.latitude, lon: data.longitude),
+                    self.api.get3hourlyWeather(apiKey, lat: data.latitude, lon: data.longitude)
+                ).run(in: &self.subscription) {[weak self] (response: WeatherResponse, threeHourResponse: ThreeHourlyResponse) in
+                    print("sandy run")
                     guard let self = self else { return }
                     self.weatherInfo[data] = response
                     if isFirst {
                         self.backgroundColor = response.current.weather[0].icon.weatherType().color
                         isFirst = false
                     }
-                    //TODO: erase dummy
-                    dummy[data] = response
-                    //                    print(self.weatherInfo)
+                    self.weather3HourlyInfo[data] = threeHourResponse.list
+                    print(threeHourResponse)
                 } err: { [weak self] err in
                     print(err)
+                    print("sandy err")
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self?.isLoading = false
                     }
@@ -233,8 +228,31 @@ class MainViewModel: BaseViewModel {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         self?.isLoading = false
                     }
-                    print("complete")
+                    print("sandy complete")
                 }
+
+            
+//            self.api.getWeather(apiKey, lat: data.latitude, lon: data.longitude)
+//                .run(in: &self.subscription) {[weak self] response in
+//                    guard let self = self else { return }
+//                    self.weatherInfo[data] = response
+//                    if isFirst {
+//                        self.backgroundColor = response.current.weather[0].icon.weatherType().color
+//                        isFirst = false
+//                    }
+//
+//                    //                    print(self.weatherInfo)
+//                } err: { [weak self] err in
+//                    print(err)
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                        self?.isLoading = false
+//                    }
+//                } complete: { [weak self] in
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                        self?.isLoading = false
+//                    }
+//                    print("complete")
+//                }
         }
     }
     

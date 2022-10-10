@@ -52,8 +52,6 @@ class Api {
     }()
     
     func getWeather(_ apiKey: String, lat: Double, lon: Double) -> AnyPublisher<WeatherResponse, Error> {
-        print("key is \(apiKey)")
-        print("getWeather api call")
         let params = [
             "lat": lat,
             "lon": lon,
@@ -64,6 +62,23 @@ class Api {
         ] as Parameters
         
         return get("/data/3.0/onecall", host: "https://api.openweathermap.org/", parameters: params)
+            .flatMap { response in
+                return Just(response)
+                    .setFailureType(to: Error.self)
+                    .eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
+    }
+    
+    func get3hourlyWeather(_ apiKey: String, lat: Double, lon: Double) -> AnyPublisher<ThreeHourlyResponse, Error> {
+        let params = [
+            "lat": lat,
+            "lon": lon,
+            "appid": apiKey,
+            "lang": "kr",
+            "units": "metric"
+        ] as Parameters
+        
+        return get("/data/2.5/forecast", host: "https://api.openweathermap.org/", parameters: params)
             .flatMap { response in
                 return Just(response)
                     .setFailureType(to: Error.self)
