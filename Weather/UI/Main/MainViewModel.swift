@@ -100,6 +100,7 @@ class MainViewModel: BaseViewModel {
             self.startRepeatTimer()
         }
     }
+    
     // 반복 타이머 시작
     func startRepeatTimer() {
         print("set timer")
