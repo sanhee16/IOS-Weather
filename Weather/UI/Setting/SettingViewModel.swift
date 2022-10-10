@@ -35,14 +35,20 @@ class SettingViewModel: BaseViewModel {
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
         self.locationManager.allowsBackgroundLocationUpdates = true
-        self.isUseGps = Defaults.allowGPS
+        self.isUseGps = Defaults.allowGPS && checkLocationPermission() == .allow
         self.isUseNoti = Defaults.useNoti
-        self.isAvailableGPSToggle = checkPermission() == .allow
+        self.isAvailableGPSToggle = checkLocationPermission() == .allow
         super.init(coordinator)
     }
     
     func onAppear() {
         setDisplayTime()
+        
+        self.locationManager = CLLocationManager()
+        self.locationManager.allowsBackgroundLocationUpdates = true
+        self.isUseGps = Defaults.allowGPS && checkLocationPermission() == .allow
+        self.isUseNoti = Defaults.useNoti
+        self.isAvailableGPSToggle = checkLocationPermission() == .allow
     }
     
     func onClose() {
@@ -87,22 +93,24 @@ class SettingViewModel: BaseViewModel {
         self.coordinator?.presentDevInfoView()
     }
     
-    func onClickNotiTimeSetting() {
-        self.coordinator?.presentNotiSettingView(callback: {[weak self] res in
+    func onClickCheckPermission() {
+        self.coordinator?.presentCheckPermissionView(){ [weak self] in
             self?.onAppear()
-        })
+        }
+    }
+    
+    func onClickNotiTimeSetting() {
+        self.coordinator?.presentCheckPermissionView() { [weak self] in
+            self?.onAppear()
+        }
     }
     
     func onClickGPSToggle() {
-        let status = checkPermission()
+        let status = checkLocationPermission()
         if status != .allow {
-            self.coordinator?.presentAlertView(.yesOrNo, title: "권한 설정 필요", description: "위치정보를 위해서는 권한설정이 필요합니다.\n앱 설정에서 위치정보를 항상 허용으로 바꾸어 주세요.", callback: {[weak self] res in
-                if res {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    }
-                }
-            })
+            self.coordinator?.presentCheckPermissionView() { [weak self] in
+                self?.onAppear()
+            }
         }
     }
 }
