@@ -28,7 +28,7 @@ struct BoardMainView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .center, spacing: 0) {
-                Topbar("보드", type: .back) { // 이 날씨에 뭐하지?
+                Topbar("이 날씨엔 뭐할까?", type: .back) { // 이 날씨에 뭐하지?
                     vm.onClose()
                 }
                 ScrollView(.horizontal, showsIndicators: false) {

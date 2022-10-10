@@ -45,6 +45,14 @@ struct MainView: View {
                                 vm.onClickGPS()
                             }
                             .padding(.trailing, 7)
+                        Image("note")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(both: 16)
+                            .onTapGesture {
+                                vm.onClickBoard()
+                            }
+                            .padding(.trailing, 7)
                         Image("setting")
                             .resizable()
                             .scaledToFit()

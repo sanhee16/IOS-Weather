@@ -55,10 +55,10 @@ class SplashViewModel: BaseViewModel {
     func onStartSplashTimer() {
         //TODO: 3초로 변경하기!!
         //TODO: main -> changeMain
-        self.coordinator?.presentBoardMainView()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-//            self?.coordinator?.presentMain()
-//        }
+//        self.coordinator?.presentBoardMainView()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.coordinator?.presentMain()
+        }
     }
     
     // 반복 타이머 시작

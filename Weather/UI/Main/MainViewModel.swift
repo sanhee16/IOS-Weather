@@ -18,7 +18,7 @@ import Network
 
 class MainViewModel: BaseViewModel {
     //TODO: 이거 설정 지우기, false로 해야 api 호출함
-    private var IS_FOR_DEBUG_DUMMY: Bool = true
+    private var IS_FOR_DEBUG_DUMMY: Bool = false
     
     @Published var page: Page = .withIndex(0)
     var locationManager: CLLocationManager
@@ -353,5 +353,9 @@ class MainViewModel: BaseViewModel {
                 self?.onAppear()
             }
         }
+    }
+    
+    func onClickBoard() {
+        self.coordinator?.presentBoardMainView()
     }
 }
