@@ -14,6 +14,21 @@ struct TimeUnit {
 }
 
 extension Int {
+    func getWeatherType() -> WeatherType {
+        switch self {
+        case 0: return .clearSky
+        case 1: return .fewClouds
+        case 2: return .scatteredClouds
+        case 3: return .brokenClouds
+        case 4: return .showerRain
+        case 5: return .rain
+        case 6: return .thunderStorm
+        case 7: return .snow
+        case 8: return .mist
+        default: return .unknown
+        }
+    }
+    
     func getDate() -> String {
         let timeToDate = Date(timeIntervalSince1970: Double(self)) // 2021-10-13 17:16:15 +0000
         let date = DateFormatter()
@@ -138,6 +153,16 @@ extension View {
         return self
             .frame(width: both, height: both, alignment: aligment)
     }
+    
+    func rectReader(_ binding: Binding<CGRect>, in space: CoordinateSpace) -> some View {
+        self.background(GeometryReader { (geometry) -> AnyView in
+            let rect = geometry.frame(in: space)
+            DispatchQueue.main.async {
+                binding.wrappedValue = rect
+            }
+            return AnyView(Rectangle().fill(Color.clear))
+        })
+    }
 }
 
 extension Color {
@@ -258,15 +283,22 @@ extension Color {
     public static let lightblue100: Color = Color(hex: "#78D7FF")
     public static let lightblue80: Color = Color(hex: "#78D7FF", opacity: 0.8)
     public static let lightblue60: Color = Color(hex: "#78D7FF", opacity: 0.6)
+    public static let lightblue01: Color = Color(hex: "#C7EEFF")
+    public static let lightblue02: Color = Color(hex: "#B9EAFF")
+    public static let lightblue03: Color = Color(hex: "#E4F7FF")
+    
     public static let darkblue100: Color = Color(hex: "#1875FF")
     public static let darkblue80: Color = Color(hex: "#1875FF", opacity: 0.8)
     public static let darkblue60: Color = Color(hex: "#1875FF", opacity: 0.6)
+    
     public static let blue100: Color = Color(hex: "#15B9FF")
     public static let blue80: Color = Color(hex: "#15B9FF", opacity: 0.8)
     public static let blue60: Color = Color(hex: "#15B9FF", opacity: 0.6)
+    
     public static let red100: Color = Color(hex: "#FF4C24")
     public static let red80: Color = Color(hex: "#FF4C24", opacity: 0.8)
     public static let red60: Color = Color(hex: "#FF4C24", opacity: 0.6)
+    
     public static let yellow100: Color = Color(hex: "#FFD027")
     public static let yellow80: Color = Color(hex: "#FFD027", opacity: 0.8)
     public static let yellow60: Color = Color(hex: "#FFD027", opacity: 0.6)
@@ -279,6 +311,7 @@ extension Color {
     public static let lightGray01: Color = Color(hex: "#E8E8E8")
     public static let lightGray02: Color = Color(hex: "#EAEDF0")
     public static let lightGray03: Color = Color(hex: "#F8F8F8")
+    public static let lightGray04: Color = Color(hex: "#FEFEFE")
     
     public static let dim: Color = Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.6)
 }
@@ -308,6 +341,7 @@ extension UIColor {
             self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
         }
     }
+    public static let lightblue03: UIColor = UIColor(hex: "#E4F7FF")
     
     public static let clearSky60: UIColor = UIColor(hex: "#78D7FF", opacity: 0.4)
     public static let fewClouds60: UIColor = UIColor(hex: "#76A5FF", opacity: 0.4)
