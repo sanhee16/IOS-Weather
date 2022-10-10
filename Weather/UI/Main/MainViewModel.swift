@@ -31,7 +31,16 @@ class MainViewModel: BaseViewModel {
     @Published var backgroundColor: Color = .unknown60
     private var api: Api = Api.instance
     private var timerRepeat: Timer?
-
+    
+    @Published var isOnFeelLike: DetailItem = (type: .feelLike, isOn: true)
+    @Published var isOnWindSpeed: DetailItem = (type: .windSpeed, isOn: true)
+    @Published var isOnPressure: DetailItem = (type: .pressure, isOn: true)
+    @Published var isOnHumidity: DetailItem = (type: .humidity, isOn: true)
+    @Published var isOnUV: DetailItem = (type: .uv, isOn: true)
+    @Published var isOnCloud: DetailItem = (type: .cloud, isOn: true)
+    
+    @Published var isDetailViewCount: Int = 6
+    
     override init(_ coordinator: AppCoordinator) {
         self.locationManager = CLLocationManager()
         self.locationManager.allowsBackgroundLocationUpdates = true
@@ -54,12 +63,27 @@ class MainViewModel: BaseViewModel {
         }
         
         self.myLocations.append(MyLocation(-1, cityName: "", indexOfDB: nil, longitude: 0.0, latitude: 0.0))
-
+        
         getWeather()
     }
-
+    
     func onAppear() {
-        if !Defaults.launchBefore {
+        self.isOnFeelLike = (type: .feelLike, isOn: Defaults.isUseDetailFeelLike)
+        self.isOnWindSpeed = (type: .windSpeed, isOn: Defaults.isUseDetailWindSpeed)
+        self.isOnPressure = (type: .pressure, isOn: Defaults.isUseDetailPressure)
+        self.isOnHumidity = (type: .humidity, isOn: Defaults.isUseDetailHumidity)
+        self.isOnUV = (type: .uv, isOn: Defaults.isUseDetailUV)
+        self.isOnCloud = (type: .cloud, isOn: Defaults.isUseDetailCloud)
+        
+        self.isDetailViewCount = 0
+        self.isDetailViewCount += Defaults.isUseDetailFeelLike ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailWindSpeed ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailPressure ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailHumidity ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailUV ? 1 : 0
+        self.isDetailViewCount += Defaults.isUseDetailCloud ? 1 : 0
+        
+        if !Defaults.launchBefore { // 첫 실행
             firstLaunchLogic()
         } else {
             self.isLoading = true
@@ -72,10 +96,11 @@ class MainViewModel: BaseViewModel {
         if !Defaults.launchBefore { //최초 실행시 지역 data를 local DB에 담는다.
             Defaults.launchBefore = true
             locationManager.requestWhenInUseAuthorization()
-            print("onStart : \(checkPermission())")
+            print("onStart : \(checkLocationPermission())")
             self.startRepeatTimer()
         }
     }
+    
     // 반복 타이머 시작
     func startRepeatTimer() {
         print("set timer")
@@ -86,7 +111,7 @@ class MainViewModel: BaseViewModel {
     @objc func timerFireRepeat(timer: Timer) {
         print("timer is running")
         if timer.userInfo != nil {
-            let status = checkPermission()
+            let status = checkLocationPermission()
             if status != .notYet {
                 stopRepeatTimer()
             }
@@ -104,7 +129,7 @@ class MainViewModel: BaseViewModel {
             timerRepeat = nil
             // timer 종료되고 작업 시작
             //TODO: 첫번째 실행 시 test 필요, 현재 허용 안하면 선택목록으로 넘기기
-            let status = checkPermission()
+            let status = checkLocationPermission()
             if status == .allow {
                 self.isLoading = true
                 self.page = .first()
@@ -128,7 +153,7 @@ class MainViewModel: BaseViewModel {
     func loadAllData() {
         let allow = Defaults.allowGPS
         if allow {
-            let status = checkPermission()
+            let status = checkLocationPermission()
             if status != .allow {
                 Defaults.allowGPS = false
                 removeCurrentLocationOnDB()
@@ -149,6 +174,10 @@ class MainViewModel: BaseViewModel {
             if item.indexOfDB == nil {
                 try! realm.write {
                     realm.delete(item)
+                    Defaults.useNoti = false
+                    Defaults.currentLatitude = 0.0
+                    Defaults.currentLongitude = 0.0
+                    Defaults.currentCity = ""
                 }
                 return
             }
@@ -176,6 +205,7 @@ class MainViewModel: BaseViewModel {
         self.isLoading = true
         guard let apiKey = Bundle.main.WEATHER_API_KEY else { return }
         print("api key: \(apiKey)")
+        var isFirst = true
         for data in myLocations {
             if data.idx == -1 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -187,9 +217,13 @@ class MainViewModel: BaseViewModel {
                 .run(in: &self.subscription) {[weak self] response in
                     guard let self = self else { return }
                     self.weatherInfo[data] = response
+                    if isFirst {
+                        self.backgroundColor = response.current.weather[0].icon.weatherType().color
+                        isFirst = false
+                    }
                     //TODO: erase dummy
                     dummy[data] = response
-//                    print(self.weatherInfo)
+                    //                    print(self.weatherInfo)
                 } err: { [weak self] err in
                     print(err)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -260,13 +294,19 @@ class MainViewModel: BaseViewModel {
                                 print("isUpdate")
                                 let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
                                 self.realm.add(copy, update: .all)
+                                Defaults.currentLatitude = latitude
+                                Defaults.currentLongitude = longitude
+                                Defaults.currentCity = address
                                 
-//                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
+                                //                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude), update: .modified)
                             } else {
                                 print("not update")
                                 let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
                                 self.realm.add(copy)
-//                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
+                                Defaults.currentLatitude = latitude
+                                Defaults.currentLongitude = longitude
+                                Defaults.currentCity = address
+                                //                                self.realm.add(MyLocation(idx, cityName: address, indexOfDB: nil, longitude: longitude, latitude: latitude))
                             }
                             self.loadMyLocations()
                         }
@@ -296,7 +336,7 @@ class MainViewModel: BaseViewModel {
     
     func onClickGPS() {
         print("onClickGPS")
-        let status = checkPermission()
+        let status = checkLocationPermission()
         print("status: \(status)")
         if status == .allow {
             self.coordinator?.presentAlertView(.yesOrNo, title: "현재 위치 사용", description: "현재 위치의 정보를 불러오겠습니까?\n데이터는 저장되지 않습니다.") { [weak self] res in
@@ -309,13 +349,9 @@ class MainViewModel: BaseViewModel {
                 }
             }
         } else {
-            self.coordinator?.presentAlertView(.yesOrNo, title: "권한 설정 필요", description: "위치정보를 위해서는 권한설정이 필요합니다.\n앱 설정에서 위치정보를 항상 허용으로 바꾸어 주세요.", callback: {[weak self] res in
-                if res {
-                    if let url = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                    }
-                }
-            })
+            self.coordinator?.presentCheckPermissionView() { [weak self] in
+                self?.onAppear()
+            }
         }
     }
 }

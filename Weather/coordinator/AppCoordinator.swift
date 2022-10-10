@@ -79,4 +79,19 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = AlertView.vc(self, type: type, title: title, description: description, callback: callback)
         self.present(vc, animated: true)
     }
+    
+    func presentNotiSettingView(callback: ((Bool) -> ())? = nil) {
+        let vc = NotiSettingView.vc(self, callback: callback)
+        self.present(vc, animated: true)
+    }
+    
+    func presentDetailSettingViewModel() {
+        let vc = DetailSettingView.vc(self)
+        self.present(vc, animated: true)
+    }
+    
+    func presentCheckPermissionView(onDismiss: @escaping ()->()) {
+        let vc = CheckPermissionView.vc(self)
+        self.present(vc, animated: true, onDismiss: onDismiss)
+    }
 }
