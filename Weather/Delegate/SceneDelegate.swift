@@ -73,7 +73,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                             let nContent = UNMutableNotificationContent() // 로컬알림에 대한 속성 설정 가능
                             nContent.title = "오늘의 날씨 알림"
                             nContent.subtitle = "\(name) 의 오늘 날씨는 \(response.current.weather[0].description)이고, 풍속은 \(response.current.wind_speed.windSpeed()) 입니다."
-                            nContent.body = "현재 기온: \(response.current.temp.KelToCel())\n최저: \(response.daily[0].temp.min.KelToCel()) / 최고: \(response.daily[0].temp.max.KelToCel())" // response.current.temp.KelToCel()
+                            nContent.body = "현재 기온: \(response.current.temp.temp())\n최저: \(response.daily[0].temp.min.temp()) / 최고: \(response.daily[0].temp.max.temp())" // response.current.temp.KelToCel()
                             nContent.sound = UNNotificationSound.default
                             //                    nContent.userInfo = ["name":"userName"]
                             

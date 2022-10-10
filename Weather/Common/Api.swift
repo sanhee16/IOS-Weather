@@ -60,6 +60,7 @@ class Api {
             "exclude": "minutely,hourly,alerts",
             "appid": apiKey,
             "lang": "kr",
+            "units": "metric"
         ] as Parameters
         
         return get("/data/3.0/onecall", host: "https://api.openweathermap.org/", parameters: params)

@@ -97,8 +97,8 @@ extension Int {
 }
 
 extension Double {
-    func KelToCel() -> String {
-        return String(format: "%0.1f°", (self - 273.15))
+    func temp() -> String {
+        return String(format: "%0.1f°", self)
     }
     
     func windSpeed() -> String {

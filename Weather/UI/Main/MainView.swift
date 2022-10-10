@@ -116,10 +116,10 @@ struct MainView: View {
                 }
             }
             HStack(alignment: .center, spacing: 8) {
-                Text(item.temp.min.KelToCel())
+                Text(item.temp.min.temp())
                     .font(.kr12r)
                     .foregroundColor(.blue100)
-                Text(item.temp.max.KelToCel())
+                Text(item.temp.max.temp())
                     .font(.kr12r)
                     .foregroundColor(.red100)
             }
@@ -166,7 +166,7 @@ struct MainView: View {
                                                     .foregroundColor(.gray100)
                                             )
                                     }
-                                    Text(info.current.temp.KelToCel())
+                                    Text(info.current.temp.temp())
                                         .font(.kr45b)
                                         .foregroundColor(info.current.weather[0].icon.weatherType().textcolor)
                                         .padding(.bottom, 4)
@@ -285,7 +285,7 @@ struct MainView: View {
             }
             HStack(alignment: .center, spacing: 0) {
                 if $vm.isOnFeelLike.wrappedValue.isOn {
-                    extraItem(geometry, title: $vm.isOnFeelLike.wrappedValue.type.name, description: info.current.feels_like.KelToCel())
+                    extraItem(geometry, title: $vm.isOnFeelLike.wrappedValue.type.name, description: info.current.feels_like.temp())
                 }
                 if $vm.isOnUV.wrappedValue.isOn {
                     extraItem(geometry, title: $vm.isOnUV.wrappedValue.type.name, description: "\(info.current.uvi)")
@@ -322,12 +322,12 @@ struct MainView: View {
     private func currentTempView(_ geometry: GeometryProxy, info: WeatherResponse) -> some View {
         return HStack(alignment: .center, spacing: 0) {
             Spacer()
-            tempItem(geometry, title: "최저 기온", description: info.daily[0].temp.min.KelToCel(), image: "min")
+            tempItem(geometry, title: "최저 기온", description: info.daily[0].temp.min.temp(), image: "min")
             Spacer()
             Divider()
                 .padding([.top, .bottom], 6)
             Spacer()
-            tempItem(geometry, title: "최고 기온", description: info.daily[0].temp.max.KelToCel(), image: "max")
+            tempItem(geometry, title: "최고 기온", description: info.daily[0].temp.max.temp(), image: "max")
             Spacer()
         }
         .padding(EdgeInsets(top: 10, leading: 15, bottom: 15, trailing: 15))
