@@ -100,6 +100,11 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
+    func presentWriteBoardView() {
+        let vc = WriteBoardView.vc(self)
+        self.present(vc, animated: true)
+    }
+    
     //MARK: change
     //TODO: main을 change로 변경 필요!!
 }

@@ -304,6 +304,7 @@ extension Color {
     public static let lightGray01: Color = Color(hex: "#E8E8E8")
     public static let lightGray02: Color = Color(hex: "#EAEDF0")
     public static let lightGray03: Color = Color(hex: "#F8F8F8")
+    public static let lightGray04: Color = Color(hex: "#FEFEFE")
     
     public static let dim: Color = Color(.sRGB, red: 0, green: 0, blue: 0, opacity: 0.6)
 }

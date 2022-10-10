@@ -41,6 +41,7 @@
 		2666149828F3D24D00ABA5D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2666149728F3D24D00ABA5D8 /* GoogleService-Info.plist */; };
 		2666149B28F3EB2400ABA5D8 /* WriteBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149A28F3EB2400ABA5D8 /* WriteBoardView.swift */; };
 		2666149D28F3EB2A00ABA5D8 /* WriteBoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149C28F3EB2A00ABA5D8 /* WriteBoardViewModel.swift */; };
+		2666149F28F3EE5300ABA5D8 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149E28F3EE5300ABA5D8 /* MultilineTextView.swift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
 		63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AF928ED168C0079DB37 /* SwiftUIPager */; };
@@ -101,6 +102,7 @@
 		2666149728F3D24D00ABA5D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Delegate/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2666149A28F3EB2400ABA5D8 /* WriteBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBoardView.swift; sourceTree = "<group>"; };
 		2666149C28F3EB2A00ABA5D8 /* WriteBoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBoardViewModel.swift; sourceTree = "<group>"; };
+		2666149E28F3EE5300ABA5D8 /* MultilineTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
 		63705AE728ED118A0079DB37 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63705AEE28ED118B0079DB37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63705AF128ED118B0079DB37 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -403,6 +405,7 @@
 				2643FF0B28F1741100EF73E6 /* EmailSender.swift */,
 				26498BDB28F28D7E00E89FB2 /* LottieView.swift */,
 				26498BDD28F28E6B00E89FB2 /* ProgressView.swift */,
+				2666149E28F3EE5300ABA5D8 /* MultilineTextView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 			files = (
 				2643FF1628F1750A00EF73E6 /* DevInfoViewModel.swift in Sources */,
 				63705B1A28ED1C6A0079DB37 /* Util.swift in Sources */,
+				2666149F28F3EE5300ABA5D8 /* MultilineTextView.swift in Sources */,
 				2666149B28F3EB2400ABA5D8 /* WriteBoardView.swift in Sources */,
 				2666149428F3CF6D00ABA5D8 /* BoardMainView.swift in Sources */,
 				63705B1D28ED3E060079DB37 /* MainView.swift in Sources */,

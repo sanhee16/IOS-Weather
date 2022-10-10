@@ -74,6 +74,10 @@ class BoardMainViewModel: BaseViewModel {
         }
     }
     
+    func onClickAddButton() {
+        self.coordinator?.presentWriteBoardView()
+    }
+    
     func addData() {
         var ref: DocumentReference? = nil
         idx += 1

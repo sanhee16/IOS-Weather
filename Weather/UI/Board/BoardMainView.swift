@@ -27,7 +27,7 @@ struct BoardMainView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .center, spacing: 0) {
                 Topbar("보드", type: .back) { // 이 날씨에 뭐하지?
                     vm.onClose()
                 }
@@ -80,6 +80,9 @@ struct BoardMainView: View {
                     .foregroundColor(.blue100)
                     .shadow(color: .gray30, radius: 10, x: 3, y: 4)
             )
+            .onTapGesture {
+                vm.onClickAddButton()
+            }
     }
     private func drawBody(_ geometry: GeometryProxy) -> some View {
         return VStack(alignment: .center, spacing: 0) {
@@ -114,7 +117,7 @@ struct BoardMainView: View {
         .frame(width: geometry.size.width - 40)
         .background(
             RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.lightGray03)
+                .foregroundColor(.lightGray04)
                 .shadow(color: .gray30.opacity(0.6), radius: 4, x: 2, y: 6)
         )
     }
@@ -123,7 +126,7 @@ struct BoardMainView: View {
         return VStack(alignment: .center, spacing: 0) {
             Text(title)
                 .font(isSelected ? .kr15b : .kr15r)
-                .foregroundColor(isSelected ? .gray100 : .gray60)
+                .foregroundColor(isSelected ? .blue100 : .gray60)
                 .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
 //            }
         }
