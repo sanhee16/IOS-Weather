@@ -94,4 +94,12 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = CheckPermissionView.vc(self)
         self.present(vc, animated: true, onDismiss: onDismiss)
     }
+    
+    func presentBoardMainView(weatherType: WeatherType = .clearSky) {
+        let vc = BoardMainView.vc(self, weatherType: weatherType)
+        self.present(vc, animated: true)
+    }
+    
+    //MARK: change
+    //TODO: main을 change로 변경 필요!!
 }

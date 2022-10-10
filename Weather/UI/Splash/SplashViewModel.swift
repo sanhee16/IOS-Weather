@@ -38,10 +38,15 @@ class SplashViewModel: BaseViewModel {
             Defaults.isUseDetailPressure = true
             Defaults.isUseDetailWindSpeed = true
             
-            addLocations()
+            let data = realm.objects(CityLocationInfo.self).sorted(byKeyPath: "idx", ascending: true)
+            if data.isEmpty {
+                addLocations()
+                startRepeatTimer()
+            } else {
+                //MARK: wait for noti permission
+                startRepeatTimer()
+            }
             
-            //MARK: wait for noti permission
-            startRepeatTimer()
         } else {
             self.onStartSplashTimer()
         }
@@ -49,9 +54,11 @@ class SplashViewModel: BaseViewModel {
     
     func onStartSplashTimer() {
         //TODO: 3초로 변경하기!!
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            self?.coordinator?.presentMain()
-        }
+        //TODO: main -> changeMain
+        self.coordinator?.presentBoardMainView()
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+//            self?.coordinator?.presentMain()
+//        }
     }
     
     // 반복 타이머 시작
