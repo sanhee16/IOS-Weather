@@ -50,15 +50,29 @@ struct SelectLocationView: View {
                             Spacer()
                             if $vm.deleteCnt.wrappedValue > 0 {
                                 Text("삭제하기")
-                                    .font(.kr14r)
+                                    .font(.kr13r)
                                     .foregroundColor(.gray100)
+                                    .padding(EdgeInsets(top: 7, leading: 9, bottom: 7, trailing: 9))
+                                    .border(.gray90, lineWidth: 1.2, cornerRadius: 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .foregroundColor(.white)
+                                            .shadow(color: .gray30, radius: 2, x: 2, y: 2)
+                                    )
                                     .onTapGesture {
                                         vm.onClickAdmitEdit()
                                     }
                             }
                             Text("취소")
-                                .font(.kr14r)
+                                .font(.kr13r)
                                 .foregroundColor(.gray60)
+                                .padding(EdgeInsets(top: 7, leading: 9, bottom: 7, trailing: 9))
+                                .border(.gray60, lineWidth: 1.2, cornerRadius: 12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .foregroundColor(.white)
+                                        .shadow(color: .gray30, radius: 2, x: 2, y: 2)
+                                )
                                 .padding(.leading, 12)
                                 .onTapGesture {
                                     vm.onClickCancelEdit()
@@ -67,8 +81,15 @@ struct SelectLocationView: View {
                             Spacer()
                             if !$vm.myLocations.wrappedValue.isEmpty {
                                 Text("편집하기")
-                                    .font(.kr14r)
+                                    .font(.kr13r)
                                     .foregroundColor(.gray100)
+                                    .padding(EdgeInsets(top: 7, leading: 9, bottom: 7, trailing: 9))
+                                    .border(.gray90, lineWidth: 1.2, cornerRadius: 12)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .foregroundColor(.white)
+                                            .shadow(color: .gray30, radius: 2, x: 2, y: 2)
+                                    )
                                     .onTapGesture {
                                         vm.onClickEdit()
                                     }
@@ -90,10 +111,15 @@ struct SelectLocationView: View {
                         Spacer()
                         if $vm.selectedLocation.wrappedValue != nil {
                             Text("추가하기")
-                                .font(.kr13r)
-                                .foregroundColor(.gray90)
-                                .padding(EdgeInsets(top: 4, leading: 6, bottom: 4, trailing: 6))
-                                .border(.darkblue60, lineWidth: 2, cornerRadius: 8)
+                                .font(.kr14r)
+                                .foregroundColor(.gray100)
+                                .padding(EdgeInsets(top: 7, leading: 9, bottom: 7, trailing: 9))
+                                .border(.gray90, lineWidth: 1.2, cornerRadius: 12)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .foregroundColor(.white)
+                                        .shadow(color: .gray30, radius: 2, x: 2, y: 2)
+                                )
                                 .onTapGesture {
                                     vm.addToMyLocation()
                                 }
@@ -152,13 +178,14 @@ struct SelectLocationView: View {
         .background(
             RoundedRectangle(cornerRadius: 12)
                 .foregroundColor(item.editing ? .lightblue100 : .clear)
+                .shadow(color: .gray30, radius: 4, x: 2, y: 4)
         )
     }
     
     
     private func selectLocation(_ geometry: GeometryProxy) -> some View {
         return ScrollView(showsIndicators: false) {
-            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 15), count: 4), spacing: 6) {
+            LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 15), count: 4), spacing: 8) {
                 ForEach($vm.specificLocations.wrappedValue.indices, id: \.self) { idx in
                     let item = $vm.specificLocations.wrappedValue[idx]
                     locationItem(geometry, name: item.location.city2, isSelected: item.selectedStatus) {
@@ -171,7 +198,7 @@ struct SelectLocationView: View {
     }
     
     private func selectCity(_ geometry: GeometryProxy) -> some View {
-        return LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 15), count: 4), spacing: 6) {
+        return LazyVGrid(columns: Array(repeating: .init(.flexible(), spacing: 15), count: 4), spacing: 8) {
             ForEach($vm.cityList.wrappedValue.indices, id: \.self) { idx in
                 let item = $vm.cityList.wrappedValue[idx]
                 let isSelected: SeletedStatus = $vm.selectedCityIdx.wrappedValue == idx ? .selected : .none
@@ -190,10 +217,11 @@ struct SelectLocationView: View {
             .foregroundColor(isSelected.textColor)
             .multilineTextAlignment(.center)
             .frame(width: width, height: 36, alignment: .center)
-            .border(isSelected.borderColor, lineWidth: 2, cornerRadius: 12)
+            .border(isSelected.borderColor, lineWidth: 1.4, cornerRadius: 12)
             .background(
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(isSelected.backgroundColor)
+                    .shadow(color: .gray30, radius: 4, x: 2, y: 4)
             )
             .onTapGesture {
                 if let onTap = onTap {

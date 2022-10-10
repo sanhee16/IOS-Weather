@@ -27,6 +27,7 @@ struct DetailSettingView: View {
                 Topbar("날씨 세부 설정", type: .back) {
                     vm.onClose()
                 }
+                .padding(.bottom, 10)
                 itemView($vm.isOnFeelLike)
                 itemView($vm.isOnWindSpeed)
                 itemView($vm.isOnPressure)
@@ -59,6 +60,7 @@ struct DetailSettingView: View {
                     .background(
                         RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(isOn ? .green.opacity(0.9) : .red.opacity(0.9))
+                            .shadow(color: .gray60, radius: 4, x: 2, y: 4)
                     )
                     .onTapGesture {
                         vm.updateStatus(item.wrappedValue.type)
@@ -67,6 +69,6 @@ struct DetailSettingView: View {
             Divider()
                 .padding(.top, 12)
         }
-        .padding(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
+        .padding(EdgeInsets(top: 6, leading: 22, bottom: 6, trailing: 22))
     }
 }
