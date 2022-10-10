@@ -70,6 +70,10 @@ class SettingViewModel: BaseViewModel {
     }
     
     //functions
+    func onClickDetailSetting() {
+        self.coordinator?.presentDetailSettingViewModel()
+    }
+    
     func onClickContact() {
         //TODO: test with device
         //        self.coordinator?.presentSendEmailView()

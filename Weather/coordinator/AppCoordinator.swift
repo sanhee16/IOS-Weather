@@ -84,4 +84,9 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = NotiSettingView.vc(self, callback: callback)
         self.present(vc, animated: true)
     }
+    
+    func presentDetailSettingViewModel() {
+        let vc = DetailSettingView.vc(self)
+        self.present(vc, animated: true)
+    }
 }

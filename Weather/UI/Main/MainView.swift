@@ -218,8 +218,9 @@ struct MainView: View {
                                 
                                 VStack(alignment: .leading, spacing: 6) {
                                     currentTempView(geometry, info: info)
-                                    currentExtraView(geometry, info: info)
-//                                    todayWeather("temp", description: info.current.temp.KelToCel())
+                                    if $vm.isDetailViewCount.wrappedValue > 0 {
+                                        currentExtraView(geometry, info: info)
+                                    }
                                 }
                                 
                                 Divider()
@@ -264,30 +265,40 @@ struct MainView: View {
     private func currentExtraView(_ geometry: GeometryProxy, info: WeatherResponse) -> some View {
         return VStack(alignment: .center, spacing: 4) {
             HStack(alignment: .center, spacing: 0) {
-                extraItem(geometry, title: "기압", description: "\(info.current.pressure)")
-                Spacer()
-                extraItem(geometry, title: "습도", description: "\(info.current.humidity)%")
-                Spacer()
-                extraItem(geometry, title: "풍속", description: info.current.wind_speed.windSpeed())
+                if $vm.isOnPressure.wrappedValue.isOn {
+                    extraItem(geometry, title: $vm.isOnPressure.wrappedValue.type.name, description: "\(info.current.pressure)")
+                }
+                if $vm.isOnHumidity.wrappedValue.isOn {
+                    extraItem(geometry, title: $vm.isOnHumidity.wrappedValue.type.name, description: "\(info.current.humidity)%")
+                }
+                if $vm.isOnWindSpeed.wrappedValue.isOn {
+                    extraItem(geometry, title: $vm.isOnWindSpeed.wrappedValue.type.name, description: info.current.wind_speed.windSpeed())
+                }
             }
             HStack(alignment: .center, spacing: 0) {
-                extraItem(geometry, title: "체감온도", description: info.current.feels_like.KelToCel())
-                Spacer()
-                extraItem(geometry, title: "자외선", description: "\(info.current.uvi)")
-                Spacer()
-                extraItem(geometry, title: "흐림 정도", description: "\(info.current.clouds)%")
+                if $vm.isOnFeelLike.wrappedValue.isOn {
+                    extraItem(geometry, title: $vm.isOnFeelLike.wrappedValue.type.name, description: info.current.feels_like.KelToCel())
+                }
+                if $vm.isOnUV.wrappedValue.isOn {
+                    extraItem(geometry, title: $vm.isOnUV.wrappedValue.type.name, description: "\(info.current.uvi)")
+                }
+                if $vm.isOnCloud.wrappedValue.isOn {
+                    extraItem(geometry, title: $vm.isOnCloud.wrappedValue.type.name, description: "\(info.current.clouds)%")
+                }
             }
         }
-        .padding(EdgeInsets(top: 10, leading: 15, bottom: 15, trailing: 15))
+        .padding(EdgeInsets(top: 10, leading: 0, bottom: 15, trailing: 0))
+        .frame(width: geometry.size.width - 66 - 24)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .foregroundColor(.white.opacity(0.4))
         )
+        .frame(width: geometry.size.width - 66 - 24)
         .padding([.top, .bottom], 6)
     }
     
     private func extraItem(_ geometry: GeometryProxy, title: String, description: String) -> some View {
-        let width = (geometry.size.width - 140) / 3
+        let width = (geometry.size.width - 66 - 30 - 24) / 3
         return VStack(alignment: .center, spacing: 4) {
             Text(title)
                 .font(.kr14b)

@@ -59,15 +59,15 @@ enum WeatherType {
     //TODO: 배경 색상 정하기!
     var textcolor: Color {
         switch self {
-        case .clearSky: return .clearSky90
-        case .fewClouds: return .fewClouds90
+        case .clearSky: return Color(hex: "#0090CC").opacity(0.9)
+        case .fewClouds: return Color(hex: "#377BFF").opacity(0.9)
         case .scatteredClouds: return .scatteredClouds90
         case .brokenClouds: return .brokenClouds90
-        case .showerRain: return .showerRain90
+        case .showerRain: return Color(hex: "#00C07B").opacity(0.9)
         case .rain: return .rain90
-        case .thunderStorm: return .thunderStorm90
-        case .snow: return .snow90
-        case .mist: return .mist90
+        case .thunderStorm: return Color(hex: "#4332AD").opacity(0.9)
+        case .snow: return .gray90
+        case .mist: return .gray90
         case .unknown: return .unknown90
         }
     }
@@ -114,6 +114,37 @@ enum WeatherType {
         case .snow: return "눈이 옵니다!"
         case .mist: return "안개가 끼니 주의하세요"
         case .unknown: return ""
+        }
+    }
+}
+
+enum WeatherDetail {
+    case feelLike
+    case windSpeed
+    case pressure
+    case humidity
+    case uv
+    case cloud
+    
+    var name: String {
+        switch self {
+        case .feelLike: return "체감온도"
+        case .windSpeed: return "풍속"
+        case .pressure: return "기압"
+        case .humidity: return "습도"
+        case .uv: return "자외선"
+        case .cloud: return "흐림 정도"
+        }
+    }
+    
+    var sample: String {
+        switch self {
+        case .feelLike: return ""
+        case .windSpeed: return ""
+        case .pressure: return ""
+        case .humidity: return ""
+        case .uv: return ""
+        case .cloud: return ""
         }
     }
 }

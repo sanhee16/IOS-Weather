@@ -27,6 +27,14 @@ class SplashViewModel: BaseViewModel {
         if !Defaults.launchBefore { //최초 실행시 지역 data를 local DB에 담는다.
 //            locationManager.requestWhenInUseAuthorization()
 //            print("onStart : \(checkPermission())")
+            //MARK: 최초실행 Setting
+            Defaults.isUseDetailFeelLike = true
+            Defaults.isUseDetailCloud = true
+            Defaults.isUseDetailHumidity = true
+            Defaults.isUseDetailUV = true
+            Defaults.isUseDetailPressure = true
+            Defaults.isUseDetailWindSpeed = true
+            
             addLocations()
         }
         self.onStartTimer()
