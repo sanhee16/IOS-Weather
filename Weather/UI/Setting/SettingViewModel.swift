@@ -100,7 +100,7 @@ class SettingViewModel: BaseViewModel {
     }
     
     func onClickNotiTimeSetting() {
-        self.coordinator?.presentCheckPermissionView() { [weak self] in
+        self.coordinator?.presentNotiSettingView(){[weak self] _ in
             self?.onAppear()
         }
     }

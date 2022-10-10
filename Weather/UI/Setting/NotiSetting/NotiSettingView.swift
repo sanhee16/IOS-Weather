@@ -15,7 +15,7 @@ struct NotiSettingView: View {
         let vc = BaseViewController.init(view)
         vc.modalPresentationStyle = .overCurrentContext
         vc.view.backgroundColor = UIColor.clear
-        vc.controller.view.backgroundColor = UIColor.clear
+        vc.controller.view.backgroundColor = UIColor.dim
         return vc
     }
     @ObservedObject var vm: VM
