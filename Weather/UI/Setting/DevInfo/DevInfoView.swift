@@ -30,9 +30,14 @@ struct DevInfoView: View {
                 }
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center, spacing: 0) {
-                        Text("Sandy")
-                            .font(.kr16b)
-                            .foregroundColor(.gray100)
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("Sandy")
+                                .font(.kr16b)
+                                .foregroundColor(.gray100)
+                            Text("ios, aos 모바일 개발자")
+                                .font(.kr13r)
+                                .foregroundColor(.gray100)
+                        }
                         Spacer()
                         Image("sandy")
                             .resizable()
@@ -42,25 +47,38 @@ struct DevInfoView: View {
                     }
                     .padding(EdgeInsets(top: 10, leading: 24, bottom: 10, trailing: 24))
                     Divider()
-                        .padding([.leading, .trailing, .bottom], 10)
+                        .padding([.leading, .trailing], 10)
                     
-                    Group {
-                        title("💡 이 프로젝트에 사용한 것")
-                        description("swiftui, mvvm, cooridnator pattern, realm swift, combine")
-                        
-                        title("⌨ 개발자 스택")
-                        description("ios, aos")
-                        description("swift, kotlin, java, python, c, c++, js")
-                        
-                        title("🖥 github")
-                        description(vm.git)
-                            .onTapGesture {
-                                vm.onClickUrl()
+                    ScrollView(showsIndicators: false) {
+                        VStack(alignment: .leading, spacing: 0) {
+                            Group {
+                                title("👩‍💻 프로젝트 이력")
+                                description("온스터디 모바일 앱 시리즈 개발")
+                                description("영어회화 100일의 기적 백앤드 서버 개발")
+                                description("온스터디 서비스 관리 솔루션 개발")
+                                description("캔디플러스 모바일 앱 개발")
+                                
+                                title("💡 이 프로젝트에 사용한 것")
+                                description("swiftui, mvvm, cooridnator pattern, realm, combine, firebase(firestore)")
                             }
-                        title("ℹ 출처")
-                        description("이미지: https://icons8.com/")
-                        description("날씨 api: https://openweathermap.org/")
+                            Group {
+                                title("⌨ 개발자 스택")
+                                description("ios, aos")
+                                description("swift, kotlin, java, python, c, c++, js")
+                                
+                                title("🖥 github (링크 클릭시 이동합니다!)")
+                                description(vm.git)
+                                    .onTapGesture {
+                                        vm.onClickUrl()
+                                    }
+                                title("ℹ 출처")
+                                description("이미지: https://icons8.com/")
+                                description("날씨 api: https://openweathermap.org/")
+                            }
+                        }
+                        .padding(.top, 2)
                     }
+                    .contentShape(Rectangle())
                     .frame(width: geometry.size.width, alignment: .leading)
                 }
                 .padding(EdgeInsets(top: 10, leading: 14, bottom: 10, trailing: 14))
@@ -78,11 +96,12 @@ struct DevInfoView: View {
         return Text(title)
             .font(.kr14b)
             .foregroundColor(.gray100)
-            .padding(EdgeInsets(top: 16, leading: 8, bottom: 10, trailing: 8))
+            .padding(EdgeInsets(top: 24, leading: 8, bottom: 10, trailing: 8))
     }
     private func description(_ description: String) -> some View {
         return Text(description)
             .font(.kr13r)
             .foregroundColor(.gray90)
+            .padding(.leading, 6)
     }
 }
