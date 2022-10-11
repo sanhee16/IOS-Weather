@@ -20,6 +20,8 @@ class SettingViewModel: BaseViewModel {
     @Published var isAvailableGPSToggle: Bool = false
     private var currentNotiTime: TimeUnit? = nil
     @Published var displayTime: String? = nil
+    @Published var isShowingMailView = false
+    @Published var result: Result<MFMailComposeResult, Error>? = nil
     @Published var isUseGps: Bool {
         didSet {
             Defaults.allowGPS = isUseGps
@@ -82,27 +84,8 @@ class SettingViewModel: BaseViewModel {
     
     func onClickContact() {
         if MFMailComposeViewController.canSendMail() {
-            print("send Email")
-            var version: String? {
-                guard let dictionary = Bundle.main.infoDictionary,
-                      let version = dictionary["CFBundleShortVersionString"] as? String,
-                      let build = dictionary["CFBundleVersion"] as? String else {return nil}
-                
-                let versionAndBuild: String = "vserion: \(version), build: \(build)"
-                return versionAndBuild
-            }
-            let appVersion = version ?? "unknown"
-            let messageBody =
-"""
-<p>
------------------------------------------<br/>
-App-Version : \(appVersion)<br/>
------------------------------------------<br/>
-</p>
-"""
-            self.coordinator?.sendEmail(messageBody)
+            self.isShowingMailView = true
         } else {
-            // show failure alert
             self.coordinator?.presentAlertView(.ok, description: "이메일을 보낼 수 있는 설정이 되어있지 않습니다.\n메일 앱에서 계정 연결 후, 메일 사용을 허용해 주세요.")
         }
     }

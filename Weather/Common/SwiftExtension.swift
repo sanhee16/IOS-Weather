@@ -13,6 +13,7 @@ struct TimeUnit {
     var diff: String
 }
 
+
 extension Int {
     func getWeatherType() -> WeatherType {
         switch self {

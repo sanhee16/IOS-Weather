@@ -48,6 +48,9 @@ struct SettingView: View {
                 basicItem("개발자 정보", onTap: vm.onclickDevInfo)
                 basicItem("개인 정보 처리 방침", onTap: vm.onClickPolicy)
             }
+            .sheet(isPresented: $vm.isShowingMailView) {
+                MailView(isShowing: $vm.isShowingMailView, result: $vm.result)
+            }
             .padding(EdgeInsets(top: safeTop, leading: 0, bottom: safeBottom, trailing: 0))
             .edgesIgnoringSafeArea(.all)
             .frame(width: geometry.size.width, alignment: .center)
