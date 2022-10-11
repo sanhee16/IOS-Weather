@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import MessageUI
 
 protocol Terminatable {
     func appTerminate()
@@ -28,6 +29,10 @@ class Coordinator {
         
         self.presentViewController.present(viewController, animated: animated)
         self.childViewControllers.append(viewController)
+    }
+    
+    func justPresent(_ viewController: UIViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
+        self.presentViewController.present(viewController, animated: animated, completion: completion)
     }
     
     func push(_ vc: UIViewController) {
@@ -74,4 +79,15 @@ class Coordinator {
         self.childViewControllers.removeLast()
     }
     
+    func sendEmail(_ messageBody: String, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            
+            mail.setToRecipients(["sinhioa20@gmail.com"])
+            mail.setMessageBody(messageBody, isHTML: true)
+            self.justPresent(mail, animated: animated, completion: onDismiss)
+        } else {
+            print("cannot send Email")
+        }
+    }
 }
