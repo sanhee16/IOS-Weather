@@ -40,8 +40,6 @@ class AppCoordinator: Coordinator, Terminatable {
     }
     
     func startSplash() {
-        //TODO: splashView
-        print("start SplashView")
         let vc = SplashView.vc(self)
         self.present(vc, animated: true)
     }
@@ -110,6 +108,4 @@ class AppCoordinator: Coordinator, Terminatable {
         self.present(vc, animated: true)
     }
     
-    //MARK: change
-    //TODO: main을 change로 변경 필요!!
 }

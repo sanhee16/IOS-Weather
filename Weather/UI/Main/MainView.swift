@@ -28,7 +28,6 @@ struct MainView: View {
             VStack(alignment: .center, spacing: 0) {
                 ZStack(alignment: .leading) {
                     Topbar("날씨 정보", type: .none)
-                    //TODO: more image 다운로드 후 적용 필요, 일단 임시로 글자로 함!
                     HStack(alignment: .center, spacing: 0) {
                         Text("지역 설정")
                             .font(.kr13r)
