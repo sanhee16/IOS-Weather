@@ -56,7 +56,6 @@ enum WeatherType: Int {
     case mist = 8
     case unknown = 9
     
-    //TODO: 배경 색상 정하기!
     var textcolor: Color {
         switch self {
         case .clearSky: return Color(hex: "#0090CC").opacity(0.9)

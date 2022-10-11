@@ -63,7 +63,6 @@ class SelectLocationViewModel: BaseViewModel {
     @Published var specificLocations: [LocationItem] = []
     @Published var selectedLocation: LocationItem? = nil
     
-    //TODO: 나중에 enum으로 바꿀 수 있으면 바꾸자, realm 도 같이
     @Published var cityList: [String] = ["강원도", "경기도", "경상도", "광주시", "대구시", "대전시", "부산시", "서울", "울산시", "인천시", "전라도", "제주도", "충청도"]
     @Published var selectedCityIdx: Int? = nil
     @Published var isLoading: Bool = true

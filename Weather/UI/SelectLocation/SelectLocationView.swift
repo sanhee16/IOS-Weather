@@ -32,7 +32,6 @@ struct SelectLocationView: View {
                 if $vm.isLoading.wrappedValue {
                     SandyProgressView()
                 } else {
-                    //TODO: myLocation = pager로 구현할꺼!
                     HStack(alignment: .center, spacing: 0) {
                         Text("내가 추가한 지역")
                             .font(.kr15b)
@@ -101,7 +100,7 @@ struct SelectLocationView: View {
                     if !$vm.myLocations.wrappedValue.isEmpty {
                         myLocationView(geometry)
                     }
-                    //TODO: 전체 location은 scrollView?
+                    
                     Divider()
                         .padding(20)
                     HStack(alignment: .center, spacing: 0) {
