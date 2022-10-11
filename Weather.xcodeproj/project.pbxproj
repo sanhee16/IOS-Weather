@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26379B5F28F27B560028E76F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 26379B5E28F27B560028E76F /* Lottie */; };
 		26379B6228F27B790028E76F /* splash.json in Resources */ = {isa = PBXBuildFile; fileRef = 26379B6028F27B790028E76F /* splash.json */; };
 		26379B6328F27B790028E76F /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 26379B6128F27B790028E76F /* loading.json */; };
 		2643FF0C28F1741100EF73E6 /* EmailSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF0B28F1741100EF73E6 /* EmailSender.swift */; };
@@ -41,18 +40,8 @@
 		2666149F28F3EE5300ABA5D8 /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2666149E28F3EE5300ABA5D8 /* MultilineTextView.swift */; };
 		266EC64728F404CE00099902 /* SelectWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EC64628F404CE00099902 /* SelectWeatherView.swift */; };
 		266EC64928F404D500099902 /* SelectWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EC64828F404D500099902 /* SelectWeatherViewModel.swift */; };
-		268994D328F4186700523095 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 268994D228F4186700523095 /* Alamofire */; };
-		26E99A3E28F4192C009002C6 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A3D28F4192C009002C6 /* Realm */; };
-		26E99A4028F4192C009002C6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A3F28F4192C009002C6 /* RealmSwift */; };
-		26E99A4A28F41BA3009002C6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A4928F41BA3009002C6 /* FirebaseAnalytics */; };
-		26E99A4C28F41BA3009002C6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A4B28F41BA3009002C6 /* FirebaseFirestore */; };
-		26E99A4E28F41BA3009002C6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26E99A4D28F41BA3009002C6 /* FirebaseFirestoreSwift */; };
 		63705AEF28ED118B0079DB37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AEE28ED118B0079DB37 /* Assets.xcassets */; };
 		63705AF228ED118B0079DB37 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63705AF128ED118B0079DB37 /* Preview Assets.xcassets */; };
-		63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AF928ED168C0079DB37 /* SwiftUIPager */; };
-		63705AFD28ED16F40079DB37 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AFC28ED16F40079DB37 /* Realm */; };
-		63705AFF28ED16F40079DB37 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63705AFE28ED16F40079DB37 /* RealmSwift */; };
-		63705B0228ED17180079DB37 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 63705B0128ED17180079DB37 /* Alamofire */; };
 		63705B0528ED17960079DB37 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B0428ED17960079DB37 /* SceneDelegate.swift */; };
 		63705B0728ED179C0079DB37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B0628ED179C0079DB37 /* AppDelegate.swift */; };
 		63705B0A28ED17AC0079DB37 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B0928ED17AC0079DB37 /* Coordinator.swift */; };
@@ -71,6 +60,14 @@
 		63705B2C28ED3F430079DB37 /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B2B28ED3F430079DB37 /* DataResponse.swift */; };
 		63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B2E28ED3F550079DB37 /* SwiftExtension.swift */; };
 		63705B3328ED3F6D0079DB37 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63705B3228ED3F6D0079DB37 /* Defaults.swift */; };
+		6370A59228F5006800676D6E /* SwiftUIPager in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59128F5006800676D6E /* SwiftUIPager */; };
+		6370A59528F5007D00676D6E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59428F5007D00676D6E /* Alamofire */; };
+		6370A59828F5008700676D6E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59728F5008700676D6E /* Realm */; };
+		6370A59A28F5008700676D6E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59928F5008700676D6E /* RealmSwift */; };
+		6370A59D28F5009200676D6E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59C28F5009200676D6E /* Lottie */; };
+		6370A5A028F500BF00676D6E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59F28F500BF00676D6E /* FirebaseAnalytics */; };
+		6370A5A228F500BF00676D6E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A5A128F500BF00676D6E /* FirebaseFirestore */; };
+		6370A5A428F500BF00676D6E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A5A328F500BF00676D6E /* FirebaseFirestoreSwift */; };
 		63D80CDA28EE695F0090A3ED /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D80CD928EE695F0090A3ED /* Topbar.swift */; };
 		63D80CDC28EE88140090A3ED /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D80CDB28EE88140090A3ED /* WeatherData.swift */; };
 /* End PBXBuildFile section */
@@ -141,17 +138,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26379B5F28F27B560028E76F /* Lottie in Frameworks */,
-				63705AFF28ED16F40079DB37 /* RealmSwift in Frameworks */,
-				26E99A4028F4192C009002C6 /* RealmSwift in Frameworks */,
-				26E99A4C28F41BA3009002C6 /* FirebaseFirestore in Frameworks */,
-				63705B0228ED17180079DB37 /* Alamofire in Frameworks */,
-				26E99A4E28F41BA3009002C6 /* FirebaseFirestoreSwift in Frameworks */,
-				63705AFD28ED16F40079DB37 /* Realm in Frameworks */,
-				268994D328F4186700523095 /* Alamofire in Frameworks */,
-				26E99A3E28F4192C009002C6 /* Realm in Frameworks */,
-				63705AFA28ED168C0079DB37 /* SwiftUIPager in Frameworks */,
-				26E99A4A28F41BA3009002C6 /* FirebaseAnalytics in Frameworks */,
+				6370A59D28F5009200676D6E /* Lottie in Frameworks */,
+				6370A59A28F5008700676D6E /* RealmSwift in Frameworks */,
+				6370A5A028F500BF00676D6E /* FirebaseAnalytics in Frameworks */,
+				6370A59828F5008700676D6E /* Realm in Frameworks */,
+				6370A59228F5006800676D6E /* SwiftUIPager in Frameworks */,
+				6370A59528F5007D00676D6E /* Alamofire in Frameworks */,
+				6370A5A228F500BF00676D6E /* FirebaseFirestore in Frameworks */,
+				6370A5A428F500BF00676D6E /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,17 +441,14 @@
 			);
 			name = Weather;
 			packageProductDependencies = (
-				63705AF928ED168C0079DB37 /* SwiftUIPager */,
-				63705AFC28ED16F40079DB37 /* Realm */,
-				63705AFE28ED16F40079DB37 /* RealmSwift */,
-				63705B0128ED17180079DB37 /* Alamofire */,
-				26379B5E28F27B560028E76F /* Lottie */,
-				268994D228F4186700523095 /* Alamofire */,
-				26E99A3D28F4192C009002C6 /* Realm */,
-				26E99A3F28F4192C009002C6 /* RealmSwift */,
-				26E99A4928F41BA3009002C6 /* FirebaseAnalytics */,
-				26E99A4B28F41BA3009002C6 /* FirebaseFirestore */,
-				26E99A4D28F41BA3009002C6 /* FirebaseFirestoreSwift */,
+				6370A59128F5006800676D6E /* SwiftUIPager */,
+				6370A59428F5007D00676D6E /* Alamofire */,
+				6370A59728F5008700676D6E /* Realm */,
+				6370A59928F5008700676D6E /* RealmSwift */,
+				6370A59C28F5009200676D6E /* Lottie */,
+				6370A59F28F500BF00676D6E /* FirebaseAnalytics */,
+				6370A5A128F500BF00676D6E /* FirebaseFirestore */,
+				6370A5A328F500BF00676D6E /* FirebaseFirestoreSwift */,
 			);
 			productName = Weather;
 			productReference = 63705AE728ED118A0079DB37 /* Weather.app */;
@@ -488,11 +479,11 @@
 			);
 			mainGroup = 63705ADE28ED118A0079DB37;
 			packageReferences = (
-				63705AF828ED168C0079DB37 /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
-				63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				63705B0028ED17180079DB37 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				26379B5D28F27B560028E76F /* XCRemoteSwiftPackageReference "lottie-ios" */,
-				26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6370A59028F5006800676D6E /* XCRemoteSwiftPackageReference "SwiftUIPager" */,
+				6370A59328F5007D00676D6E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				6370A59628F5008700676D6E /* XCRemoteSwiftPackageReference "realm-swift" */,
+				6370A59B28F5009200676D6E /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 63705AE828ED118A0079DB37 /* Products */;
 			projectDirPath = "";
@@ -704,7 +695,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Weather/Preview Content\"";
-				DEVELOPMENT_TEAM = 3RZRY2TK85;
+				DEVELOPMENT_TEAM = 5F78R7RAY4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Weather/Info.plist;
@@ -739,7 +730,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Weather/Preview Content\"";
-				DEVELOPMENT_TEAM = 3RZRY2TK85;
+				DEVELOPMENT_TEAM = 5F78R7RAY4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Weather/Info.plist;
@@ -789,23 +780,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		26379B5D28F27B560028E76F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-		63705AF828ED168C0079DB37 /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
+		6370A59028F5006800676D6E /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
 			requirement = {
@@ -813,7 +788,15 @@
 				kind = branch;
 			};
 		};
-		63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		6370A59328F5007D00676D6E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6370A59628F5008700676D6E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift.git";
 			requirement = {
@@ -821,9 +804,17 @@
 				kind = branch;
 			};
 		};
-		63705B0028ED17180079DB37 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		6370A59B28F5009200676D6E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				branch = master;
 				kind = branch;
@@ -832,60 +823,45 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		26379B5E28F27B560028E76F /* Lottie */ = {
+		6370A59128F5006800676D6E /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 26379B5D28F27B560028E76F /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		268994D228F4186700523095 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 63705B0028ED17180079DB37 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		26E99A3D28F4192C009002C6 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		26E99A3F28F4192C009002C6 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		26E99A4928F41BA3009002C6 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		26E99A4B28F41BA3009002C6 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		26E99A4D28F41BA3009002C6 /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26E99A4828F41BA2009002C6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
-		};
-		63705AF928ED168C0079DB37 /* SwiftUIPager */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 63705AF828ED168C0079DB37 /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
+			package = 6370A59028F5006800676D6E /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
 			productName = SwiftUIPager;
 		};
-		63705AFC28ED16F40079DB37 /* Realm */ = {
+		6370A59428F5007D00676D6E /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 6370A59328F5007D00676D6E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		6370A59728F5008700676D6E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59628F5008700676D6E /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = Realm;
 		};
-		63705AFE28ED16F40079DB37 /* RealmSwift */ = {
+		6370A59928F5008700676D6E /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 63705AFB28ED16F40079DB37 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			package = 6370A59628F5008700676D6E /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
 		};
-		63705B0128ED17180079DB37 /* Alamofire */ = {
+		6370A59C28F5009200676D6E /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 63705B0028ED17180079DB37 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
+			package = 6370A59B28F5009200676D6E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		6370A59F28F500BF00676D6E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		6370A5A128F500BF00676D6E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		6370A5A328F500BF00676D6E /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
