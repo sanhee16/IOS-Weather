@@ -18,6 +18,11 @@
 		2643FF1A28F17A3B00EF73E6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1928F17A3B00EF73E6 /* WebView.swift */; };
 		2643FF1F28F17D6E00EF73E6 /* SendEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */; };
 		2643FF2128F17D7600EF73E6 /* SendEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */; };
+		26442B4528F58FF700B3C326 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26442B4428F58FF700B3C326 /* FirebaseAnalytics */; };
+		26442B4728F58FF700B3C326 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26442B4628F58FF700B3C326 /* FirebaseFirestore */; };
+		26442B4928F58FF700B3C326 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26442B4828F58FF700B3C326 /* FirebaseFirestoreSwift */; };
+		26442B4C28F5902700B3C326 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 26442B4B28F5902700B3C326 /* Lottie */; };
+		26442B4E28F5971000B3C326 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26442B4D28F5971000B3C326 /* MailView.swift */; };
 		26498BDC28F28D7E00E89FB2 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BDB28F28D7E00E89FB2 /* LottieView.swift */; };
 		26498BDE28F28E6B00E89FB2 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BDD28F28E6B00E89FB2 /* ProgressView.swift */; };
 		26498BE128F296DA00E89FB2 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26498BE028F296DA00E89FB2 /* AlertView.swift */; };
@@ -63,10 +68,6 @@
 		6370A59528F5007D00676D6E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59428F5007D00676D6E /* Alamofire */; };
 		6370A59828F5008700676D6E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59728F5008700676D6E /* Realm */; };
 		6370A59A28F5008700676D6E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59928F5008700676D6E /* RealmSwift */; };
-		6370A59D28F5009200676D6E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59C28F5009200676D6E /* Lottie */; };
-		6370A5A028F500BF00676D6E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A59F28F500BF00676D6E /* FirebaseAnalytics */; };
-		6370A5A228F500BF00676D6E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A5A128F500BF00676D6E /* FirebaseFirestore */; };
-		6370A5A428F500BF00676D6E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6370A5A328F500BF00676D6E /* FirebaseFirestoreSwift */; };
 		63D80CDA28EE695F0090A3ED /* Topbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D80CD928EE695F0090A3ED /* Topbar.swift */; };
 		63D80CDC28EE88140090A3ED /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D80CDB28EE88140090A3ED /* WeatherData.swift */; };
 /* End PBXBuildFile section */
@@ -84,6 +85,7 @@
 		2643FF1928F17A3B00EF73E6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailView.swift; sourceTree = "<group>"; };
 		2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewModel.swift; sourceTree = "<group>"; };
+		26442B4D28F5971000B3C326 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		26498BDB28F28D7E00E89FB2 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		26498BDD28F28E6B00E89FB2 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		26498BE028F296DA00E89FB2 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
@@ -136,14 +138,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6370A59D28F5009200676D6E /* Lottie in Frameworks */,
 				6370A59A28F5008700676D6E /* RealmSwift in Frameworks */,
-				6370A5A028F500BF00676D6E /* FirebaseAnalytics in Frameworks */,
+				26442B4528F58FF700B3C326 /* FirebaseAnalytics in Frameworks */,
 				6370A59828F5008700676D6E /* Realm in Frameworks */,
 				6370A59228F5006800676D6E /* SwiftUIPager in Frameworks */,
 				6370A59528F5007D00676D6E /* Alamofire in Frameworks */,
-				6370A5A228F500BF00676D6E /* FirebaseFirestore in Frameworks */,
-				6370A5A428F500BF00676D6E /* FirebaseFirestoreSwift in Frameworks */,
+				26442B4728F58FF700B3C326 /* FirebaseFirestore in Frameworks */,
+				26442B4928F58FF700B3C326 /* FirebaseFirestoreSwift in Frameworks */,
+				26442B4C28F5902700B3C326 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +364,7 @@
 				63705B2E28ED3F550079DB37 /* SwiftExtension.swift */,
 				63705B3228ED3F6D0079DB37 /* Defaults.swift */,
 				2656A86C28F122C400140B8B /* Api.swift */,
+				26442B4D28F5971000B3C326 /* MailView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -442,10 +445,10 @@
 				6370A59428F5007D00676D6E /* Alamofire */,
 				6370A59728F5008700676D6E /* Realm */,
 				6370A59928F5008700676D6E /* RealmSwift */,
-				6370A59C28F5009200676D6E /* Lottie */,
-				6370A59F28F500BF00676D6E /* FirebaseAnalytics */,
-				6370A5A128F500BF00676D6E /* FirebaseFirestore */,
-				6370A5A328F500BF00676D6E /* FirebaseFirestoreSwift */,
+				26442B4428F58FF700B3C326 /* FirebaseAnalytics */,
+				26442B4628F58FF700B3C326 /* FirebaseFirestore */,
+				26442B4828F58FF700B3C326 /* FirebaseFirestoreSwift */,
+				26442B4B28F5902700B3C326 /* Lottie */,
 			);
 			productName = Weather;
 			productReference = 63705AE728ED118A0079DB37 /* Weather.app */;
@@ -481,6 +484,8 @@
 				6370A59628F5008700676D6E /* XCRemoteSwiftPackageReference "realm-swift" */,
 				6370A59B28F5009200676D6E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				26442B4328F58FF700B3C326 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				26442B4A28F5902700B3C326 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 63705AE828ED118A0079DB37 /* Products */;
 			projectDirPath = "";
@@ -552,6 +557,7 @@
 				63705B1128ED19A10079DB37 /* BaseViewController.swift in Sources */,
 				2643FF1A28F17A3B00EF73E6 /* WebView.swift in Sources */,
 				2666149628F3CF7500ABA5D8 /* BoardMainViewModel.swift in Sources */,
+				26442B4E28F5971000B3C326 /* MailView.swift in Sources */,
 				26498BDE28F28E6B00E89FB2 /* ProgressView.swift in Sources */,
 				2666148028F3A01000ABA5D8 /* DetailSettingViewModel.swift in Sources */,
 				26517B2028F2FF1C00F2C280 /* NotiSettingViewModel.swift in Sources */,
@@ -776,6 +782,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		26442B4328F58FF700B3C326 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		26442B4A28F5902700B3C326 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6370A59028F5006800676D6E /* XCRemoteSwiftPackageReference "SwiftUIPager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fermoya/SwiftUIPager.git";
@@ -819,6 +841,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		26442B4428F58FF700B3C326 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		26442B4628F58FF700B3C326 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		26442B4828F58FF700B3C326 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		26442B4B28F5902700B3C326 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6370A59B28F5009200676D6E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		6370A59128F5006800676D6E /* SwiftUIPager */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6370A59028F5006800676D6E /* XCRemoteSwiftPackageReference "SwiftUIPager" */;
@@ -838,26 +880,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6370A59628F5008700676D6E /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		6370A59C28F5009200676D6E /* Lottie */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6370A59B28F5009200676D6E /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
-		};
-		6370A59F28F500BF00676D6E /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		6370A5A128F500BF00676D6E /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		6370A5A328F500BF00676D6E /* FirebaseFirestoreSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6370A59E28F500BF00676D6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestoreSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
