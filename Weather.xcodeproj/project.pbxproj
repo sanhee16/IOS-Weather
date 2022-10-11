@@ -16,8 +16,6 @@
 		2643FF1628F1750A00EF73E6 /* DevInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1528F1750A00EF73E6 /* DevInfoViewModel.swift */; };
 		2643FF1828F1791A00EF73E6 /* policy.html in Resources */ = {isa = PBXBuildFile; fileRef = 2643FF1728F1791A00EF73E6 /* policy.html */; };
 		2643FF1A28F17A3B00EF73E6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1928F17A3B00EF73E6 /* WebView.swift */; };
-		2643FF1F28F17D6E00EF73E6 /* SendEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */; };
-		2643FF2128F17D7600EF73E6 /* SendEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */; };
 		26442B4528F58FF700B3C326 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26442B4428F58FF700B3C326 /* FirebaseAnalytics */; };
 		26442B4728F58FF700B3C326 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26442B4628F58FF700B3C326 /* FirebaseFirestore */; };
 		26442B4928F58FF700B3C326 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 26442B4828F58FF700B3C326 /* FirebaseFirestoreSwift */; };
@@ -83,8 +81,6 @@
 		2643FF1528F1750A00EF73E6 /* DevInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevInfoViewModel.swift; sourceTree = "<group>"; };
 		2643FF1728F1791A00EF73E6 /* policy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = policy.html; sourceTree = "<group>"; };
 		2643FF1928F17A3B00EF73E6 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
-		2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailView.swift; sourceTree = "<group>"; };
-		2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendEmailViewModel.swift; sourceTree = "<group>"; };
 		26442B4D28F5971000B3C326 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		26498BDB28F28D7E00E89FB2 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		26498BDD28F28E6B00E89FB2 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -177,15 +173,6 @@
 				2643FF1528F1750A00EF73E6 /* DevInfoViewModel.swift */,
 			);
 			path = DevInfo;
-			sourceTree = "<group>";
-		};
-		2643FF1D28F17D6300EF73E6 /* SendEmail */ = {
-			isa = PBXGroup;
-			children = (
-				2643FF1E28F17D6E00EF73E6 /* SendEmailView.swift */,
-				2643FF2028F17D7600EF73E6 /* SendEmailViewModel.swift */,
-			);
-			path = SendEmail;
 			sourceTree = "<group>";
 		};
 		26498BDF28F296D100E89FB2 /* Alert */ = {
@@ -364,7 +351,6 @@
 				63705B2E28ED3F550079DB37 /* SwiftExtension.swift */,
 				63705B3228ED3F6D0079DB37 /* Defaults.swift */,
 				2656A86C28F122C400140B8B /* Api.swift */,
-				26442B4D28F5971000B3C326 /* MailView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -393,7 +379,6 @@
 				2666148628F3B99700ABA5D8 /* CheckPermission */,
 				2666147C28F39FF200ABA5D8 /* DetailSetting */,
 				26517B1C28F2FF0100F2C280 /* NotiSetting */,
-				2643FF1D28F17D6300EF73E6 /* SendEmail */,
 				2643FF1228F174F500EF73E6 /* DevInfo */,
 				2643FF0D28F174DC00EF73E6 /* PolicyView */,
 				63705B2628ED3E940079DB37 /* SettingView.swift */,
@@ -414,6 +399,7 @@
 		63D80CD828EE694E0090A3ED /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				26442B4D28F5971000B3C326 /* MailView.swift */,
 				63D80CD928EE695F0090A3ED /* Topbar.swift */,
 				2643FF1928F17A3B00EF73E6 /* WebView.swift */,
 				2643FF0B28F1741100EF73E6 /* EmailSender.swift */,
@@ -534,13 +520,11 @@
 				63705B2228ED3E1B0079DB37 /* SelectLocationView.swift in Sources */,
 				63705B2C28ED3F430079DB37 /* DataResponse.swift in Sources */,
 				26498BE328F296E600E89FB2 /* AlertViewModel.swift in Sources */,
-				2643FF1F28F17D6E00EF73E6 /* SendEmailView.swift in Sources */,
 				63705B2F28ED3F550079DB37 /* SwiftExtension.swift in Sources */,
 				63705B1F28ED3E0D0079DB37 /* MainViewModel.swift in Sources */,
 				2666148A28F3B9B600ABA5D8 /* CheckPermissionViewModel.swift in Sources */,
 				26498BE128F296DA00E89FB2 /* AlertView.swift in Sources */,
 				2643FF1128F174F200EF73E6 /* PolicyViewModel.swift in Sources */,
-				2643FF2128F17D7600EF73E6 /* SendEmailViewModel.swift in Sources */,
 				2643FF0C28F1741100EF73E6 /* EmailSender.swift in Sources */,
 				26498BDC28F28D7E00E89FB2 /* LottieView.swift in Sources */,
 				63705B3328ED3F6D0079DB37 /* Defaults.swift in Sources */,

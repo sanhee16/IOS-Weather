@@ -68,10 +68,6 @@ class AppCoordinator: Coordinator, Terminatable {
         let vc = DevInfoView.vc(self)
         self.present(vc, animated: true)
     }
-    func presentSendEmailView() {
-        let vc = SendEmailView.vc(self)
-        self.present(vc, animated: true)
-    }
     
     func presentAlertView(_ type: AlertType, title: String? = nil, description: String? = nil, callback: ((Bool) -> ())? = nil) {
         let vc = AlertView.vc(self, type: type, title: title, description: description, callback: callback)
