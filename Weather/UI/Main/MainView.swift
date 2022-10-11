@@ -51,7 +51,7 @@ struct MainView: View {
                             .onTapGesture {
                                 vm.onClickBoard()
                             }
-                            .padding(.trailing, 7)
+                            .padding(.trailing, 8)
                         Image("setting")
                             .resizable()
                             .scaledToFit()
@@ -156,6 +156,7 @@ struct MainView: View {
                     Text("+")
                         .font(.kr30b)
                         .foregroundColor(.gray90)
+                        .frame(both: 250)
                         .onTapGesture {
                             vm.onClickSelectLocation()
                         }
