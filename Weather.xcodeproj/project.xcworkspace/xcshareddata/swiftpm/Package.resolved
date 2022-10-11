@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
-        "revision" : "7e80c25b51c2ffa238879b07fbfc5baa54bb3050",
-        "version" : "9.6.0"
+        "branch" : "master",
+        "revision" : "174be0d92bd6706b30a7a9d18f6bbe2319809e03"
       }
     },
     {
@@ -41,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/GoogleAppMeasurement.git",
       "state" : {
-        "revision" : "c1cfde8067668027b23a42c29d11c246152fe046",
-        "version" : "9.6.0"
+        "revision" : "e3dd02f390cae79a7073b46dfb0cb6b60c48401b",
+        "version" : "10.0.0"
       }
     },
     {
@@ -95,8 +95,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/airbnb/lottie-ios.git",
       "state" : {
-        "revision" : "54aa8747da6998a94c1e901dd70013b70e804333",
-        "version" : "3.4.4"
+        "branch" : "master",
+        "revision" : "b4bd0604ded9574807f41b4004b57dd1226a30a4"
       }
     },
     {
