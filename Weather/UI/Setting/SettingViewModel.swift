@@ -81,9 +81,6 @@ class SettingViewModel: BaseViewModel {
     }
     
     func onClickContact() {
-        //TODO: test with device
-//        self.coordinator?.presentSendEmailView()
-        
         if MFMailComposeViewController.canSendMail() {
             print("send Email")
             var version: String? {

@@ -126,7 +126,6 @@ class MainViewModel: BaseViewModel {
             }
             timerRepeat = nil
             // timer 종료되고 작업 시작
-            //TODO: 첫번째 실행 시 test 필요, 현재 허용 안하면 선택목록으로 넘기기
             let status = checkLocationPermission()
             if status == .allow {
                 self.isLoading = true
@@ -160,7 +159,6 @@ class MainViewModel: BaseViewModel {
                 getCurrentLocationAndLoadData()
             }
         } else {
-            //TODO: realm에서 현재정보 있으면 지워야 함
             removeCurrentLocationOnDB()
             loadMyLocations()
         }
