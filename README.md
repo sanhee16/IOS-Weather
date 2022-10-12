@@ -45,7 +45,9 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - coordinator pattern의 base. viewcontroller 대신에 여기서 present,change,dismiss등을 담당한다(관심사분리)
 - Delegate
     - AppDelegate, SceneDelegate
-    - 앱의 life cycle을 관리하는 delegate들이 있다.
+    - 앱의 life cycle을 관리하는 delegate들이 있다.  
+
+
 
 
 ### Trouble Shooting
