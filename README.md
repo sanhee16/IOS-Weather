@@ -26,9 +26,9 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 4. 날씨별 게시판 페이지
 
 ### 파일 구조
-<img src="/readme-images/structure1.png" width: 200>
-<img src="/readme-images/structure2.png" width: 200>
-<img src="/readme-images/structure3.png" width: 200>
+<img src="/readme-images/structure1.png" width: "200">
+<img src="/readme-images/structure2.png" width: "200">
+<img src="/readme-images/structure3.png" width: "200">
 
 
 ### Trouble Shooting
