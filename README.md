@@ -7,17 +7,26 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 
 ### 외부 package
 - realm
+    - 지역 정보들을 담기위해 local db로 선택  
 - firestore(firebase)
+   - 날씨 게시판으로 통신할 수 있도록 firestore사용  
 - swiftUIPager
+    - 날씨 상세페이지(main)에서 지역별로 카드형식으로 스와이프 되도록 사용  
 - lottie
+    - splash, progressView를 띄울 때 사용  
 - alamofire
+    - api 통신 위해 사용  
 
 ### 기술 및 패턴
 - MVVM
+    - view에서는 view만 그리고, viewModel에서는 로직만 처리한다. view는 viewModel의 데이터(변수)를 관찰하고(Observe) 있다가 데이터가 변환되면 view도 자동으로 감지하고 변환된다.
 - coordinator pattern
-- SwiftUI
+    - viewcontroller대신 페이지 전환을 담당하도록 (관심사 분리) coordinator 패턴 채택  
+- SwiftUI, UIKit
+    - swiftui를 주로 사용하고, swiftui로는 안되는 email쓰기, multiTextField 등은 UIKit 사용
 - Swift
 - Combine
+    - api 통신에 사용
 
 ### 페이지 정보
 1. 날씨 정보 페이지
@@ -42,7 +51,7 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - viewModel과 viewController들이 상속받는 base를 만들어 두었다.
 - coordinator
     - BaseCoordinator
-    - coordinator pattern의 base. viewcontroller 대신에 여기서 present,change,dismiss등을 담당한다(관심사분리)
+    - coordinator pattern의 base. viewcontroller 대신에 여기서 present,change,dismiss등을 담당한다.
 - Delegate
     - AppDelegate, SceneDelegate
     - 앱의 life cycle을 관리하는 delegate들이 있다.  
