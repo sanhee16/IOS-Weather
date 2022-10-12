@@ -57,7 +57,7 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - 앱의 life cycle을 관리하는 delegate들이 있다.  
 
 
-
+----
 
 ### Trouble Shooting
 1. realm 삭제 이슈  
