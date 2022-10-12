@@ -28,12 +28,24 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 ### 파일 구조
 <img src="/readme-images/structure1.png" width="200"> <img src="/readme-images/structure2.png" width="200"> <img src="/readme-images/structure3.png" width="200">   
 ##### 구성
-- UI : view, viewmodel, customView
-- Data : DataClass, Api Response Structure
-- Common : Util, Extension, Api, UserDefaults
-- Base : BaseViewModel, BaseViewController
-- coordinator : BaseCoordinator
-- Delegate : AppDelegate, SceneDelegate
+- UI
+    - view, viewmodel, customView
+    - 페이지에 따른 group별로 묶어져 있다.
+- Data
+    - DataClass, Api Response Structure
+    - custom data class나, api 결과를 받을 때 필요한 structure들이 정의되어 있다.
+- Commom
+    - Util, Extension, Api, UserDefaults
+    - 공통적으로 사용되는 util, extension등을 만들어 두었다.
+- Base
+    - BaseViewModel, BaseViewController
+    - viewModel과 viewController들이 상속받는 base를 만들어 두었다.
+- coordinator
+    - BaseCoordinator
+    - coordinator pattern의 base. viewcontroller 대신에 여기서 present,change,dismiss등을 담당한다(관심사분리)
+- Delegate
+    - AppDelegate, SceneDelegate
+    - 앱의 life cycle을 관리하는 delegate들이 있다.
 
 
 ### Trouble Shooting
