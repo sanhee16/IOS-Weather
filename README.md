@@ -25,6 +25,12 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 3. 지역 선택 페이지
 4. 날씨별 게시판 페이지
 
+### 파일 구조
+<img src="/readme-images/structure1.png">
+<img src="/readme-images/structure2.png">
+<img src="/readme-images/structure3.png">
+
+
 ### Trouble Shooting
 1. realm 삭제 이슈  
 <b>[문제]</b> realm은 객체를 받아서 db를 구성하는데, 삭제할 때 데이터는 지웠지만 참조가 끊어지지 않아 없는 값을 가리키는 참조 이슈가 발생해서 메모리관련 에러가 발생했다.  
