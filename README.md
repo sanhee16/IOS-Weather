@@ -32,18 +32,18 @@ realm은 객체를 받아서 db를 구성하는데, 삭제할 때 데이터는 �
 ##### 해결방안
 데이터를 추가할 때 객체를 넣지 않고 객체의 복사본을 넣어주는 방식으로 해결했다.  
 <문제>
-'''
+```swift
         try! realm.write {
             self.realm.add(MyLocation.self, value: MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
         }
-'''
+```
 <해결 후>
-'''
+```swift
         try! realm.write {
             let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
             self.realm.add(copy)
         }
-'''
+```
 
 2. 권한요청 결과값 받기
 권한 요청을 하면 요청이 완료되었을 때 콜백이 날라오지 않아서 여러개의 permission이 한 번에 뜨거나, splash에서 받으면 permission 창이 있는데 main page로 넘어가는 이슈가 있었다.  
