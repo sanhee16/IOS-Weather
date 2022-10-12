@@ -27,16 +27,21 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 
 ### Trouble Shooting
 1. realm 삭제 이슈
+##### 문제
 realm은 객체를 받아서 db를 구성하는데, 삭제할 때 데이터는 지웠지만 참조가 끊어지지 않아 없는 값을 가리키는 참조 이슈가 발생해서 메모리관련 에러가 발생했다.  
+##### 해결방안
 데이터를 추가할 때 객체를 넣지 않고 객체의 복사본을 넣어주는 방식으로 해결했다.  
+<문제>
 '''
-
+        try! realm.write {
+            self.realm.add(MyLocation.self, value: MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
+        }
+'''
+<해결 후>
+'''
         try! realm.write {
             let copy = self.realm.create(MyLocation.self, value: MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
             self.realm.add(copy)
-            
-//            realm.add(MyLocation(idx, cityName: "\(item.location.city1) \(item.location.city2)", indexOfDB: item.location.idx, longitude: item.location.longitude, latitude: item.location.latitude))
-            self.loadAllData()
         }
 '''
 
