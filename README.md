@@ -28,12 +28,18 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 - Combine
     - api 통신에 사용
 
+
+
+----
 ### 페이지 정보
 1. 날씨 정보 페이지
 2. 설정 페이지
 3. 지역 선택 페이지
-4. 날씨별 게시판 페이지
+4. 날씨별 게시판 페이지  
 
+
+
+----
 ### 파일 구조
 <img src="/readme-images/structure1.png" width="200"> <img src="/readme-images/structure2.png" width="200"> <img src="/readme-images/structure3.png" width="200">   
 ##### 구성
@@ -55,6 +61,8 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 - Delegate
     - AppDelegate, SceneDelegate
     - 앱의 life cycle을 관리하는 delegate들이 있다.  
+
+
 
 
 ----
