@@ -28,9 +28,11 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - 참고 : [coordinator 예시](https://zeddios.medium.com/coordinator-pattern-bf4a1bc46930)
 - SwiftUI, UIKit
     - swiftui를 주로 사용하고, swiftui로는 안되는 email쓰기, multiTextField 등은 UIKit 사용
+    - 주로 사용한 SwiftUI class/struct: Stack, LazyGrid, ForEach, ScrollView, Toggle, GeometryReader
 - Swift
 - Combine
     - api 통신에 사용
+    - 주로 사용한 Combine: zip, flatMap
 
 
 
