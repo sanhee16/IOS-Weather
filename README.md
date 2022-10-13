@@ -319,6 +319,22 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - AppDelegate, SceneDelegate
     - 앱의 life cycle을 관리하는 delegate들이 있다.  
 
+    <details markdown="1">
+    <summary> 예시 </summary>
+
+    sceneDelegate에서 coordinator사용을 위한 로직
+    - sceneDelegate
+    ```swift
+    var appCoordinator: AppCoordinator?
+    
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // ... 생략
+        //MARK: Splash Start
+        appCoordinator = AppCoordinator(window: window)
+        appCoordinator?.startSplash()
+    }
+    ```
+    </details>
 
 ----
 ### 페이지 정보
