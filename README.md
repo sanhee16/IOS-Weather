@@ -42,8 +42,9 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - custom data class나, api 결과를 받을 때 필요한 structure들이 정의되어 있다.  
 
     <details markdown="1">
-    <summary>데이터 통신을 위한 코드 예시</summary>
-
+    <summary> 예시 </summary>
+    
+    데이터 통신을 위한 코드
     ```swift
     public struct Weather: Codable {
         var id: Int // 날씨 코드
@@ -77,8 +78,11 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - viewModel과 viewController들이 상속받는 base를 만들어 두었다.
 
     <details markdown="1">
-    <summary>viewModel에는 화면 전환을 위한 cooridnator와 Api통신을 위한 subscription을 가지고 있다.</summary>
+    <summary> 예시 </summary>
     
+    viewModel에는 화면 전환을 위한 cooridnator와 Api통신을 위한 subscription을 가지고 있다.
+    
+    - BaseViewModel
     ```swift
     weak var coordinator: AppCoordinator? = nil
     var subscription = Set<AnyCancellable>()
@@ -91,8 +95,9 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - coordinator 가 어떤 viewController를 띄우고, 스택에서 없앨지 결정을 한다.  
 
     <details markdown="1">
-    <summary>coordinator가 viewcontroller를 다루는 방식</summary>
+    <summary> 예시 </summary>
 
+    coordinator가 viewcontroller를 다루는 방식
     - 정의
     ```swift
     func present(_ viewController: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
