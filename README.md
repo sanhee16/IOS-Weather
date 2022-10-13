@@ -41,34 +41,34 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - DataClass, Api Response Structure
     - custom data class나, api 결과를 받을 때 필요한 structure들이 정의되어 있다.  
 
-<details markdown="1">
-<summary>데이터 통신을 위한 코드 예시</summary>
+    <details markdown="1">
+    <summary>데이터 통신을 위한 코드 예시</summary>
 
-```swift
-public struct Weather: Codable {
-    var id: Int // 날씨 코드
-    var main: String // main 날씨
-    var description: String // 날씨 설명, kr
-    var icon: String // 아이콘 코드
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case main
-        case description
-        case icon
-    }
-    
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(Int.self, forKey: .id)
-        main = try values.decode(String.self, forKey: .main)
-        description = try values.decode(String.self, forKey: .description)
-        icon = try values.decode(String.self, forKey: .icon)
-    }
-}
-```
+    ```swift
+    public struct Weather: Codable {
+        var id: Int // 날씨 코드
+        var main: String // main 날씨
+        var description: String // 날씨 설명, kr
+        var icon: String // 아이콘 코드
 
-</details>
+        enum CodingKeys: String, CodingKey {
+            case id
+            case main
+            case description
+            case icon
+        }
+
+        public init(from decoder: Decoder) throws {
+            let values = try decoder.container(keyedBy: CodingKeys.self)
+            id = try values.decode(Int.self, forKey: .id)
+            main = try values.decode(String.self, forKey: .main)
+            description = try values.decode(String.self, forKey: .description)
+            icon = try values.decode(String.self, forKey: .icon)
+        }
+    }
+    ```
+
+    </details>
 - Commom
     - Util, Extension, Api, UserDefaults
     - 공통적으로 사용되는 util, extension등을 만들어 두었다.
