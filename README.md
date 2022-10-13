@@ -37,6 +37,41 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 - UI
     - view, viewmodel, customView
     - 페이지에 따른 group별로 묶어져 있다.
+    <details markdown="1">
+    <summary> 예시 </summary>
+    
+    페이지 별로 그룹으로 묶어 관리하고, view와 viewController가 한 세트  
+    - view : viewModel을 관찰하고 있다가, 데이터 변환이 일어나면 view를 업데이트 한다.
+    ```swift
+    // view 는 viewmodel을 observe한다.
+    typealias VM = BoardMainViewModel
+    @ObservedObject var vm: VM
+    
+    // viewmodel에 있는 weatherList 데이터의 변경이 일어나면 자동으로 view를 그린다.
+    ScrollView(.horizontal, showsIndicators: false) {
+        HStack(alignment: .center, spacing: 0) {
+            ForEach($vm.weatherList.wrappedValue.indices, id: \.self) { idx in
+                let item = $vm.weatherList.wrappedValue[idx]
+                topMenuItem(geometry, title: item.name, isSelected: idx == $vm.selectedIdx.wrappedValue, idx: idx)
+            }
+        }
+        .padding([.leading, .trailing], 4)
+    }
+    ```
+    
+    - viewModel: 로직을 관리한다. 로직에서 데이터 변경이 일어나면, view에서 업데이트를 한다.  
+    - baseViewModel은 ObservableObject protocol을 채택하고, 모든 viewModel들은 baseViewModel을 상속기 때문에 view에서 관찰이 가능.    
+    ```swift
+    // 선언
+    @Published var weatherList: [WeatherType] = []
+
+    // 데이터 업데이트
+    self.weatherList.append(self.currentWeatherType)
+    for i in savedList {
+        if i == self.currentWeatherType { continue }
+        self.weatherList.append(i)
+    }
+    ```
 - Data
     - DataClass, Api Response Structure
     - custom data class나, api 결과를 받을 때 필요한 structure들이 정의되어 있다.  
