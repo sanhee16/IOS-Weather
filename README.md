@@ -344,8 +344,9 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 3. 설정 페이지
 4. 지역 선택 페이지  
 5. 날씨별 게시판 페이지  
-<img src="/readme-images/img_splash.PNG" width="170"> <img src="/readme-images/img_main.PNG" width="170"> <img src="/readme-images/img_setting.PNG" width="170"> <img src="/readme-images/img_location.PNG" width="170"> <img src="/readme-images/img_board.PNG" width="170">   
+<img src="/readme-images/img_splash.PNG" width="170"> <img src="/readme-images/img_main.PNG" width="170"> <img src="/readme-images/img_setting.PNG" width="170"> <img src="/readme-images/img_location.PNG" width="170"> <img src="/readme-images/img_board.PNG" width="170">    
 
+  
 ### 스플래시
 앱 최초 실행시 진행 작업, 로딩  
 - 기능
@@ -366,7 +367,8 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - 오늘 날씨 기압, 습도, 풍속, 체감온도, 자외선, 흐림정도
     - 3시간 별 날씨 : 날짜(일/시간), 날씨 아이콘, 온도
     - 일주일 날씨 : 날짜(일), 날씨 아이콘, 날씨 정보, 풍속, 강수량, 최고기온, 최저기온  
-    
+    - 날씨 icon을 받아서 asset에 넣은 이미지로 
+<img src="/readme-images/icons.PNG" width="400">. 
 - 기능
     - 날씨 새로고침
     - 스와이프로 선택한 지역 날씨 교체 가능
@@ -380,7 +382,7 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - pager: 카드 형식의 날씨 정보에 사용
     - combine: api 호출 시 사용
     - alamofire: api 호출해서 정보 받아옴
-    - realm: 저장된 지역이 무엇이 있는지 확인한 후 정보 받아옴
+    - realm: 저장된 지역이 무엇이 있는지 확인한 후 정보 받아옴. 
 
 ### 설정 페이지
 앱 설정 페이지  
