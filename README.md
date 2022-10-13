@@ -75,9 +75,52 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 - Base
     - BaseViewModel, BaseViewController
     - viewModel과 viewController들이 상속받는 base를 만들어 두었다.
+
+    <details markdown="1">
+    <summary>viewModel에는 화면 전환을 위한 cooridnator와 Api통신을 위한 subscription을 가지고 있다.</summary>
+    
+    ```swift
+    weak var coordinator: AppCoordinator? = nil
+    var subscription = Set<AnyCancellable>()
+    ```
+
+    </details>
 - coordinator
     - BaseCoordinator
-    - coordinator pattern의 base. viewcontroller 대신에 여기서 present,change,dismiss등을 담당한다.
+    - coordinator pattern의 base. viewcontroller 대신에 여기서 present,change,dismiss등을 담당한다.  
+    - coordinator 가 어떤 viewController를 띄우고, 스택에서 없앨지 결정을 한다.  
+
+    <details markdown="1">
+    <summary>coordinator가 viewcontroller를 다루는 방식</summary>
+
+    ```swift
+    func present(_ viewController: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
+        if let baseViewController = viewController as? Dismissible {
+            baseViewController.attachDismissCallback(completion: onDismiss)
+        }
+        
+        self.presentViewController.present(viewController, animated: animated)
+        self.childViewControllers.append(viewController)
+    }
+    func dismiss(_ animated: Bool = true, completion: (() -> Void)? = nil) {
+        if self.childViewControllers.isEmpty {
+            completion?()
+            return
+        }
+
+        weak var dismissedVc = self.childViewControllers.removeLast()
+        dismissedVc?.dismiss(animated: animated) {
+            if let baseViewController = dismissedVc as? Dismissible,
+               let completion = baseViewController.completion {
+                completion()
+            }
+            completion?()
+        }
+    }
+
+    ```
+
+    </details>
 - Delegate
     - AppDelegate, SceneDelegate
     - 앱의 life cycle을 관리하는 delegate들이 있다.  
