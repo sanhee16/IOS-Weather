@@ -344,7 +344,7 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 3. 설정 페이지
 4. 지역 선택 페이지  
 5. 날씨별 게시판 페이지  
-<img src="/readme-images/img_splash.png" width="200"> <img src="/readme-images/img_main.png" width="200"> <img src="/readme-images/img_setting.png" width="200"> <img src="/readme-images/img_location.png" width="200"> <img src="/readme-images/img_board.png" width="200">   
+<img src="/readme-images/img_splash.PNG" width="200"> <img src="/readme-images/img_main.PNG" width="200"> <img src="/readme-images/img_setting.PNG" width="200"> <img src="/readme-images/img_location.PNG" width="200"> <img src="/readme-images/img_board.PNG" width="200">   
 
 ### 스플래시
 앱 최초 실행시 진행 작업, 로딩  
