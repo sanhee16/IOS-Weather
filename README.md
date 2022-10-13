@@ -93,8 +93,8 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     <details markdown="1">
     <summary>coordinator가 viewcontroller를 다루는 방식</summary>
 
+    - 정의
     ```swift
-    // 
     func present(_ viewController: UIViewController, animated: Bool = true, onDismiss: (() -> Void)? = nil) {
         if let baseViewController = viewController as? Dismissible {
             baseViewController.attachDismissCallback(completion: onDismiss)
@@ -118,7 +118,9 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
             completion?()
         }
     }
-    // 사용 예시
+    ```
+    - 사용 예시
+    ```swift
     // coordinator에 어떤 viewController를 present할지 정의를 해둔다.
     func presentWriteBoardView(type: WeatherType = .clearSky) {
         let vc = WriteBoardView.vc(self, type: type)
@@ -130,15 +132,13 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
         self.present(vc, animated: true)
     }
     
+    ```
+    ```swift
     // viewmodel에서 coordinator를 사용해서 호출
-    func onClickAddButton() { // 특정 viewController를 present
-        self.coordinator?.presentSelectWeatherView() {[weak self] type in
-            self?.coordinator?.presentWriteBoardView(type: type)
-        }
-    }    
-    func onClose() { // 해당 viewController를 dismiss
-        self.dismiss()
+    self.coordinator?.presentSelectWeatherView() {[weak self] type in // 특정 viewController를 present
+        self?.coordinator?.presentWriteBoardView(type: type)
     }
+    self.coordinator?.dismiss(animated, completion: completion) // 해당 viewController를 dismiss
     ```
 
     </details>
