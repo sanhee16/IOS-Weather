@@ -24,6 +24,7 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - 참고 : [mvvm](https://adevait.com/ios/swift-tutorial-mvvm-des)
 - coordinator pattern
     - viewcontroller대신 페이지 전환을 담당하도록 (관심사 분리) coordinator 패턴 채택  
+    - 참고 : [coordinator의 시작](https://khanlou.com/2015/01/the-coordinator/)  
     - 참고 : [coordinator pattern](https://zeddios.medium.com/coordinator-pattern-bf4a1bc46930)
 - SwiftUI, UIKit
     - swiftui를 주로 사용하고, swiftui로는 안되는 email쓰기, multiTextField 등은 UIKit 사용
