@@ -32,7 +32,6 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 - Swift
 - Combine
     - api 통신에 사용
-    - 주로 사용한 Combine: zip, flatMap
 
 
 
