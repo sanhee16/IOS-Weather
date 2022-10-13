@@ -39,8 +39,11 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - 페이지에 따른 group별로 묶어져 있다.
 - Data
     - DataClass, Api Response Structure
-    - custom data class나, api 결과를 받을 때 필요한 structure들이 정의되어 있다.
-[데이터 통신을 위한 코드 예시]
+    - custom data class나, api 결과를 받을 때 필요한 structure들이 정의되어 있다.  
+
+<details markdown="1">
+<summary>데이터 통신을 위한 코드 예시</summary>
+
 ```swift
 public struct Weather: Codable {
     var id: Int // 날씨 코드
@@ -64,6 +67,8 @@ public struct Weather: Codable {
     }
 }
 ```
+
+</details>
 - Commom
     - Util, Extension, Api, UserDefaults
     - 공통적으로 사용되는 util, extension등을 만들어 두었다.
