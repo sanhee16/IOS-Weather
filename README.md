@@ -20,8 +20,11 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
 ### 기술 및 패턴
 - MVVM
     - view에서는 view만 그리고, viewModel에서는 로직만 처리한다. view는 viewModel의 데이터(변수)를 관찰하고(Observe) 있다가 데이터가 변환되면 view도 자동으로 감지하고 변환된다.
+    - [observable in swift](https://munokkim.medium.com/swiftui%EC%9D%98-observableobject-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-18c7c50242b5)
+    - [mvvm](https://adevait.com/ios/swift-tutorial-mvvm-des)
 - coordinator pattern
     - viewcontroller대신 페이지 전환을 담당하도록 (관심사 분리) coordinator 패턴 채택  
+    - [coordinator pattern](https://zeddios.medium.com/coordinator-pattern-bf4a1bc46930)
 - SwiftUI, UIKit
     - swiftui를 주로 사용하고, swiftui로는 안되는 email쓰기, multiTextField 등은 UIKit 사용
 - Swift
