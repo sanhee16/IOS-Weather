@@ -368,7 +368,7 @@ OpenAPI를 사용해서 날씨 정보를 받아오는 ios 앱을 만든다
     - 3시간 별 날씨 : 날짜(일/시간), 날씨 아이콘, 온도
     - 일주일 날씨 : 날짜(일), 날씨 아이콘, 날씨 정보, 풍속, 강수량, 최고기온, 최저기온  
     - 날씨 icon을 받아서 asset에 넣은 이미지로 대체  
-    <img src="/readme-images/icons.png" width="400">
+    <img src="/readme-images/icons.png" width="700">
 - 기능
     - 날씨 새로고침
     - 스와이프로 선택한 지역 날씨 교체 가능
