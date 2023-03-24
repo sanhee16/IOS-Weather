@@ -1,3 +1,0 @@
-AIzaSyAnPwQ15rw8k1EeDjJjQxl2hZCv--ktAXs==>${}
-781386630203-ssokof9fuq53d8ikri2he65t99dju60d.apps.googleusercontent.com==>${CLIENT_ID}
-com.googleusercontent.apps.781386630203-ssokof9fuq53d8ikri2he65t99dju60d==>${REVERSED_CLIENT_ID}
