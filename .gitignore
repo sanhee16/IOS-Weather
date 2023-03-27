@@ -1,3 +1,4 @@
 Config.xcconfig
 *.xcuserstate
 GoogleService-Info.plist
+Weather/Delegate/GoogleService-Info.plist
