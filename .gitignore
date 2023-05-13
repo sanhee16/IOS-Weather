@@ -2,3 +2,5 @@ Config.xcconfig
 *.xcuserstate
 GoogleService-Info.plist
 Weather/Delegate/GoogleService-Info.plist
+Weather.xcodeproj/xcuserdata/sandy.xcuserdatad/xcschemes/xcschememanagement.plist
+.DS_Store
